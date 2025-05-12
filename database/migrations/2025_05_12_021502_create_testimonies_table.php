@@ -17,10 +17,12 @@ return new class extends Migration
 
             $table->foreignId('user_id')->constrained('users');
 
-            $table->string('name')->nullable();
+            $table->string('title')->nullable();
             $table->text('content')->nullable();
 
             $table->enum('status', allowed: Status::STATUSES_TESTIMONY)->default(Status::STATUSES_TESTIMONY[0]);
+
+            $table->date('published_date')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

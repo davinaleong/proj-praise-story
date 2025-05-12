@@ -19,9 +19,9 @@ class TestimonyFactory extends Factory
     public function definition(): array
     {
         return [
-    'user_id' => User::factory(),
-    'title' => fake()->sentence(),
-    'content' => <<<MD
+            'user_id' => User::factory(),
+            'title' => fake()->sentence(),
+            'content' => <<<MD
 # My Testimony
 
 I want to share what **Jesus** has done in my life.
@@ -40,7 +40,8 @@ Thank you, Lord, for Your grace!
 
 *To God be the glory.*
 MD,
-    'status' => fake()->randomElement(Status::STATUSES_TESTIMONY),
-];
+            'status' => fake()->randomElement(Status::STATUSES_TESTIMONY),
+            'published_date' => fake()->date(),
+        ];
     }
 }

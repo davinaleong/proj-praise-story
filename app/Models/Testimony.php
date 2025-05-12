@@ -13,9 +13,10 @@ class Testimony extends Model
 
     protected $fillable = [
         'user_id',
-        'name',
+        'title',
         'content',
         'status',
+        'published_date',
     ];
 
     public function user()
