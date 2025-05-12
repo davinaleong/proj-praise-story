@@ -7,7 +7,7 @@ use App\Helpers\Status;
 
 /**
  * @group unit
- * @group helpers
+ * @group helper
  * @group status
  */
 class StatusTest extends TestCase

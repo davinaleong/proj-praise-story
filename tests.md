@@ -1,0 +1,35 @@
+# Test Group Readme
+
+This document outlines the purpose of each PHPUnit test group in the application to help contributors understand and maintain the test suite effectively.
+
+| Name                    | Description                                                                                 |
+| ----------------------- | ------------------------------------------------------------------------------------------- |
+| `auth`                  | General authentication-related tests (alias for core auth features).                        |
+| `authentication`        | Specific tests for login and logout functionality.                                          |
+| `dashboard`             | Tests for dashboard views, widgets, or summary statistics visible post-login.               |
+| `email-verification`    | Tests for verifying user emails after registration or profile changes.                      |
+| `feature`               | Feature tests covering full workflows, often hitting multiple components.                   |
+| `helper`                | Tests for custom helper classes or utility functions (e.g., string formatters, converters). |
+| `password-confirmation` | Tests that ensure password confirmation is required for sensitive actions.                  |
+| `password-reset`        | Tests for initiating and completing password reset flows.                                   |
+| `password-update`       | Tests for updating the current user’s password (e.g., from profile settings).               |
+| `profile`               | Tests for viewing and updating user profile details.                                        |
+| `registration`          | Tests for new user registration processes and edge cases.                                   |
+| `setting`               | Tests for user-defined settings or system configuration options.                            |
+| `status`                | Tests related to content status logic such as draft, private, and public states.            |
+| `unit`                  | Unit tests for isolated classes, methods, or logic without framework dependencies.          |
+
+---
+
+✅ Run specific groups using:
+
+```bash
+php artisan test --group=profile,setting
+```
+
+🧪 Use `@group name` annotations in your test classes/methods to assign them to these groups.
+
+```
+
+Let me know if you’d like these descriptions reused in code comments or auto-generated test documentation.
+```
