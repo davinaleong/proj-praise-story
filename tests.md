@@ -10,6 +10,7 @@ This document outlines the purpose of each PHPUnit test group in the application
 | `date-formatter`        | Unit tests for the `DateFormatter` helper, covering format consistency, input types, and error handling. |
 | `email-verification`    | Tests for verifying user emails after registration or profile changes.                                   |
 | `feature`               | Feature tests covering full workflows, often hitting multiple components.                                |
+| `has-uuid`              | Tests for the `HasUuid` trait to verify UUID auto-generation and preservation logic on model creation.   |
 | `helper`                | Tests for custom helper classes or utility functions (e.g., string formatters, converters).              |
 | `password-confirmation` | Tests that ensure password confirmation is required for sensitive actions.                               |
 | `password-reset`        | Tests for initiating and completing password reset flows.                                                |
@@ -18,6 +19,7 @@ This document outlines the purpose of each PHPUnit test group in the application
 | `registration`          | Tests for new user registration processes and edge cases.                                                |
 | `setting`               | Tests for user-defined settings or system configuration options.                                         |
 | `status`                | Tests related to content status logic such as draft, private, and public states.                         |
+| `trait`                 | Unit tests for reusable model traits, ensuring correct behavior when applied to Eloquent models.         |
 | `unit`                  | Unit tests for isolated classes, methods, or logic without framework dependencies.                       |
 
 ---
