@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Helpers\Status;
 
 return new class extends Migration
 {
@@ -19,7 +20,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->text('content')->nullable();
 
-            $table->enum('status', ['draft', 'private', 'public'])->default('draft');
+            $table->enum('status', allowed: Status::STATUSES_TESTIMONY)->default(Status::STATUSES_TESTIMONY[0]);
 
             $table->timestamps();
             $table->softDeletes();

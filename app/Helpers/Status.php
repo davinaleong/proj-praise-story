@@ -8,6 +8,12 @@ class Status
     const STATUS_TESTIMONY_PRIVATE = 'private';
     const STATUS_TESTIMONY_PUBLIC = 'public';
 
+    const STATUSES_TESTIMONY = [
+        self::STATUS_TESTIMONY_DRAFT,
+        self::STATUS_TESTIMONY_PRIVATE,
+        self::STATUS_TESTIMONY_PUBLIC,
+    ];
+
     public static function getHumanName(string $status): string
     {
         return match($status) {
