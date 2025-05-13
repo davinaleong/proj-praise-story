@@ -33,4 +33,17 @@ class StatusTest extends TestCase
 
         Status::getHumanName('invalid_status');
     }
+
+    public function test_get_select_options_returns_valid_key_value_pairs(): void
+    {
+        $options = Status::getSelectOptions();
+
+        $expected = [
+            Status::STATUS_TESTIMONY_DRAFT => 'Draft',
+            Status::STATUS_TESTIMONY_PRIVATE => 'Private',
+            Status::STATUS_TESTIMONY_PUBLIC => 'Public',
+        ];
+
+        $this->assertSame($expected, $options);
+    }
 }

@@ -22,4 +22,14 @@ class Status
             self::STATUS_TESTIMONY_PUBLIC => 'Public',
         };
     }
+
+    public static function getSelectOptions(): array
+    {
+        return [
+            self::STATUS_TESTIMONY_DRAFT => self::getHumanName(self::STATUS_TESTIMONY_DRAFT),
+            self::STATUS_TESTIMONY_PRIVATE => self::getHumanName(self::STATUS_TESTIMONY_PRIVATE),
+            self::STATUS_TESTIMONY_PUBLIC => self::getHumanName(self::STATUS_TESTIMONY_PUBLIC),
+        ];
+    }
+
 }
