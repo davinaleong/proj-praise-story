@@ -15,6 +15,7 @@ class TestimonyController extends Controller
     public function index()
     {
         $testimonies = Testimony::where('user_id', auth()->id())
+            ->orderBy('title')
             ->paginate(Setting::ITEMS_PER_PAGE_100);
 
         return view('testimonies.index', compact('testimonies'));
@@ -25,7 +26,7 @@ class TestimonyController extends Controller
      */
     public function create()
     {
-        $statues = Status::STATUSES_TESTIMONY;
+        $statues = Status::getSelectOptions();
 
         return view('testimonies.create', compact('statuses'));
     }
@@ -35,7 +36,18 @@ class TestimonyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate($this->getRules());
+
+        $testimony = Testimony::create([
+            'title' => $request->title,
+            'content' => $request->content,
+            'status' => $request->status,
+            'published_date' => $request->published_date,
+        ]);
+
+        return redirect()
+            ->route('testimonies.show', $testimony->uuid)
+            ->with('message', 'Testimony created successfully.');
     }
 
     /**
@@ -43,7 +55,10 @@ class TestimonyController extends Controller
      */
     public function show(string $uuid)
     {
-        //
+        $testimony = $this->getTestimony($uuid);
+        $testimony->statusHumanName = Status::getHumanName($testimony->status);
+
+        return view('testimonies.show', compact('testimony'));
     }
 
     /**
@@ -51,7 +66,12 @@ class TestimonyController extends Controller
      */
     public function edit(string $uuid)
     {
-        //
+        $testimony = $this->getTestimony($uuid);
+        $testimony->statusHumanName = Status::getHumanName($testimony->status);
+
+        $statuses = Status::getSelectOptions();
+
+        return view('testimonies.show', compact('testimony', 'statuses'));
     }
 
     /**
@@ -59,7 +79,19 @@ class TestimonyController extends Controller
      */
     public function update(Request $request, string $uuid)
     {
-        //
+        $testimony = $this->getTestimony($uuid);
+
+        $request->validate($this->getRules());
+
+        $testimony->title = $request->title;
+        $testimony->content = $request->content;
+        $testimony->status = $request->status;
+        $testimony->published_date = $request->published_date;
+        $testimony->save();
+
+        return redirect()
+            ->route('testimonies.show', $testimony->uuid)
+            ->with('message', 'Testimony updated successfully.');
     }
 
     /**
@@ -67,7 +99,12 @@ class TestimonyController extends Controller
      */
     public function destroy(string $uuid)
     {
-        //
+        $testimony = $this->getTestimony($uuid);
+        $testimony->delete();
+
+        return redirect()
+            ->route('testimonies.index')
+            ->with('message', 'Testimony deleted successfully.');
     }
 
     private function getTestimony(string $uuid): Testimony
@@ -79,5 +116,17 @@ class TestimonyController extends Controller
         }
 
         return $testimony;
+    }
+
+    private function getRules(): array
+    {
+        $statuses = implode(',', Status::STATUSES_TESTIMONY);
+
+        return [
+            'title' => 'required|string|max:255',
+            'content' => 'required|string',
+            'status' => "required|in:$statuses",
+            'published_date' => 'required|date',
+        ];
     }
 }
