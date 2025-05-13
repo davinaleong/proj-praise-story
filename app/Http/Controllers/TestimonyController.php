@@ -26,7 +26,7 @@ class TestimonyController extends Controller
      */
     public function create()
     {
-        $statues = Status::getSelectOptions();
+        $statuses = Status::getSelectOptions();
 
         return view('testimonies.create', compact('statuses'));
     }
@@ -39,6 +39,7 @@ class TestimonyController extends Controller
         $request->validate($this->getRules());
 
         $testimony = Testimony::create([
+            'user_id' => auth()->id(),
             'title' => $request->title,
             'content' => $request->content,
             'status' => $request->status,
