@@ -15,14 +15,17 @@
                 <td>{{ $testimony->title }}</td>
                 <td>{{ $testimony->getHumanPublishedDate() }}</td>
                 <td>{{ $testimony->getHumanStatus() }}</td>
-                <td></td>
+                <td>
+                    <a href="{{ route('testimonies.show', $testimony->uuid) }}">View</a>
+                </td>
             </tr>
-        @else
+        @empty
         <tr>
             <td colspan="3">
                 <em>No testimony entries.</em>
             </td>
         </tr>
+        @endforelse
     </tbody>
     <tfoot>
         {{ $testimonies->links() }}

@@ -10,7 +10,7 @@ class DateFormatter
 {
     const FORMAT_DATABASE = 'Y-m-d';
     const FORMAT_INPUT = 'd-m-Y';
-    const FORMAT_DISPLAY = 'j, d M Y';
+    const FORMAT_DISPLAY = 'D, j M Y';
 
     const FORMATS = [
         self::FORMAT_DATABASE,
