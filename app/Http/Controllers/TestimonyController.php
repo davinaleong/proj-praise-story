@@ -57,7 +57,6 @@ class TestimonyController extends Controller
     public function show(string $uuid)
     {
         $testimony = $this->getTestimony($uuid);
-        $testimony->statusHumanName = Status::getHumanName($testimony->status);
 
         return view('testimonies.show', compact('testimony'));
     }

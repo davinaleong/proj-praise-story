@@ -5,14 +5,20 @@ use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestimonyController;
+use App\Http\Controllers\IndexController;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('home');
 
 // Route::view('dashboard', 'dashboard')
 //     ->middleware(['auth', 'verified'])
 //     ->name('dashboard');
+
+Route::name('index.')->controller(IndexController::class)->group(function() {
+    Route::get('/', 'index')->name('index');
+    Route::get('/{uuid}', 'show')->name('show');
+});
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
