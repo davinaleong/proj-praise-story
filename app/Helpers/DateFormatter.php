@@ -9,7 +9,7 @@ use DateTimeInterface;
 class DateFormatter
 {
     const FORMAT_DATABASE = 'Y-m-d';
-    const FORMAT_INPUT = 'd-m-Y';
+    const FORMAT_INPUT = 'Y-m-d';
     const FORMAT_DISPLAY = 'D, j M Y';
 
     const FORMATS = [

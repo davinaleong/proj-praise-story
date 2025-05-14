@@ -1,36 +1,37 @@
 <h1>Testimonies</h1>
 
-<h2>Create a Testimony</h2>
+<h2>Edit: {{ $testimony->title }}</h2>
 
 <nav>
-    <a href="{{ route('testimonies.index') }}">Back</a>
+    <a href="{{ route('testimonies.show', $testimony->uuid) }}">Back</a>
 </nav>
 
-<form action="{{ route('testimonies.store') }}" method="post">
+<form action="{{ route('testimonies.update', $testimony->uuid) }}" method="post">
     @csrf
+    @method('put')
 
     <div>
         <label for="input-title">Title*</label>
-        <input type="text" name="title" id="input-title" required />
+        <input type="text" name="title" id="input-title" value="{{ old('title', $testimony->title) }}" required />
     </div>
 
     <div>
         <label for="input-content">Content*</label>
-        <textarea name="content" id="input-content" rows="10" required></textarea>
+        <textarea name="content" id="input-content" rows="10" required>{{ old('content', $testimony->content) }}</textarea>
     </div>
 
     <div>
         <label for="input-status">Status*</label>
         <select name="status" id="input-status" required>
             @foreach($statuses as $key=>$value)
-                <option value="{{ $key }}" {{ $key === 'draft' ? 'selected' : '' }}>{{ $value }}</option>
+                <option value="{{ $key }}" {{ $key === old('status', $testimony->status) ? 'selected' : '' }}>{{ $value }}</option>
             @endforeach
         </select>
     </div>
 
     <div>
         <label for="input-published_at">Published At*</label>
-        <input type="date" name="published_at" id="input-published_at" required />
+        <input type="date" name="published_at" id="input-published_at" value="{{ old('published_at', $testimony->getInputPublishedAt()) }}" required />
     </div>
 
     @if($errors->any())

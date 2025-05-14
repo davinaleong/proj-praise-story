@@ -72,7 +72,7 @@ class TestimonyController extends Controller
 
         $statuses = Status::getSelectOptions();
 
-        return view('testimonies.show', compact('testimony', 'statuses'));
+        return view('testimonies.edit', compact('testimony', 'statuses'));
     }
 
     /**

@@ -44,4 +44,11 @@ class Testimony extends Model
             : 'Not published';
     }
 
+    public function getInputPublishedAt(): string
+    {
+        return $this->published_at
+            ? DateFormatter::toInput($this->published_at)
+            : '';
+    }
+
 }

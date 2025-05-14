@@ -2,9 +2,9 @@
 
 <h2>List Testimony</h2>
 
-<p>
+<nav>
     <a href="{{ route('testimonies.create') }}">Create a testimony</a>
-</p>
+</nav>
 
 <table>
     <thead>
