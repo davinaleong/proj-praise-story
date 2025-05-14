@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Private;
 
 use Tests\TestCase;
 use App\Models\User;
@@ -10,9 +10,10 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 /**
  * @group feature
+ * @group private
  * @group private-testimony
  */
-class PrivateTestimonyControllerTest extends TestCase
+class TestimonyControllerTest extends TestCase
 {
     use RefreshDatabase;
 

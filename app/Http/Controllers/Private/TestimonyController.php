@@ -1,17 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Private;
 
 use Illuminate\Http\Request;
 use App\Models\Testimony;
 use App\Helpers\Setting;
 use App\Helpers\Status;
+use App\Http\Controllers\Controller;
 
-class PrivateTestimonyController extends Controller
+class TestimonyController extends Controller
 {
     public function index()
     {
-        $statuses =[Status::STATUS_TESTIMONY_PUBLIC, Status::STATUS_TESTIMONY_PRIVATE];
+        $statuses = [Status::STATUS_TESTIMONY_PUBLIC, Status::STATUS_TESTIMONY_PRIVATE];
         $items_per_page = Setting::ITEMS_PER_PAGE_100;
 
         $testimonies = Testimony::whereIn('status', $statuses)
