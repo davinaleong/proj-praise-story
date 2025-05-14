@@ -12,6 +12,7 @@ This document outlines the purpose of each PHPUnit test group in the application
 | `feature`               | Feature tests covering full workflows, often hitting multiple components.                                |
 | `has-uuid`              | Tests for the `HasUuid` trait to verify UUID auto-generation and preservation logic on model creation.   |
 | `helper`                | Tests for custom helper classes or utility functions (e.g., string formatters, converters).              |
+| `index`                 | Feature tests for listing public testimonies and enforcing access control on testimony detail views.     |
 | `password-confirmation` | Tests that ensure password confirmation is required for sensitive actions.                               |
 | `password-reset`        | Tests for initiating and completing password reset flows.                                                |
 | `password-update`       | Tests for updating the current user’s password (e.g., from profile settings).                            |
