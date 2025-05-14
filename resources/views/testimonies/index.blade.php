@@ -10,7 +10,7 @@
     <thead>
         <tr>
             <th>Title</th>
-            <th>Published Date</th>
+            <th>Published At</th>
             <th>Status</th>
             <th>Actions</th>
         </tr>
@@ -19,7 +19,7 @@
         @forelse($testimonies as $testimony)
             <tr>
                 <td>{{ $testimony->title }}</td>
-                <td>{{ $testimony->getHumanPublishedDate() }}</td>
+                <td>{{ $testimony->getHumanPublishedAt() }}</td>
                 <td>{{ $testimony->getHumanStatus() }}</td>
                 <td>
                     <a href="{{ route('testimonies.show', $testimony->uuid) }}">View</a>

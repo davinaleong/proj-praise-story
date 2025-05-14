@@ -23,6 +23,10 @@ class Testimony extends Model
         'published_at',
     ];
 
+    protected $casts = [
+        'published_at' => 'datetime',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -33,8 +37,11 @@ class Testimony extends Model
         return Status::getHumanName($this->status);
     }
 
-    public function getHumanPublishedDate(): string
+    public function getHumanPublishedAt(): string
     {
-        return DateFormatter::toDisplay($this->published_date);
+        return $this->published_at
+            ? DateFormatter::toDisplay($this->published_at)
+            : 'Not published';
     }
+
 }
