@@ -63,7 +63,7 @@ class TestimonyTest extends TestCase
         ]);
 
         // Act
-        $result = $testimony->getHumanPublishedDate();
+        $result = $testimony->getHumanPublishedAt();
 
         // Assert
         $this->assertEquals('Tue, 13 May 2025', $result); // Based on DateFormatter::FORMAT_DISPLAY
