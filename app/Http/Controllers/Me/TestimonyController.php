@@ -20,14 +20,14 @@ class TestimonyController extends Controller
             ->orderBy('title')
             ->paginate($items_per_page);
 
-        return view('me.testimonies.index', compact('testimonies'));
+        return view('me.published.index', compact('testimonies'));
     }
 
     public function show(string $uuid)
     {
         $testimony = $this->getTestimony($uuid);
 
-        return view('me.testimonies.show', compact('testimony'));
+        return view('me.published.show', compact('testimony'));
     }
 
     private function getTestimony(string $uuid): Testimony

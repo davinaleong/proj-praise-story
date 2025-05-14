@@ -7,7 +7,7 @@
         <p><em>{{ $testimony->getHumanPublishedAt() }}</em></p>
 
         <p>
-            <a href="{{ route('me.testimonies.show', $testimony->uuid) }}">
+            <a href="{{ route('me.published.show', $testimony->uuid) }}">
                 Read more &hellip;
             </a>
         </p>
