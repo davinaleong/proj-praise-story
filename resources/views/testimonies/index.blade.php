@@ -1,5 +1,11 @@
 <h1>Testimonies</h1>
 
+<h2>List Testimony</h2>
+
+<p>
+    <a href="{{ route('testimonies.create') }}">Create a testimony</a>
+</p>
+
 <table>
     <thead>
         <tr>

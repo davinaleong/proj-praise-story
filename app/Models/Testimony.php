@@ -20,7 +20,7 @@ class Testimony extends Model
         'title',
         'content',
         'status',
-        'published_date',
+        'published_at',
     ];
 
     public function user()

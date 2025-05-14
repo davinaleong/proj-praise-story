@@ -43,7 +43,7 @@ class TestimonyController extends Controller
             'title' => $request->title,
             'content' => $request->content,
             'status' => $request->status,
-            'published_date' => $request->published_date,
+            'published_at' => $request->published_at,
         ]);
 
         return redirect()
@@ -87,7 +87,7 @@ class TestimonyController extends Controller
         $testimony->title = $request->title;
         $testimony->content = $request->content;
         $testimony->status = $request->status;
-        $testimony->published_date = $request->published_date;
+        $testimony->published_at = $request->published_at;
         $testimony->save();
 
         return redirect()
@@ -127,7 +127,7 @@ class TestimonyController extends Controller
             'title' => 'required|string|max:255',
             'content' => 'required|string',
             'status' => "required|in:$statuses",
-            'published_date' => 'required|date',
+            'published_at' => 'required|date',
         ];
     }
 }

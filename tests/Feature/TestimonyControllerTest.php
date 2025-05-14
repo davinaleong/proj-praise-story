@@ -46,7 +46,7 @@ class TestimonyControllerTest extends TestCase
             'title' => 'My Testimony',
             'content' => 'God is good!',
             'status' => 'draft',
-            'published_date' => now()->format('Y-m-d'),
+            'published_at' => now()->format('Y-m-d'),
         ];
 
         $response = $this->actingAs($user)->post(route('testimonies.store'), $payload);

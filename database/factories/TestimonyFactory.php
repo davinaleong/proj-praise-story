@@ -41,7 +41,7 @@ Thank you, Lord, for Your grace!
 *To God be the glory.*
 MD,
             'status' => fake()->randomElement(Status::STATUSES_TESTIMONY),
-            'published_date' => fake()->date(),
+            'published_at' => fake()->date(),
         ];
     }
 }

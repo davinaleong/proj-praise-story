@@ -23,7 +23,7 @@ return new class extends Migration
 
             $table->enum('status', allowed: Status::STATUSES_TESTIMONY)->default(Status::STATUSES_TESTIMONY[0]);
 
-            $table->date('published_date')->nullable();
+            $table->date('published_at')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

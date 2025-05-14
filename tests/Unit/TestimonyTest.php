@@ -70,15 +70,15 @@ class TestimonyTest extends TestCase
     /**
      * @group published-date
      */
-    public function test_get_human_published_date_returns_formatted_date()
+    public function test_get_human_published_at_returns_formatted_date()
     {
         // Arrange
         $formattedDate = '13 May 2025';
         $rawDate = '2025-05-13';
 
-        // Create a Testimony instance with the given published_date
+        // Create a Testimony instance with the given published_at
         $testimony = new Testimony([
-            'published_date' => $rawDate,
+            'published_at' => $rawDate,
         ]);
 
         // Mock the DateFormatter::toDisplay() static call
