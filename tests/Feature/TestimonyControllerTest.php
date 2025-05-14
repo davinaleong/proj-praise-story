@@ -20,7 +20,7 @@ class TestimonyControllerTest extends TestCase
         $user = User::factory()->create();
         $testimonies = Testimony::factory()->count(2)->create(['user_id' => $user->id]);
 
-        $response = $this->actingAs($user)->get(route('testimonies.index'));
+        $response = $this->actingAs($user)->get(route('me.testimonies.index'));
 
         $response->assertStatus(200);
         foreach ($testimonies as $testimony) {
@@ -32,7 +32,7 @@ class TestimonyControllerTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $response = $this->actingAs($user)->get(route('testimonies.create'));
+        $response = $this->actingAs($user)->get(route('me.testimonies.create'));
 
         $response->assertStatus(200);
         $response->assertSee('form'); // Adjust as needed for your Blade
@@ -49,7 +49,7 @@ class TestimonyControllerTest extends TestCase
             'published_at' => now()->format('Y-m-d'),
         ];
 
-        $response = $this->actingAs($user)->post(route('testimonies.store'), $payload);
+        $response = $this->actingAs($user)->post(route('me.testimonies.store'), $payload);
 
         $response->assertRedirect();
         $this->assertDatabaseHas('testimonies', [

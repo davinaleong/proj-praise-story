@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\TestimonyController;
-use App\Http\Controllers\PrivateTestimonyController;
-use App\Http\Controllers\MeTestimonyController;
+use App\Http\Controllers\Private\TestimonyController as PrivateTestimonyController;
+use App\Http\Controllers\Me\TestimonyController as MeTestimonyController;
 use App\Livewire\Settings\Profile;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Appearance;
@@ -21,14 +21,14 @@ Route::middleware('auth')->prefix('testimonies/private')->name('private.')->cont
     Route::get('/{uuid}', 'show')->name('show');
 });
 
-// Authenticated User's Published Testimonies
-Route::middleware('auth')->prefix('me/testimonies')->name('me.testimonies.')->controller(MeTestimonyController::class)->group(function () {
-    Route::get('/', 'index')->name('index');
-    Route::get('/{uuid}', 'show')->name('show');
+Route::middleware('auth')->prefix('me/my-published-testimonies')->name('me.published.')->controller(MeTestimonyController::class)->group(function () {
+    Route::get('/', 'index')->name('index');         // /me/my-published-testimonies
+    Route::get('/{uuid}', 'show')->name('show');     // /me/my-published-testimonies/{uuid}
 });
 
 // Creator Panel (CRUD)
 Route::middleware(['auth', 'verified'])->prefix('me/testimonies')->name('me.testimonies.')->controller(TestimonyController::class)->group(function () {
+    Route::get('/', 'index')->name('index');
     Route::get('/create', 'create')->name('create');
     Route::post('/', 'store')->name('store');
     Route::get('/{uuid}/edit', 'edit')->name('edit');

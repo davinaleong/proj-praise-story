@@ -34,7 +34,7 @@ class IndexControllerTest extends TestCase
         ]);
 
         // Act
-        $response = $this->get(route('index.index'));
+        $response = $this->get(route('index'));
 
         // Assert
         $response->assertStatus(200);
@@ -56,7 +56,7 @@ class IndexControllerTest extends TestCase
         ]);
 
         // Act
-        $response = $this->get(route('index.show', $testimony->uuid));
+        $response = $this->get(route('testimony.public', $testimony->uuid));
 
         // Assert
         $response->assertStatus(200);
@@ -77,7 +77,7 @@ class IndexControllerTest extends TestCase
         ]);
 
         // Act
-        $response = $this->get(route('index.show', $testimony->uuid));
+        $response = $this->get(route('testimony.public', $testimony->uuid));
 
         // Assert
         $response->assertForbidden();

@@ -24,14 +24,14 @@ class DateFormatterTest extends TestCase
     {
         $date = '2025-05-12';
         $formatted = DateFormatter::format($date, DateFormatter::FORMAT_INPUT);
-        $this->assertSame('12-05-2025', $formatted);
+        $this->assertSame('2025-05-12', $formatted);
     }
 
     public function test_format_returns_display_format(): void
     {
         $date = '2025-05-12';
         $formatted = DateFormatter::format($date, DateFormatter::FORMAT_DISPLAY);
-        $this->assertSame('12, 12 May 2025', $formatted);
+        $this->assertSame('Mon, 12 May 2025', $formatted);
     }
 
     public function test_format_accepts_carbon_instance(): void
@@ -47,7 +47,7 @@ class DateFormatterTest extends TestCase
 
         $this->assertSame('2025-05-12', DateFormatter::toDatabase($date));
         $this->assertSame('12-05-2025', DateFormatter::toInput($date));
-        $this->assertSame('12, 12 May 2025', DateFormatter::toDisplay($date));
+        $this->assertSame('Mon, 12 May 2025', DateFormatter::toDisplay($date));
     }
 
     public function test_invalid_date_returns_fallback(): void

@@ -1,6 +1,6 @@
 @php use Illuminate\Support\Str; @endphp
 
-<h1>Praise Stories</h1>
+<h1>Premium Praise Stories</h1>
 
 <nav>
     <a href="{{ route('private.index') }}">Back</a>

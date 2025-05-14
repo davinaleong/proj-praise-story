@@ -1,4 +1,4 @@
-<h1>Praise Stories</h1>
+<h1>Premium Praise Stories</h1>
 
 <div>
     @foreach($testimonies as $testimony)
