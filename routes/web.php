@@ -6,10 +6,11 @@ use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestimonyController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\MeController;
 
 Route::name('index.')->controller(IndexController::class)->group(function() {
     Route::get('/', 'index')->name('index');
-    Route::get('/{uuid}', 'show')->name('show');
+    Route::get('/testimony/{uuid}', 'show')->name('show');
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -21,7 +22,10 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::view('dashboard', 'dashboard')->name('dashboard');
+    Route::prefix('/me')->name('me.')->controller(MeController::class)->group(function() {
+        Route::get('/', 'index')->name('index');
+        Route::get('/{uuid}', 'show')->name('show');
+    });
 
     Route::prefix('/testimonies')->name('testimonies.')->controller(TestimonyController::class)->group(function () {
         Route::get('/', 'index')->name('index');
