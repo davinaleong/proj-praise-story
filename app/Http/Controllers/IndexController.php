@@ -19,14 +19,14 @@ class IndexController extends Controller
             ->orderBy('title')
             ->paginate($items_per_page);
 
-        return view('index.index', compact('testimonies'));
+        return view('testimonies.index', compact('testimonies'));
     }
 
     public function show(string $uuid)
     {
         $testimony = $this->getTestimony($uuid);
 
-        return view('index.show', compact('testimony'));
+        return view('testimonies.show', compact('testimony'));
     }
 
     private function getTestimony(string $uuid): Testimony

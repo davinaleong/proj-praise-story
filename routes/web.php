@@ -12,7 +12,7 @@ use App\Livewire\Settings\Appearance;
 // Public Testimonies
 Route::controller(IndexController::class)->group(function () {
     Route::get('/', 'index')->name('index');
-    Route::get('/{uuid}', 'show')->name('testimony.public');
+    Route::get('/{uuid}', 'show')->name('testimonies.public');
 });
 
 Route::middleware(['auth', 'verified'])->get('/dashboard', function () {
@@ -20,7 +20,7 @@ Route::middleware(['auth', 'verified'])->get('/dashboard', function () {
     })->name('dashboard');
 
 // Authenticated Private Testimonies (any author)
-Route::middleware('auth')->prefix('testimonies/private')->name('private.')->controller(PrivateTestimonyController::class)->group(function () {
+Route::middleware('auth')->prefix('private-testimonies')->name('private-testimonies.')->controller(PrivateTestimonyController::class)->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('/{uuid}', 'show')->name('show');
 });

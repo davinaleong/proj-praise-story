@@ -3,7 +3,7 @@
 <h1>Premium Praise Stories</h1>
 
 <nav>
-    <a href="{{ route('private.index') }}">Back</a>
+    <a href="{{ route('private-testimonies.index') }}">Back</a>
 </nav>
 
 <h2>{{ $testimony->title }}</h2>
