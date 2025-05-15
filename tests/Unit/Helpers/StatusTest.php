@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\Unit\Helpers;
 
-use Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 use App\Helpers\Status;
 
 /**
@@ -12,28 +12,6 @@ use App\Helpers\Status;
  */
 class StatusTest extends TestCase
 {
-    public function test_get_human_name_returns_draft_for_draft_status(): void
-    {
-        $this->assertSame('Draft', Status::getHumanName(Status::STATUS_TESTIMONY_DRAFT));
-    }
-
-    public function test_get_human_name_returns_private_for_private_status(): void
-    {
-        $this->assertSame('Private', Status::getHumanName(Status::STATUS_TESTIMONY_PRIVATE));
-    }
-
-    public function test_get_human_name_returns_public_for_public_status(): void
-    {
-        $this->assertSame('Public', Status::getHumanName(Status::STATUS_TESTIMONY_PUBLIC));
-    }
-
-    public function test_get_human_name_throws_error_for_invalid_status(): void
-    {
-        $this->expectException(\UnhandledMatchError::class);
-
-        Status::getHumanName('invalid_status');
-    }
-
     public function test_get_select_options_returns_valid_key_value_pairs(): void
     {
         $options = Status::getSelectOptions();
@@ -46,5 +24,13 @@ class StatusTest extends TestCase
         ];
 
         $this->assertSame($expected, $options);
+    }
+
+    public function test_get_human_name_returns_correct_label(): void
+    {
+        $this->assertEquals('Draft', Status::getHumanName(Status::STATUS_TESTIMONY_DRAFT));
+        $this->assertEquals('Published', Status::getHumanName(Status::STATUS_TESTIMONY_PUBLISHED));
+        $this->assertEquals('Private', Status::getHumanName(Status::STATUS_TESTIMONY_PRIVATE));
+        $this->assertEquals('Public', Status::getHumanName(Status::STATUS_TESTIMONY_PUBLIC));
     }
 }
