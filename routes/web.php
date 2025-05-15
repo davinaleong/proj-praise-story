@@ -9,21 +9,29 @@ use App\Livewire\Settings\Profile;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Appearance;
 
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('home');
+
+// Route::view('dashboard', 'dashboard')
+//     ->middleware(['auth', 'verified'])
+//     ->name('dashboard');
+
 // Public Testimonies
 Route::controller(IndexController::class)->group(function () {
     Route::get('/', 'index')->name('index');
-    Route::get('/{uuid}', 'show')->name('testimonies.public');
+    Route::get('/testimonies/{uuid}', 'show')->name('testimonies.public');
 });
-
-Route::middleware(['auth', 'verified'])->get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
 
 // Authenticated Private Testimonies (any author)
 Route::middleware('auth')->prefix('private-testimonies')->name('private-testimonies.')->controller(PrivateTestimonyController::class)->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('/{uuid}', 'show')->name('show');
 });
+
+Route::middleware(['auth', 'verified'])->get('me/dashboard', function () {
+        return view('me.dashboard');
+    })->name('me.dashboard');
 
 Route::middleware('auth')->prefix('me/my-published-testimonies')->name('me.published.')->controller(MeTestimonyController::class)->group(function () {
     Route::get('/', 'index')->name('index');         // /me/my-published-testimonies
@@ -42,7 +50,7 @@ Route::middleware(['auth', 'verified'])->prefix('me/testimonies')->name('me.test
 });
 
 // Settings
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->prefix('me')->name('me.')->group(function () {
     Route::redirect('/settings', '/settings/profile');
     Route::get('/settings/profile', Profile::class)->name('settings.profile');
     Route::get('/settings/password', Password::class)->name('settings.password');

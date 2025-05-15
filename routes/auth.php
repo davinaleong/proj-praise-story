@@ -9,14 +9,14 @@ use App\Livewire\Auth\ResetPassword;
 use App\Livewire\Auth\VerifyEmail;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('guest')->group(function () {
+Route::middleware('guest')->prefix('me')->name('me.')->group(function () {
     Route::get('login', Login::class)->name('login');
     Route::get('register', Register::class)->name('register');
     Route::get('forgot-password', ForgotPassword::class)->name('password.request');
     Route::get('reset-password/{token}', ResetPassword::class)->name('password.reset');
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth')->prefix('me')->name('me.')->group(function () {
     Route::get('verify-email', VerifyEmail::class)
         ->name('verification.notice');
 
@@ -28,5 +28,5 @@ Route::middleware('auth')->group(function () {
         ->name('password.confirm');
 });
 
-Route::post('logout', App\Livewire\Actions\Logout::class)
-    ->name('logout');
+Route::post('me/logout', App\Livewire\Actions\Logout::class)
+    ->name('<me>logout');
