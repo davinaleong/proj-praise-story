@@ -3,7 +3,7 @@
 <h2>List Testimony</h2>
 
 <nav>
-    <a href="{{ route('testimonies.create') }}">Create a testimony</a>
+    <a href="{{ route('me.testimonies.create') }}">Create a testimony</a>
 </nav>
 
 <table>
@@ -22,7 +22,7 @@
                 <td>{{ $testimony->getHumanPublishedAt() }}</td>
                 <td>{{ $testimony->getHumanStatus() }}</td>
                 <td>
-                    <a href="{{ route('testimonies.show', $testimony->uuid) }}">View</a>
+                    <a href="{{ route('me.testimonies.show', $testimony->uuid) }}">View</a>
                 </td>
             </tr>
         @empty

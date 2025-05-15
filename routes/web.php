@@ -15,6 +15,10 @@ Route::controller(IndexController::class)->group(function () {
     Route::get('/{uuid}', 'show')->name('testimony.public');
 });
 
+Route::middleware(['auth', 'verified'])->get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
 // Authenticated Private Testimonies (any author)
 Route::middleware('auth')->prefix('testimonies/private')->name('private.')->controller(PrivateTestimonyController::class)->group(function () {
     Route::get('/', 'index')->name('index');
@@ -31,6 +35,7 @@ Route::middleware(['auth', 'verified'])->prefix('me/testimonies')->name('me.test
     Route::get('/', 'index')->name('index');
     Route::get('/create', 'create')->name('create');
     Route::post('/', 'store')->name('store');
+    Route::get('/{uuid}', 'show')->name('show');
     Route::get('/{uuid}/edit', 'edit')->name('edit');
     Route::put('/{uuid}', 'update')->name('update');
     Route::delete('/{uuid}', 'destroy')->name('destroy');

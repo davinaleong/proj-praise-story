@@ -7,9 +7,9 @@
 <h3>Details</h3>
 
 <nav>
-    <a href="{{ route('testimonies.index') }}">Back</a> |
-    <a href="{{ route('testimonies.edit', $testimony->uuid) }}">Edit</a> |
-    <form action="{{ route('testimonies.destroy', $testimony->uuid) }}" method="post">
+    <a href="{{ route('me.testimonies.index') }}">Back</a> |
+    <a href="{{ route('me.testimonies.edit', $testimony->uuid) }}">Edit</a> |
+    <form action="{{ route('me.testimonies.destroy', $testimony->uuid) }}" method="post">
         @csrf
         @method('delete')
         <button type="submit">Delete</button>

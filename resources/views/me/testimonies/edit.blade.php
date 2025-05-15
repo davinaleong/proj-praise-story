@@ -3,10 +3,10 @@
 <h2>Edit: {{ $testimony->title }}</h2>
 
 <nav>
-    <a href="{{ route('testimonies.show', $testimony->uuid) }}">Back</a>
+    <a href="{{ route('me.testimonies.show', $testimony->uuid) }}">Back</a>
 </nav>
 
-<form action="{{ route('testimonies.update', $testimony->uuid) }}" method="post">
+<form action="{{ route('me.testimonies.update', $testimony->uuid) }}" method="post">
     @csrf
     @method('put')
 

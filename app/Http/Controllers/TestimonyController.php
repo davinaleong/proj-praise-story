@@ -18,7 +18,7 @@ class TestimonyController extends Controller
             ->orderBy('title')
             ->paginate(Setting::ITEMS_PER_PAGE_100);
 
-        return view('testimonies.index', compact('testimonies'));
+        return view('me.testimonies.index', compact('testimonies'));
     }
 
     /**
@@ -28,7 +28,7 @@ class TestimonyController extends Controller
     {
         $statuses = Status::getSelectOptions();
 
-        return view('testimonies.create', compact('statuses'));
+        return view('me.testimonies.create', compact('statuses'));
     }
 
     /**
@@ -47,7 +47,7 @@ class TestimonyController extends Controller
         ]);
 
         return redirect()
-            ->route('testimonies.show', $testimony->uuid)
+            ->route('me.testimonies.show', $testimony->uuid)
             ->with('message', 'Testimony created successfully.');
     }
 
@@ -58,7 +58,7 @@ class TestimonyController extends Controller
     {
         $testimony = $this->getTestimony($uuid);
 
-        return view('testimonies.show', compact('testimony'));
+        return view('me.testimonies.show', compact('testimony'));
     }
 
     /**
@@ -71,7 +71,7 @@ class TestimonyController extends Controller
 
         $statuses = Status::getSelectOptions();
 
-        return view('testimonies.edit', compact('testimony', 'statuses'));
+        return view('me.testimonies.edit', compact('testimony', 'statuses'));
     }
 
     /**
@@ -90,7 +90,7 @@ class TestimonyController extends Controller
         $testimony->save();
 
         return redirect()
-            ->route('testimonies.show', $testimony->uuid)
+            ->route('me.testimonies.show', $testimony->uuid)
             ->with('message', 'Testimony updated successfully.');
     }
 
@@ -103,7 +103,7 @@ class TestimonyController extends Controller
         $testimony->delete();
 
         return redirect()
-            ->route('testimonies.index')
+            ->route('me.testimonies.index')
             ->with('message', 'Testimony deleted successfully.');
     }
 

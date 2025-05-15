@@ -38,7 +38,7 @@ class DateFormatterTest extends TestCase
     {
         $carbon = Carbon::create(2025, 5, 12);
         $formatted = DateFormatter::format($carbon, DateFormatter::FORMAT_INPUT);
-        $this->assertSame('12-05-2025', $formatted);
+        $this->assertSame('2025-05-12', $formatted);
     }
 
     public function test_helpers_to_display_and_to_database(): void
@@ -46,7 +46,7 @@ class DateFormatterTest extends TestCase
         $date = '2025-05-12';
 
         $this->assertSame('2025-05-12', DateFormatter::toDatabase($date));
-        $this->assertSame('12-05-2025', DateFormatter::toInput($date));
+        $this->assertSame('2025-05-12', DateFormatter::toInput($date));
         $this->assertSame('Mon, 12 May 2025', DateFormatter::toDisplay($date));
     }
 

@@ -3,10 +3,10 @@
 <h2>Create a Testimony</h2>
 
 <nav>
-    <a href="{{ route('testimonies.index') }}">Back</a>
+    <a href="{{ route('me.testimonies.index') }}">Back</a>
 </nav>
 
-<form action="{{ route('testimonies.store') }}" method="post">
+<form action="{{ route('me.testimonies.store') }}" method="post">
     @csrf
 
     <div>

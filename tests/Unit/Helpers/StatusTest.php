@@ -40,6 +40,7 @@ class StatusTest extends TestCase
 
         $expected = [
             Status::STATUS_TESTIMONY_DRAFT => 'Draft',
+            Status::STATUS_TESTIMONY_PUBLISHED => 'Published',
             Status::STATUS_TESTIMONY_PRIVATE => 'Private',
             Status::STATUS_TESTIMONY_PUBLIC => 'Public',
         ];
