@@ -29,4 +29,4 @@ Route::middleware('auth')->prefix('me')->name('me.')->group(function () {
 });
 
 Route::post('me/logout', App\Livewire\Actions\Logout::class)
-    ->name('<me>logout');
+    ->name('me.logout');

@@ -1,43 +1,43 @@
 <?php
 
-namespace App\Http\Controllers\Me;
+namespace App\Http\Controllers;
 
 use App\Helpers\Setting;
 use App\Helpers\Status;
 use App\Models\Testimony;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-class TestimonyController extends Controller
+class MeTestimonyController extends Controller
 {
     public function index()
     {
-        $statuses = [Status::STATUS_TESTIMONY_DRAFT];
+        $statuses = [Status::STATUS_TESTIMONY_PUBLIC, Status::STATUS_TESTIMONY_PRIVATE, Status::STATUS_TESTIMONY_PUBLISHED];
         $items_per_page = Setting::ITEMS_PER_PAGE_100;
 
         $testimonies = Testimony::where('user_id', auth()->id())
-            ->whereNotIn('status', $statuses)
+            ->whereIn('status', $statuses)
             ->orderByDesc('published_at')
             ->orderBy('title')
-            ->paginate($items_per_page);
+            ->paginate($items_per_page );
 
-        return view('me.published.index', compact('testimonies'));
+
+        return view('me.published-testimonies.index', compact('testimonies'));
     }
 
     public function show(string $uuid)
     {
         $testimony = $this->getTestimony($uuid);
 
-        return view('me.published.show', compact('testimony'));
+        return view('me.published-testimonies.show', compact('testimony'));
     }
 
     private function getTestimony(string $uuid): Testimony
     {
-        $statuses = Status::STATUS_TESTIMONY_DRAFT;
-        $testimony = Testimony::where([
-                'uuid' => $uuid
-            ])
-            ->whereNot('status', $statuses)
-            ->firstOrFail();
+        $testimony = Testimony::where('uuid', $uuid)->firstOrFail();
+
+        if ($testimony->status === Status::STATUS_TESTIMONY_DRAFT) {
+            abort(404);
+        }
 
         if ($testimony->user_id !== auth()->id()) {
             abort(403, 'Unauthorized action.');

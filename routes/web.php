@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\TestimonyController;
-use App\Http\Controllers\Private\TestimonyController as PrivateTestimonyController;
-use App\Http\Controllers\Me\TestimonyController as MeTestimonyController;
+use App\Http\Controllers\PrivateTestimonyController;
+use App\Http\Controllers\MeTestimonyController;
 use App\Livewire\Settings\Profile;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Appearance;
@@ -19,7 +19,7 @@ use App\Livewire\Settings\Appearance;
 
 // Public Testimonies
 Route::controller(IndexController::class)->group(function () {
-    Route::get('/', 'index')->name('index');
+    Route::get('/', 'index')->name('home');
     Route::get('/testimonies/{uuid}', 'show')->name('testimonies.public');
 });
 

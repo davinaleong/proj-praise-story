@@ -34,11 +34,11 @@ class IndexControllerTest extends TestCase
         ]);
 
         // Act
-        $response = $this->get(route('index'));
+        $response = $this->get(route('home'));
 
         // Assert
         $response->assertStatus(200);
-        $response->assertViewIs('index.index');
+        $response->assertViewIs('testimonies.index');
         $response->assertViewHas('testimonies', function ($testimonies) use ($public, $private) {
             return $testimonies->contains($public) && !$testimonies->contains($private);
         });
@@ -60,7 +60,7 @@ class IndexControllerTest extends TestCase
 
         // Assert
         $response->assertStatus(200);
-        $response->assertViewIs('index.show');
+        $response->assertViewIs('testimonies.show');
         $response->assertViewHas('testimony', $testimony);
     }
 

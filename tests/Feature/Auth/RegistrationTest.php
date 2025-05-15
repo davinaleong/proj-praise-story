@@ -18,7 +18,7 @@ class RegistrationTest extends TestCase
 
     public function test_registration_screen_can_be_rendered(): void
     {
-        $response = $this->get('/register');
+        $response = $this->get('/me/register');
 
         $response->assertStatus(200);
     }
@@ -34,7 +34,7 @@ class RegistrationTest extends TestCase
 
         $response
             ->assertHasNoErrors()
-            ->assertRedirect(route('dashboard', absolute: false));
+            ->assertRedirect(route('me.dashboard', absolute: false));
 
         $this->assertAuthenticated();
     }

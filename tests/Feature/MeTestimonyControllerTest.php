@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Me;
+namespace Tests\Feature;
 
 use Tests\TestCase;
 use App\Models\User;
@@ -13,7 +13,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
  * @group me
  * @group me-testimony
  */
-class TestimonyControllerTest extends TestCase
+class MeTestimonyControllerTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -41,14 +41,17 @@ class TestimonyControllerTest extends TestCase
             'status' => Status::STATUS_TESTIMONY_PUBLIC,
         ]);
 
-        $response = $this->get(route('me.testimonies.index'));
+        $response = $this->get(route('me.published.index'));
 
         $response->assertOk();
         $response->assertViewHas('testimonies', function ($testimonies) use ($public, $draft, $others) {
-            return $testimonies->contains($public)
-                && !$testimonies->contains($draft)
-                && !$testimonies->contains($others);
+            $ids = collect($testimonies->items())->pluck('id')->all(); // ✅ Corrected
+
+            return in_array($public->id, $ids)
+                && !in_array($draft->id, $ids)
+                && !in_array($others->id, $ids);
         });
+
     }
 
     public function test_show_displays_testimony_if_user_is_owner_and_not_draft()
@@ -61,7 +64,7 @@ class TestimonyControllerTest extends TestCase
             'status' => Status::STATUS_TESTIMONY_PRIVATE,
         ]);
 
-        $response = $this->get(route('me.testimonies.show', ['uuid' => $testimony->uuid]));
+        $response = $this->get(route('me.published.show', ['uuid' => $testimony->uuid]));
 
         $response->assertOk();
         $response->assertViewHas('testimony', $testimony);
@@ -78,7 +81,7 @@ class TestimonyControllerTest extends TestCase
             'status' => Status::STATUS_TESTIMONY_PRIVATE,
         ]);
 
-        $response = $this->get(route('me.testimonies.show', ['uuid' => $testimony->uuid]));
+        $response = $this->get(route('me.published.show', ['uuid' => $testimony->uuid]));
 
         $response->assertForbidden();
     }
@@ -93,7 +96,7 @@ class TestimonyControllerTest extends TestCase
             'status' => Status::STATUS_TESTIMONY_DRAFT,
         ]);
 
-        $response = $this->get(route('me.testimonies.show', ['uuid' => $testimony->uuid]));
+        $response = $this->get(route('me.published.show', ['uuid' => $testimony->uuid]));
 
         $response->assertNotFound();
     }
@@ -103,7 +106,7 @@ class TestimonyControllerTest extends TestCase
         $user = User::factory()->create();
         $this->actingAs($user);
 
-        $response = $this->get(route('me.testimonies.show', ['uuid' => 'invalid-uuid']));
+        $response = $this->get(route('me.published.show', ['uuid' => 'invalid-uuid']));
 
         $response->assertNotFound();
     }

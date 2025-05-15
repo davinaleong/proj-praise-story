@@ -22,7 +22,6 @@ class TestimonyFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'uuid' => Str::uuid(),
             'title' => fake()->sentence(),
             'content' => <<<MD
 # My Testimony

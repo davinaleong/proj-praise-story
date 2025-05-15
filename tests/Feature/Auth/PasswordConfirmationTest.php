@@ -21,7 +21,7 @@ class PasswordConfirmationTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $response = $this->actingAs($user)->get('/confirm-password');
+        $response = $this->actingAs($user)->get('/me/confirm-password');
 
         $response->assertStatus(200);
     }
@@ -38,7 +38,7 @@ class PasswordConfirmationTest extends TestCase
 
         $response
             ->assertHasNoErrors()
-            ->assertRedirect(route('dashboard', absolute: false));
+            ->assertRedirect(route('me.dashboard', absolute: false));
     }
 
     public function test_password_is_not_confirmed_with_invalid_password(): void

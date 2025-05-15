@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Private;
+namespace Tests\Feature;
 
 use Tests\TestCase;
 use App\Models\User;
@@ -13,13 +13,10 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
  * @group private
  * @group private-testimony
  */
-class TestimonyControllerTest extends TestCase
+class PrivateTestimonyControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    /**
-     * @group failed
-     */
     public function test_index_displays_public_and_private_testimonies()
     {
         $user = User::factory()->create();
