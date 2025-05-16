@@ -9,14 +9,6 @@ use App\Livewire\Settings\Profile;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Appearance;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// })->name('home');
-
-// Route::view('dashboard', 'dashboard')
-//     ->middleware(['auth', 'verified'])
-//     ->name('dashboard');
-
 // Public Testimonies
 Route::controller(IndexController::class)->group(function () {
     Route::get('/', 'index')->name('home');
