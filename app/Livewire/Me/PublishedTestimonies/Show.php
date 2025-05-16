@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Livewire\Me\Testimonies;
+namespace App\Livewire\Me\PublishedTestimonies;
 
 use Livewire\Component;
 use App\Models\Testimony;
 use Illuminate\Support\Facades\Auth;
+use App\Helpers\Status;
 
 class Show extends Component
 {
@@ -15,23 +16,18 @@ class Show extends Component
         $this->testimony = Testimony::with('user')
             ->where('uuid', $uuid)
             ->where('user_id', Auth::id())
+            ->whereIn('status', [
+                Status::STATUS_TESTIMONY_PUBLIC,
+                Status::STATUS_TESTIMONY_PRIVATE,
+                Status::STATUS_TESTIMONY_PUBLISHED,
+            ])
             ->firstOrFail();
-    }
-
-    public function delete()
-    {
-        $this->testimony->delete();
-
-        session()->flash('success', 'Testimony deleted successfully.');
-
-        return redirect()->route('me.testimonies.index');
     }
 
     public function render()
     {
-        return view('livewire.me.testimonies.show')
-            ->layout('layouts.app', [
-                'title' => $this->testimony->title
-            ]);
+        return view('livewire.me.published-testimonies.show')
+            ->layout('layouts.app', ['title' => $this->testimony->title]);
     }
 }
+

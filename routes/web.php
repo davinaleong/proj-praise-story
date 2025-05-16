@@ -1,44 +1,43 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\IndexController;
-use App\Http\Controllers\TestimonyController;
-use App\Http\Controllers\PrivateTestimonyController;
-use App\Http\Controllers\MeTestimonyController;
+use App\Livewire\Testimonies\Index as PublicTestimonyIndex;
+use App\Livewire\Testimonies\Show as PublicTestimonyShow;
+use App\Livewire\PrivateTestimonies\Index as PrivateTestimonyIndex;
+use App\Livewire\PrivateTestimonies\Show as PrivateTestimonyShow;
+use App\Livewire\Me\PublishedTestimonies\Index as MyPublishedTestimonyIndex;
+use App\Livewire\Me\PublishedTestimonies\Show as MyPublishedTestimonyShow;
+use App\Livewire\Me\Testimonies\Index as MeTestimonyIndex;
+use App\Livewire\Me\Testimonies\Create as MeTestimonyCreate;
+use App\Livewire\Me\Testimonies\Show as MeTestimonyShow;
+use App\Livewire\Me\Testimonies\Edit as MeTestimonyEdit;
 use App\Livewire\Settings\Profile;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Appearance;
 
-// Public Testimonies
-Route::controller(IndexController::class)->group(function () {
-    Route::get('/', 'index')->name('home');
-    Route::get('/testimonies/{uuid}', 'show')->name('testimonies.public');
+// Homepage & Public Testimonies
+Route::get('/', PublicTestimonyIndex::class)->name('home');
+Route::get('/testimonies/{uuid}', PublicTestimonyShow::class)->name('testimonies.public');
+
+// Private Testimonies (view-only, any author)
+Route::middleware('auth')->prefix('private-testimonies')->name('private-testimonies.')->group(function () {
+    Route::get('/', PrivateTestimonyIndex::class)->name('index');
+    Route::get('/{uuid}', PrivateTestimonyShow::class)->name('show');
 });
 
-// Authenticated Private Testimonies (any author)
-Route::middleware('auth')->prefix('private-testimonies')->name('private-testimonies.')->controller(PrivateTestimonyController::class)->group(function () {
-    Route::get('/', 'index')->name('index');
-    Route::get('/{uuid}', 'show')->name('show');
-});
-
-Route::middleware(['auth', 'verified'])->get('me/dashboard', function () {
-        return view('me.dashboard');
-    })->name('me.dashboard');
-
-Route::middleware('auth')->prefix('me/my-published-testimonies')->name('me.published.')->controller(MeTestimonyController::class)->group(function () {
-    Route::get('/', 'index')->name('index');         // /me/my-published-testimonies
-    Route::get('/{uuid}', 'show')->name('show');     // /me/my-published-testimonies/{uuid}
+// My Published Testimonies (view-only)
+Route::middleware('auth')->prefix('me/my-published-testimonies')->name('me.published.')->group(function () {
+    Route::get('/', MyPublishedTestimonyIndex::class)->name('index');
+    Route::get('/{uuid}', MyPublishedTestimonyShow::class)->name('show');
 });
 
 // Creator Panel (CRUD)
-Route::middleware(['auth', 'verified'])->prefix('me/testimonies')->name('me.testimonies.')->controller(TestimonyController::class)->group(function () {
-    Route::get('/', 'index')->name('index');
-    Route::get('/create', 'create')->name('create');
-    Route::post('/', 'store')->name('store');
-    Route::get('/{uuid}', 'show')->name('show');
-    Route::get('/{uuid}/edit', 'edit')->name('edit');
-    Route::put('/{uuid}', 'update')->name('update');
-    Route::delete('/{uuid}', 'destroy')->name('destroy');
+Route::middleware(['auth', 'verified'])->prefix('me/testimonies')->name('me.testimonies.')->group(function () {
+    Route::get('/', MeTestimonyIndex::class)->name('index');
+    Route::get('/create', MeTestimonyCreate::class)->name('create');
+    Route::get('/{uuid}', MeTestimonyShow::class)->name('show');
+    Route::get('/{uuid}/edit', MeTestimonyEdit::class)->name('edit');
+    // Note: store, update, destroy actions are handled inside Livewire
 });
 
 // Settings
@@ -48,5 +47,10 @@ Route::middleware(['auth'])->prefix('me')->name('me.')->group(function () {
     Route::get('/settings/password', Password::class)->name('settings.password');
     Route::get('/settings/appearance', Appearance::class)->name('settings.appearance');
 });
+
+// Dashboard
+Route::middleware(['auth', 'verified'])->get('me', function () {
+    return view('me.dashboard');
+})->name('me.dashboard');
 
 require __DIR__.'/auth.php';

@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Livewire\Testimonies;
+namespace App\Livewire\Testimonies;
 
 use Livewire\Component;
 use App\Models\Testimony;
-use Illuminate\Support\Str;
 
 class Show extends Component
 {
