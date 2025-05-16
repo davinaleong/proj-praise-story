@@ -1,6 +1,10 @@
 <x-layouts.app title="Praise Stories">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Praise Stories</h1>
+        <div class="flex justify-between items-center mb-6">
+            <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Praise Stories</h1>
+            @include('partials.login-button')
+        </div>
+
         <hr class="mb-8 border-gray-300 dark:border-gray-700">
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -10,10 +14,10 @@
                         {{ $testimony->title }}
                     </h2>
                     <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 italic">
-                        <em>Written by {{ $testimony->user->name }} on {{ $testimony->getHumanPublishedAt() }}</em>
+                        <em>Written by {{ optional($testimony->user)->name ?? 'Anonymous' }} on {{ $testimony->getHumanPublishedAt() }}</em>
                     </p>
                     <a href="{{ route('testimonies.public', $testimony->uuid) }}"
-                       class="inline-block mt-4 text-sm text-indigo-600 dark:text-indigo-400 hover:underline font-medium">
+                       class="inline-block mt-4 text-sm font-bold text-black dark:text-white hover:underline">
                         Read more &hellip;
                     </a>
                 </div>
