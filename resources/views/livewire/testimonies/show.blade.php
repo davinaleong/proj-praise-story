@@ -3,7 +3,7 @@
 <h1>Praise Stories</h1>
 
 <nav>
-    <a href="{{ route('testimonies.index') }}">Back</a>
+    <a href="{{ route('home') }}">Back</a>
 </nav>
 
 <h2>{{ $testimony->title }}</h2>
