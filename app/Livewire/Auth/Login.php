@@ -43,7 +43,7 @@ class Login extends Component
         RateLimiter::clear($this->throttleKey());
         Session::regenerate();
 
-        $this->redirectIntended(default: route('me.dashboard', absolute: false), navigate: true);
+        $this->redirectIntended(default: route('private-testimonies.index', absolute: false), navigate: true);
     }
 
     /**
