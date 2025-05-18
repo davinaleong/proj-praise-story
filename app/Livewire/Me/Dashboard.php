@@ -22,16 +22,13 @@ class Dashboard extends Component
         $this->counts = [
             'public' => $this->testimonies->where('status', Status::STATUS_TESTIMONY_PUBLIC)->count(),
             'private' => $this->testimonies->where('status', Status::STATUS_TESTIMONY_PRIVATE)->count(),
-            'published' => $this->testimonies->whereIn('status', [
-                Status::STATUS_TESTIMONY_PUBLIC,
-                Status::STATUS_TESTIMONY_PRIVATE,
-            ])->count(),
+            'published' => $this->testimonies->where('status', Status::STATUS_TESTIMONY_PUBLISHED)->count(),
         ];
     }
 
     public function render()
     {
         return view('livewire.me.dashboard')
-            ->layout('layouts.me', ['title' => 'Dashboard']);
+            ->layout('components.layouts.me', ['title' => 'Dashboard']);
     }
 }
