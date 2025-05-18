@@ -21,8 +21,8 @@
         </p>
 
         {{-- Content --}}
-        <div class="prose dark:prose-invert max-w-none">
+        <article class="prose dark:prose-invert max-w-none">
             {!! Str::markdown($testimony->content) !!}
-        </div>
+        </article>
     </div>
 </x-layouts.app>

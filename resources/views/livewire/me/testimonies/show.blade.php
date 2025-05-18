@@ -1,38 +1,26 @@
 @php use Illuminate\Support\Str; @endphp
 
-<x-layouts.app :title="$testimony->title">
-    <h1>Testimonies</h1>
-
-    <h2>{{ $testimony->title }}</h2>
-
-    <h3>Details</h3>
-
-    <nav class="mb-4">
-        <a href="{{ route('me.testimonies.index') }}">Back</a> |
-        <a href="{{ route('me.testimonies.edit', $testimony->uuid) }}">Edit</a> |
-        <button wire:click="delete" onclick="return confirm('Are you sure you want to delete this testimony?')">
-            Delete
-        </button>
-    </nav>
-
-    <div>
-        {!! Str::markdown($testimony->content) !!}
+<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    {{-- Back Link --}}
+    <div class="mb-6">
+        <a href="{{ route('me.testimonies.index') }}"
+            class="text-sm text-gray-600 dark:text-gray-400 hover:underline flex items-center">
+            &larr; Back
+        </a>
     </div>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Author:</th>
-                <td>{{ $testimony->user->name }}</td>
-            </tr>
-            <tr>
-                <th>Status:</th>
-                <td>{{ $testimony->getHumanStatus() }}</td>
-            </tr>
-            <tr>
-                <th>Published At:</th>
-                <td>{{ $testimony->getHumanPublishedAt() }}</td>
-            </tr>
-        </tbody>
-    </table>
-</x-layouts.app>
+    {{-- Title --}}
+    <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+        {{ $testimony->title }}
+    </h1>
+
+    {{-- Author & Date --}}
+    <p class="text-sm text-gray-500 dark:text-gray-400 italic mb-6">
+        Written by {{ optional($testimony->user)->name ?? 'Anonymous' }} on {{ $testimony->getHumanPublishedAt() }}
+    </p>
+
+    {{-- Content --}}
+    <article class="prose dark:prose-invert max-w-none">
+        {!! Str::markdown($testimony->content) !!}
+    </article>
+</div>

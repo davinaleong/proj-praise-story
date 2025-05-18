@@ -24,6 +24,7 @@
                         <th scope="col" class="px-6 py-3">Title</th>
                         <th scope="col" class="px-6 py-3">Status</th>
                         <th scope="col" class="px-6 py-3">Published At</th>
+                        <th scope="col" class="px-6 py-3">&nbsp;</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,6 +34,11 @@
                             <td class="px-6 py-4 capitalize">{{ $testimony->status }}</td>
                             <td class="px-6 py-4">
                                 {{ optional($testimony->published_at)->format('Y-m-d') ?? '—' }}
+                            </td>
+                            <td class="px-4 py-2">
+                                <a href="{{ route('me.testimonies.show', $testimony->uuid) }}">
+                                    @include('flux.icon.eye')
+                                </a>
                             </td>
                         </tr>
                     @empty

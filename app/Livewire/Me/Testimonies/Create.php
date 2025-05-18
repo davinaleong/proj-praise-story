@@ -34,4 +34,9 @@ class Create extends Component
         return redirect()->route('me.testimonies.index');
     }
 
+    public function render()
+    {
+        return view('livewire.me.testimonies.create')
+            ->layout('components.layouts.me', ['title' => 'Create Testimony']);
+    }
 }

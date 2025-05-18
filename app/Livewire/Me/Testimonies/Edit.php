@@ -61,6 +61,6 @@ class Edit extends Component
     public function render()
     {
         return view('livewire.me.testimonies.edit')
-            ->layout('layouts.app', ['title' => 'Edit Testimony']);
+            ->layout('components.layouts.me', ['title' => 'Edit Testimony']);
     }
 }

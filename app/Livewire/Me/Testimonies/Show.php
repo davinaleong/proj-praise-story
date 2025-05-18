@@ -30,7 +30,7 @@ class Show extends Component
     public function render()
     {
         return view('livewire.me.testimonies.show')
-            ->layout('layouts.app', [
+            ->layout('components.layouts.me', [
                 'title' => $this->testimony->title
             ]);
     }
