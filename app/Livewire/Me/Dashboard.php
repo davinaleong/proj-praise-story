@@ -8,13 +8,16 @@ use App\Helpers\Status;
 
 class Dashboard extends Component
 {
-    public $testimonies;
+    public $testimonies = [];
     public $counts = [];
 
-    public function mount()
-    {
-        $user = auth()->user();
+    public $readyToLoad = false;
 
+    public function loadTestimonies()
+    {
+        $this->readyToLoad = true;
+
+        $user = auth()->user();
         $this->testimonies = $user->testimonies()
             ->latest('published_at')
             ->get();
