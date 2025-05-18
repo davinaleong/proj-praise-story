@@ -1,8 +1,8 @@
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="flex justify-between items-center mb-6">
+    <header class="flex justify-between items-center mb-6">
         <h1 class="text-3xl font-bold text-gray-900 dark:text-white">My Published Testimonies</h1>
         @include('partials.create-button')
-    </div>
+    </header>
 
     <hr class="mb-8 border-gray-300 dark:border-gray-700">
 
