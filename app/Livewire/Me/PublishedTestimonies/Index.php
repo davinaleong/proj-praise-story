@@ -25,6 +25,6 @@ class Index extends Component
             ->paginate(Setting::ITEMS_PER_PAGE_100);
 
         return view('livewire.me.published-testimonies.index', compact('testimonies'))
-            ->layout('layouts.app', ['title' => 'My Published Testimonies']);
+            ->layout('components.layouts.me', ['title' => 'My Published Testimonies']);
     }
 }
