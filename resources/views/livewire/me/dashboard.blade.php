@@ -1,7 +1,13 @@
 <div wire:init="loadTestimonies" class="flex h-full w-full flex-1 flex-col gap-4 rounded-xl">
+    {{-- Page Header --}}
+    <header class="mb-6">
+        <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Dashboard</h1>
+        <hr class="mt-4 border-gray-300 dark:border-gray-700">
+    </header>
+
     @if ($readyToLoad)
         {{-- Summary Cards --}}
-        <div class="grid auto-rows-min gap-4 md:grid-cols-3">
+        <section class="grid auto-rows-min gap-4 md:grid-cols-3">
             <div class="flex flex-col items-center justify-center aspect-video rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-zinc-900 p-4">
                 <h2 class="text-sm font-medium text-gray-500 dark:text-gray-400">Public Testimonies</h2>
                 <p class="text-3xl font-bold text-black dark:text-white mt-2">{{ $counts['public'] }}</p>
@@ -14,10 +20,10 @@
                 <h2 class="text-sm font-medium text-gray-500 dark:text-gray-400">Total Published</h2>
                 <p class="text-3xl font-bold text-black dark:text-white mt-2">{{ $counts['published'] }}</p>
             </div>
-        </div>
+        </section>
 
         {{-- Testimony Table --}}
-        <div class="relative h-full flex-1 overflow-x-auto rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-zinc-900">
+        <section class="relative h-full flex-1 overflow-x-auto rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-zinc-900">
             <table class="min-w-full text-sm text-left text-gray-700 dark:text-gray-300">
                 <thead class="bg-gray-100 dark:bg-zinc-800 text-xs uppercase font-medium">
                     <tr>
@@ -50,7 +56,7 @@
                     @endforelse
                 </tbody>
             </table>
-        </div>
+        </section>
     @else
         <div class="text-center py-12 text-gray-500 dark:text-gray-400">
             Loading testimonies...

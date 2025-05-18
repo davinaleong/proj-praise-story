@@ -2,12 +2,12 @@
 
 <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     {{-- Back Link --}}
-    <div class="mb-6">
+    <header class="mb-6">
         <a href="{{ route('me.published.index') }}"
             class="text-sm text-gray-600 dark:text-gray-400 hover:underline flex items-center">
             &larr; Back to My Published Testimonies
         </a>
-    </div>
+    </header>
 
     {{-- Title --}}
     <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">

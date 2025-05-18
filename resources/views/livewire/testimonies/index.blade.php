@@ -1,13 +1,13 @@
 <x-layouts.app title="Praise Stories">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="flex justify-between items-center mb-6">
+        <header class="flex justify-between items-center mb-6">
             <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Praise Stories</h1>
             @include('partials.login-button')
-        </div>
+        </header>
 
         <hr class="mb-8 border-gray-300 dark:border-gray-700">
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach($testimonies as $testimony)
                 @if ($loop->index === 3)
                     <!-- Premium CTA Card -->
@@ -40,6 +40,6 @@
                     </a>
                 </div>
             @endforeach
-        </div>
+        </section>
     </div>
 </x-layouts.app>

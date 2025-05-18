@@ -6,7 +6,7 @@
 
     <hr class="mb-8 border-gray-300 dark:border-gray-700">
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         @foreach($testimonies as $testimony)
             <!-- Testimony Card -->
             <div class="rounded-lg border border-gray-200 dark:border-gray-700 p-6 shadow-sm bg-white dark:bg-zinc-800">
@@ -22,5 +22,5 @@
                 </a>
             </div>
         @endforeach
-    </div>
+    </section>
 </div>
