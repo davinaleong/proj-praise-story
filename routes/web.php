@@ -14,6 +14,7 @@ use App\Livewire\Me\Testimonies\Edit as MeTestimonyEdit;
 use App\Livewire\Settings\Profile;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Appearance;
+use App\Livewire\Temp;
 
 // Homepage & Public Testimonies
 Route::get('/', PublicTestimonyIndex::class)->name('home');
@@ -47,6 +48,10 @@ Route::middleware(['auth'])->prefix('me')->name('me.')->group(function () {
     Route::get('/settings/password', Password::class)->name('settings.password');
     Route::get('/settings/appearance', Appearance::class)->name('settings.appearance');
 });
+
+// Temp
+// TODO: Remove
+Route::get('/temp', Temp::class)->name('temp');
 
 // Dashboard
 Route::middleware(['auth', 'verified'])->get('me', function () {
