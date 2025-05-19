@@ -1,7 +1,11 @@
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <header class="flex justify-between items-center mb-6">
         <h1 class="text-3xl font-bold text-gray-900 dark:text-white">My Published Testimonies</h1>
-        @include('partials.create-button')
+        <a href="{{ route('me.testimonies.create', ['from' => 'published']) }}"
+            class="inline-flex items-center gap-2 bg-black text-white dark:bg-white dark:text-black font-semibold text-sm px-5 py-2 rounded-md transition hover:opacity-90">
+
+            @include('flux.icon.plus') Create Testimony
+        </a>
     </header>
 
     <hr class="mb-8 border-gray-300 dark:border-gray-700">
