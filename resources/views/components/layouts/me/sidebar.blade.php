@@ -12,7 +12,7 @@
             </a>
 
             <flux:navlist variant="outline">
-                <flux:navlist.group :heading="__('Platform')" class="grid">
+                <flux:navlist.group :heading="__('Pages')" class="grid">
                     <flux:navlist.item icon="home" :href="route('me.dashboard')" :current="request()->routeIs('me.dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
                     <flux:navlist.item icon="book-open-text" :href="route('me.published.index')" :current="request()->routeIs('me.published.index')" wire:navigate>{{ __('My Wall') }}</flux:navlist.item>
                     <flux:navlist.item icon="scroll-text" :href="route('me.testimonies.index')" :current="request()->routeIs('me.testimonies.index')" wire:navigate>{{ __('My Testimonies') }}</flux:navlist.item>
@@ -20,6 +20,12 @@
             </flux:navlist>
 
             <flux:spacer />
+
+            <flux:navlist variant="outline">
+                <flux:navlist.group :heading="__('Misc')" class="grid">
+                    <flux:navlist.item icon="lightbulb" :href="route('me.information')" :current="request()->routeIs('me.information')" wire:navigate>{{ __('Information') }}</flux:navlist.item>
+                </flux:navlist.group>
+            </flux:navlist>
 
             <!-- Desktop User Menu -->
             <flux:dropdown position="bottom" align="start">

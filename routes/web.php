@@ -12,6 +12,7 @@ use App\Livewire\Me\Testimonies\Create as MeTestimonyCreate;
 use App\Livewire\Me\Testimonies\Show as MeTestimonyShow;
 use App\Livewire\Me\Testimonies\Edit as MeTestimonyEdit;
 use App\Livewire\Me\Dashboard as Dashboard;
+use App\Livewire\Me\Information as Information;
 use App\Livewire\Settings\Profile;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Appearance;
@@ -56,5 +57,7 @@ Route::get('/temp', Temp::class)->name('temp');
 
 // Dashboard
 Route::middleware(['auth', 'verified'])->get('/me', Dashboard::class)->name('me.dashboard');
+
+Route::middleware(['auth', 'verified'])->get('/me/information', Information::class)->name('me.information');
 
 require __DIR__.'/auth.php';
