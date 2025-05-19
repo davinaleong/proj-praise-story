@@ -1,11 +1,9 @@
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     {{-- Page Header --}}
-    <header class="flex justify-between items-center mb-6">
+    <header class="mb-6">
         <h1 class="text-3xl font-bold text-gray-900 dark:text-white">My Testimonies</h1>
-        @include('partials.create-button')
+        <hr class="mt-4 border-gray-300 dark:border-gray-700">
     </header>
-
-    <hr class="mb-8 border-gray-300 dark:border-gray-700">
 
     {{-- Testimony Table --}}
     <div class="overflow-x-auto rounded-t-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-zinc-900">
