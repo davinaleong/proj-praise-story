@@ -40,4 +40,11 @@ class Password extends Component
 
         $this->dispatch('password-updated');
     }
+
+    public function render()
+    {
+        return view('livewire.settings.password')
+            ->layout('components.layouts.me', ['title' => 'Password Settings']);
+    }
+
 }
