@@ -23,8 +23,8 @@
         </h1>
 
         <a href="{{ route('me.testimonies.edit', $testimony->uuid) }}"
-        class="inline-flex items-center text-sm px-3 py-1.5 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition">
-            Edit
+        class="inline-flex gap-2 items-center text-sm px-3 py-1.5 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition">
+            @include('flux.icon.pencil') Edit
         </a>
     </header>
 
