@@ -10,7 +10,9 @@ class Show extends Component
 {
     public Testimony $testimony;
 
-    public function mount(string $uuid): void
+    public string $from = 'testimonies';
+
+    public function mount(string $uuid, string $from = 'testimonies'): void
     {
         $this->testimony = Testimony::with('user')
             ->where('uuid', $uuid)

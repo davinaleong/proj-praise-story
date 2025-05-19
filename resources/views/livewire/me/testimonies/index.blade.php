@@ -31,7 +31,7 @@
                             {{ optional($testimony->published_at)->format('Y-m-d') ?? '—' }}
                         </td>
                         <td class="px-6 py-4 text-right">
-                            <a href="{{ route('me.testimonies.show', $testimony->uuid) }}"
+                            <a href="{{ route('me.testimonies.show', ['uuid' => $testimony->uuid, 'from' => 'testimonies']) }}"
                                class="inline-block text-gray-500 hover:text-black dark:hover:text-white" title="View Testimony">
                                 @include('flux.icon.eye')
                             </a>

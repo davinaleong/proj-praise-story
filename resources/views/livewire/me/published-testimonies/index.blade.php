@@ -20,7 +20,7 @@
                 <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 italic">
                     <em>Written by {{ optional($testimony->user)->name ?? 'Anonymous' }} on {{ $testimony->getHumanPublishedAt() }}</em>
                 </p>
-                <a href="{{ route('me.published.show', $testimony->uuid) }}"
+                <a href="{{ route('me.testimonies.show', ['uuid' => $testimony->uuid, 'from' => 'public']) }}"
                    class="inline-block mt-4 text-sm font-bold text-black dark:text-white hover:underline">
                     Read more &hellip;
                 </a>

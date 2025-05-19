@@ -1,9 +1,15 @@
 @php use Illuminate\Support\Str; @endphp
 
+@php
+    $backRoute = $from === 'public'
+        ? route('me.public.index')
+        : route('me.testimonies.index');
+@endphp
+
 <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     {{-- Back Link --}}
     <div class="mb-6">
-        <a href="{{ route('me.testimonies.index') }}"
+        <a href="{{ $backRoute }}"
             class="text-sm text-gray-600 dark:text-gray-400 hover:underline flex items-center">
             &larr; Back
         </a>

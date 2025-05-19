@@ -6,7 +6,6 @@ use App\Livewire\Testimonies\Show as PublicTestimonyShow;
 use App\Livewire\PrivateTestimonies\Index as PrivateTestimonyIndex;
 use App\Livewire\PrivateTestimonies\Show as PrivateTestimonyShow;
 use App\Livewire\Me\PublishedTestimonies\Index as MyPublishedTestimonyIndex;
-use App\Livewire\Me\PublishedTestimonies\Show as MyPublishedTestimonyShow;
 use App\Livewire\Me\Testimonies\Index as MeTestimonyIndex;
 use App\Livewire\Me\Testimonies\Create as MeTestimonyCreate;
 use App\Livewire\Me\Testimonies\Show as MeTestimonyShow;
@@ -31,7 +30,6 @@ Route::middleware('auth')->prefix('private-testimonies')->name('private-testimon
 // My Published Testimonies (view-only)
 Route::middleware('auth')->prefix('me/my-published-testimonies')->name('me.published.')->group(function () {
     Route::get('/', MyPublishedTestimonyIndex::class)->name('index');
-    Route::get('/{uuid}', MyPublishedTestimonyShow::class)->name('show');
 });
 
 // Creator Panel (CRUD)
