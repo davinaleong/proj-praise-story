@@ -16,9 +16,18 @@
     </div>
 
     {{-- Title --}}
-    <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-        {{ $testimony->title }}
-    </h1>
+    {{-- Title + Edit --}}
+    <header class="flex items-center justify-between mb-2">
+        <h1 class="text-3xl font-bold text-gray-900 dark:text-white">
+            {{ $testimony->title }}
+        </h1>
+
+        <a href="{{ route('me.testimonies.edit', $testimony->uuid) }}"
+        class="inline-flex items-center text-sm px-3 py-1.5 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition">
+            Edit
+        </a>
+    </header>
+
 
     {{-- Author & Date --}}
     <p class="text-sm text-gray-500 dark:text-gray-400 italic mb-6">
