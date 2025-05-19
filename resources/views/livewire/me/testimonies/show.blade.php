@@ -38,4 +38,15 @@
     <article class="prose dark:prose-invert max-w-none">
         {!! Str::markdown($testimony->content) !!}
     </article>
+
+    {{-- Delete Button --}}
+    <div class="flex justify-end">
+        <form wire:submit.prevent="delete">
+            <button type="submit"
+                    onclick="return confirm('Are you sure you want to delete this testimony?')"
+                    class="text-sm flex gap-2 align-items px-4 py-2 border border-red-500 text-red-500 rounded hover:bg-red-500 hover:text-white transition">
+                @include('flux.icon.trash') Delete
+            </button>
+        </form>
+    </div>
 </div>
