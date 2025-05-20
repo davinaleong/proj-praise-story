@@ -15,11 +15,15 @@ use App\Livewire\Me\Information as Information;
 use App\Livewire\Settings\Profile;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Appearance;
+use App\Livewire\TermsAndConditions\Show as TermsAndConditionsShow;
+use App\Livewire\TermsAndConditions\Me as TermsAndConditionsMe;
 use App\Livewire\Temp;
 
 // Public
 Route::get('/', PublicTestimonyIndex::class)->name('home');
 Route::get('/testimonies/{uuid}', PublicTestimonyShow::class)->name('testimonies.public');
+
+Route::get('/terms-and-conditions', TermsAndConditionsShow::class)->name('terms-and-conditions.show');
 
 // TODO: Remove
 Route::get('/temp', Temp::class)->name('temp');
