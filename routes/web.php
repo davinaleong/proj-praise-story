@@ -15,10 +15,14 @@ use App\Livewire\Me\Information as Information;
 use App\Livewire\Settings\Profile;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Appearance;
+use App\Livewire\Temp;
 
 // Public
 Route::get('/', PublicTestimonyIndex::class)->name('home');
 Route::get('/testimonies/{uuid}', PublicTestimonyShow::class)->name('testimonies.public');
+
+// TODO: Remove
+Route::get('/temp', Temp::class)->name('temp');
 
 // Authenticated Routes
 Route::middleware('auth')->group(function () {

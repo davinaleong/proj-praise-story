@@ -24,5 +24,7 @@
         <article class="prose dark:prose-invert max-w-none">
             {!! Str::markdown($testimony->content) !!}
         </article>
+
+        @include('partials.copyright')
     </div>
 </x-layouts.app>

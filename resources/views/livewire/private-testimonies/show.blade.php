@@ -35,5 +35,7 @@
             {{ $isPrivate ? 'prose-invert dark:prose' : '' }}">
             {!! Str::markdown($testimony->content) !!}
         </article>
+
+        @include('partials.copyright')
     </div>
 </x-layouts.app>

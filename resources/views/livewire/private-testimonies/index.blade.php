@@ -44,5 +44,7 @@
                 </p>
             @endforelse
         </section>
+
+        @include('partials.copyright')
     </div>
 </x-layouts.app>
