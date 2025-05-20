@@ -3,5 +3,7 @@
         @include('partials.copyright')
         <span>|</span>
         <span><a href="{{ route('terms-and-conditions.show') }}" class="underline hover:text-gray-700 dark:hover:text-gray-300">T&amp;C</a></span>
+        <span>|</span>
+        <span><a href="{{ route('privacy-policy.show') }}" class="underline hover:text-gray-700 dark:hover:text-gray-300">Privacy</a></span>
     </p>
 </footer>

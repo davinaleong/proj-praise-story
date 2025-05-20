@@ -17,6 +17,8 @@ use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\TermsAndConditions\Show as TermsAndConditionsShow;
 use App\Livewire\TermsAndConditions\Me as MeTermsAndConditions;
+use App\Livewire\PrivacyPolicy\Show as PrivacyPolicyShow;
+use App\Livewire\PrivacyPolicy\Me as MePrivacyPolicy;
 use App\Livewire\Temp;
 
 // Public
@@ -24,6 +26,7 @@ Route::get('/', PublicTestimonyIndex::class)->name('home');
 Route::get('/testimonies/{uuid}', PublicTestimonyShow::class)->name('testimonies.public');
 
 Route::get('/terms-and-conditions', TermsAndConditionsShow::class)->name('terms-and-conditions.show');
+Route::get('/privacy-policy', PrivacyPolicyShow::class)->name('privacy-policy.show');
 
 // TODO: Remove
 Route::get('/temp', Temp::class)->name('temp');
@@ -47,6 +50,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::get('me/terms-and-conditions', MeTermsAndConditions::class)->name('me.terms-and-conditions');
+    Route::get('me/privacy-policy', MePrivacyPolicy::class)->name('me.privacy-policy');
 
     // Settings
     Route::prefix('me')->name('me.')->group(function () {
