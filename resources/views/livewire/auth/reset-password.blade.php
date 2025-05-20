@@ -42,4 +42,6 @@
             </flux:button>
         </div>
     </form>
+
+    @include('partials.copyright')
 </div>

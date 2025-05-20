@@ -59,4 +59,6 @@
         {{ __('Already have an account?') }}
         <flux:link :href="route('me.login')" wire:navigate>{{ __('Log in') }}</flux:link>
     </div>
+
+    @include('partials.copyright')
 </div>

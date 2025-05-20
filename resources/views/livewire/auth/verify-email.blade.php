@@ -18,4 +18,6 @@
             {{ __('Log out') }}
         </flux:link>
     </div>
+
+    @include('partials.copyright')
 </div>

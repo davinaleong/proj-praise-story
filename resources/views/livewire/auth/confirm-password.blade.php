@@ -21,4 +21,6 @@
 
         <flux:button variant="primary" type="submit" class="w-full">{{ __('Confirm') }}</flux:button>
     </form>
+
+    @include('partials.copyright')
 </div>

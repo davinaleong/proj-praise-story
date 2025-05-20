@@ -23,4 +23,6 @@
         {{ __('Or, return to') }}
         <flux:link :href="route('me.login')" wire:navigate>{{ __('log in') }}</flux:link>
     </div>
+
+    @include('partials.copyright')
 </div>

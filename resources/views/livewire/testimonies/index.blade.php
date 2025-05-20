@@ -41,5 +41,7 @@
                 </div>
             @endforeach
         </section>
+
+        @include('partials.copyright')
     </div>
 </x-layouts.app>

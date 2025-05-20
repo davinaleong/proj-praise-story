@@ -49,4 +49,6 @@
             <flux:link :href="route('register')" wire:navigate>{{ __('Sign up') }}</flux:link>
         </div>
     @endif
+
+    @include('partials.copyright')
 </div>
