@@ -8,6 +8,7 @@ class Me extends Component
 {
     public function render()
     {
-        return view('livewire.terms-and-conditions.me');
+        return view('livewire.terms-and-conditions.me')
+            ->layout('components.layouts.me');
     }
 }

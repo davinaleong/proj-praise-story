@@ -16,7 +16,7 @@ use App\Livewire\Settings\Profile;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\TermsAndConditions\Show as TermsAndConditionsShow;
-use App\Livewire\TermsAndConditions\Me as TermsAndConditionsMe;
+use App\Livewire\TermsAndConditions\Me as MeTermsAndConditions;
 use App\Livewire\Temp;
 
 // Public
@@ -45,6 +45,8 @@ Route::middleware('auth')->group(function () {
     Route::prefix('me/my-published-testimonies')->name('me.published.')->group(function () {
         Route::get('/', MyPublishedTestimonyIndex::class)->name('index');
     });
+
+    Route::get('me/terms-and-conditions', MeTermsAndConditions::class)->name('me.terms-and-conditions');
 
     // Settings
     Route::prefix('me')->name('me.')->group(function () {
