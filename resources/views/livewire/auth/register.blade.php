@@ -60,5 +60,5 @@
         <flux:link :href="route('me.login')" wire:navigate>{{ __('Log in') }}</flux:link>
     </div>
 
-    @include('partials.copyright')
+    @include('partials.footer')
 </div>

@@ -43,5 +43,5 @@
         </div>
     </form>
 
-    @include('partials.copyright')
+    @include('partials.footer')
 </div>

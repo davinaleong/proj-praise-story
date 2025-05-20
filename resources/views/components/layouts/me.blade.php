@@ -2,7 +2,6 @@
     <flux:main>
         {{ $slot }}
 
-        @include('partials.copyright')
-        <div class="mb-4">&nbsp;</div>
+        @include('partials.footer-me')
     </flux:main>
 </x-layouts.me.sidebar>

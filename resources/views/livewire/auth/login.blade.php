@@ -50,5 +50,5 @@
         </div>
     @endif
 
-    @include('partials.copyright')
+    @include('partials.footer')
 </div>

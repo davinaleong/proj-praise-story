@@ -36,6 +36,6 @@
             {!! Str::markdown($testimony->content) !!}
         </article>
 
-        @include('partials.copyright')
+        @include('partials.footer')
     </div>
 </x-layouts.app>

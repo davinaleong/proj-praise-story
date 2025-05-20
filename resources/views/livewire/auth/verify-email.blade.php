@@ -19,5 +19,5 @@
         </flux:link>
     </div>
 
-    @include('partials.copyright')
+    @include('partials.footer')
 </div>
