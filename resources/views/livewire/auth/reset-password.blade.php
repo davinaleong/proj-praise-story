@@ -43,5 +43,11 @@
         </div>
     </form>
 
+    <div class="space-x-1 rtl:space-x-reverse text-center text-sm text-zinc-600 dark:text-zinc-400">
+        <flux:link class="text-sm text-gray-600 dark:text-gray-400 hover:underline flex items-center" :href="route('home')" wire:navigate>
+            &larr; {{ __('Back to Home') }}
+        </flux:link>
+    </div>
+
     @include('partials.footer')
 </div>

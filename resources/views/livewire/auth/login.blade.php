@@ -41,6 +41,7 @@
         <div class="flex items-center justify-end">
             <flux:button variant="primary" type="submit" class="w-full">{{ __('Log in') }}</flux:button>
         </div>
+
     </form>
 
     @if (Route::has('me.register'))
@@ -49,6 +50,12 @@
             <flux:link :href="route('me.register')" wire:navigate>{{ __('Sign up') }}</flux:link>
         </div>
     @endif
+
+    <div class="space-x-1 rtl:space-x-reverse text-center text-sm text-zinc-600 dark:text-zinc-400">
+        <flux:link class="text-sm text-gray-600 dark:text-gray-400 hover:underline flex items-center" :href="route('home')" wire:navigate>
+            &larr; {{ __('Back to Home') }}
+        </flux:link>
+    </div>
 
     @include('partials.footer')
 </div>
