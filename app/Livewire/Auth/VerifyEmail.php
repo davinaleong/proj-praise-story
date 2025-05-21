@@ -17,7 +17,7 @@ class VerifyEmail extends Component
     public function sendVerification(): void
     {
         if (Auth::user()->hasVerifiedEmail()) {
-            $this->redirectIntended(default: route('private-testimonies.index', absolute: false), navigate: true);
+            $this->redirectIntended(default: route('me.dashboard', absolute: false), navigate: true);
 
             return;
         }
