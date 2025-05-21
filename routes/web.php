@@ -23,7 +23,7 @@ use App\Livewire\PrivacyPolicy\Me as MePrivacyPolicy;
 use App\Livewire\Contact;
 use App\Livewire\Temp;
 
-// Public
+// Public Routes
 Route::get('/', PublicTestimonyIndex::class)->name('home');
 Route::get('/testimonies/{uuid}', PublicTestimonyShow::class)->name('testimonies.public');
 
@@ -32,15 +32,11 @@ Route::get('/contact', Contact::class)->name('contact');
 Route::get('/terms-and-conditions', TermsAndConditionsShow::class)->name('terms-and-conditions.show');
 Route::get('/privacy-policy', PrivacyPolicyShow::class)->name('privacy-policy.show');
 
-// TODO: Remove
+// Temporary / Test Route
 Route::get('/temp', Temp::class)->name('temp');
 
 // Authenticated Routes
 Route::middleware('auth')->group(function () {
-
-    // Dashboard & Info
-    Route::get('/me', Dashboard::class)->name('me.dashboard');
-    Route::get('/me/information', Information::class)->name('me.information');
 
     // Private Testimonies (view-only, all authors)
     Route::prefix('private-testimonies')->name('private-testimonies.')->group(function () {
@@ -48,32 +44,34 @@ Route::middleware('auth')->group(function () {
         Route::get('/{uuid}', PrivateTestimonyShow::class)->name('show');
     });
 
-    // My Published Testimonies (view-only)
-    Route::prefix('me/my-published-testimonies')->name('me.published.')->group(function () {
-        Route::get('/', MyPublishedTestimonyIndex::class)->name('index');
-    });
-
-    Route::get('me/terms-and-conditions', MeTermsAndConditions::class)->name('me.terms-and-conditions');
-    Route::get('me/privacy-policy', MePrivacyPolicy::class)->name('me.privacy-policy');
-    Route::get('me/feedback', FeedbackForm::class)->name('me.feedback');
-
-    // Settings
+    // /me routes
     Route::prefix('me')->name('me.')->group(function () {
-        Route::redirect('/settings', '/settings/profile');
+
+        Route::get('/', Dashboard::class)->name('dashboard');
+        Route::get('/information', Information::class)->name('information');
+        Route::get('/feedback', FeedbackForm::class)->name('feedback');
+
+        // Settings
+        Route::redirect('/settings', '/me/settings/profile');
         Route::get('/settings/profile', Profile::class)->name('settings.profile');
         Route::get('/settings/password', Password::class)->name('settings.password');
         Route::get('/settings/appearance', Appearance::class)->name('settings.appearance');
-    });
 
-    // Creator Panel (CRUD) - Verified Users
-    Route::middleware('verified')->prefix('me/testimonies')->name('me.testimonies.')->group(function () {
-        Route::get('/', MeTestimonyIndex::class)->name('index');
-        Route::get('/create', MeTestimonyCreate::class)->name('create');
-        Route::get('/{uuid}', MeTestimonyShow::class)->name('show');
-        Route::get('/{uuid}/edit', MeTestimonyEdit::class)->name('edit');
-        // Note: store, update, destroy handled by Livewire
-    });
+        // Policy pages (user-facing)
+        Route::get('/terms-and-conditions', MeTermsAndConditions::class)->name('terms-and-conditions');
+        Route::get('/privacy-policy', MePrivacyPolicy::class)->name('privacy-policy');
 
+        // My Published Testimonies (view-only)
+        Route::get('/my-published-testimonies', MyPublishedTestimonyIndex::class)->name('published.index');
+
+        // Creator Panel (CRUD) - Verified Users Only
+        Route::middleware('verified')->prefix('testimonies')->name('testimonies.')->group(function () {
+            Route::get('/', MeTestimonyIndex::class)->name('index');
+            Route::get('/create', MeTestimonyCreate::class)->name('create');
+            Route::get('/{uuid}', MeTestimonyShow::class)->name('show');
+            Route::get('/{uuid}/edit', MeTestimonyEdit::class)->name('edit');
+        });
+    });
 });
 
 require __DIR__.'/auth.php';
