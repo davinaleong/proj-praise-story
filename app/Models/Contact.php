@@ -20,10 +20,5 @@ class Contact extends Model
         'email',
         'message',
     ];
-
-    protected static function booted()
-    {
-        static::creating(fn ($model) => $model->id = (string) Str::uuid());
-    }
 }
 

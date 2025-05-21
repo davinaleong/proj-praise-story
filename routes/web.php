@@ -19,8 +19,6 @@ use App\Livewire\TermsAndConditions\Show as TermsAndConditionsShow;
 use App\Livewire\TermsAndConditions\Me as MeTermsAndConditions;
 use App\Livewire\PrivacyPolicy\Show as PrivacyPolicyShow;
 use App\Livewire\PrivacyPolicy\Me as MePrivacyPolicy;
-use App\Livewire\Contact\Show as ContactShow;
-use App\Livewire\Contact\Me as MeContact;
 use App\Livewire\Temp;
 
 // Public

@@ -62,7 +62,7 @@ class Profile extends Component
         $user = Auth::user();
 
         if ($user->hasVerifiedEmail()) {
-            $this->redirectIntended(default: route('me.dashboard', absolute: false));
+            $this->redirectIntended(default: route('private-testimonies.index', absolute: false));
 
             return;
         }
