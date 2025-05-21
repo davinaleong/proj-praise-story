@@ -37,7 +37,12 @@
             />
 
             <!-- Submit Button -->
-            <div class="flex items-center justify-end">
+            <div class="flex items-center justify-end gap-4">
+                <a href="{{ route('home') }}"
+                    class="text-sm text-gray-600 dark:text-gray-400 hover:underline flex items-center">
+                        &larr; {{ __('Back to Home') }}
+                </a>
+
                 <flux:button variant="primary" type="submit">
                     {{ __('Send Message') }}
                 </flux:button>
