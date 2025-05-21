@@ -29,7 +29,6 @@ Route::get('/testimonies/{uuid}', PublicTestimonyShow::class)->name('testimonies
 
 Route::get('/terms-and-conditions', TermsAndConditionsShow::class)->name('terms-and-conditions.show');
 Route::get('/privacy-policy', PrivacyPolicyShow::class)->name('privacy-policy.show');
-Route::get('/contact', ContactShow::class)->name('contact.show');
 
 // TODO: Remove
 Route::get('/temp', Temp::class)->name('temp');
@@ -54,7 +53,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('me/terms-and-conditions', MeTermsAndConditions::class)->name('me.terms-and-conditions');
     Route::get('me/privacy-policy', MePrivacyPolicy::class)->name('me.privacy-policy');
-    Route::get('me/contact', MeContact::class)->name('me.contact');
 
     // Settings
     Route::prefix('me')->name('me.')->group(function () {
