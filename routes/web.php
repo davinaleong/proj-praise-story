@@ -20,12 +20,15 @@ use App\Livewire\TermsAndConditions\Show as TermsAndConditionsShow;
 use App\Livewire\TermsAndConditions\Me as MeTermsAndConditions;
 use App\Livewire\PrivacyPolicy\Show as PrivacyPolicyShow;
 use App\Livewire\PrivacyPolicy\Me as MePrivacyPolicy;
+use App\Livewire\Premium\Checkout;
 use App\Livewire\Contact;
 use App\Livewire\Temp;
 
 // Public Routes
 Route::get('/', PublicTestimonyIndex::class)->name('home');
 Route::get('/testimonies/{uuid}', PublicTestimonyShow::class)->name('testimonies.public');
+
+Route::get('/premium', Checkout::class)->name('premium.checkout');
 
 Route::get('/contact', Contact::class)->name('contact');
 

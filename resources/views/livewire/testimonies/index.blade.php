@@ -20,7 +20,7 @@
                             Upgrade to premium to keep selected testimonies private — just for you or your inner circle.
                         </p>
 
-                        <a href="{{ route('me.login') }}"
+                        <a href="{{ route('premium.checkout') }}"
                         class="inline-block bg-white text-black dark:bg-black dark:text-white font-semibold text-sm px-5 py-2 rounded-md transition hover:opacity-90">
                             Learn More & Upgrade
                         </a>
