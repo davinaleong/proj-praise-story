@@ -12,6 +12,7 @@ use App\Livewire\Me\Testimonies\Show as MeTestimonyShow;
 use App\Livewire\Me\Testimonies\Edit as MeTestimonyEdit;
 use App\Livewire\Me\Dashboard as Dashboard;
 use App\Livewire\Me\Information as Information;
+use App\Livewire\Me\FeedbackForm as FeedbackForm;
 use App\Livewire\Settings\Profile;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Appearance;
@@ -54,6 +55,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('me/terms-and-conditions', MeTermsAndConditions::class)->name('me.terms-and-conditions');
     Route::get('me/privacy-policy', MePrivacyPolicy::class)->name('me.privacy-policy');
+    Route::get('me/feedback', FeedbackForm::class)->name('me.feedback');
 
     // Settings
     Route::prefix('me')->name('me.')->group(function () {
