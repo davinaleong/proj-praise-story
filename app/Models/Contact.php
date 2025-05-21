@@ -8,10 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 
-class Feedback extends Model
+class Contact extends Model
 {
     use HasFactory, HasUuid, SoftDeletes;
-    protected $guarded = [];
     public $incrementing = false;
     protected $keyType = 'string';
 
@@ -21,5 +20,10 @@ class Feedback extends Model
         'email',
         'message',
     ];
+
+    protected static function booted()
+    {
+        static::creating(fn ($model) => $model->id = (string) Str::uuid());
+    }
 }
 

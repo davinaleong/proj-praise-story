@@ -8,7 +8,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class FeedbackNotification extends Mailable
+class ContactNotification extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -33,7 +33,7 @@ class FeedbackNotification extends Mailable
     {
         return new Envelope(
             subject: $this->subjectLine,
-            replyTo: $this->fromEmail,
+            replyTo: [$this->fromEmail],
         );
     }
 
@@ -43,7 +43,7 @@ class FeedbackNotification extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.feedback',
+            view: 'emails.contact',
             with: [
                 'subjectLine' => $this->subjectLine,
                 'fromEmail' => $this->fromEmail,

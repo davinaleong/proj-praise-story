@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Livewire\Feedback;
+namespace App\Livewire\Contact;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\FeedbackNotification;
+use App\Mail\ContactNotification;
 
 class Me extends Component
 {
@@ -20,15 +20,16 @@ class Me extends Component
             'message' => 'required|string',
         ]);
 
-        Mail::to($this->email)->send(new FeedbackNotification(
+        Mail::to($this->email)->send(new ContactNotification(
             $this->subject, $this->email, $this->message));
 
-        session()->flash('message', 'Your feedback has been sent.');
+        session()->flash('message', 'Your message has been sent.');
         $this->reset(['subject', 'email', 'message']);
     }
 
     public function render()
     {
-        return view('livewire.me.feedback-form');
+        return view('livewire.contact.me')
+            ->layout('components.layouts.me');
     }
 }

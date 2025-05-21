@@ -1,6 +1,6 @@
 <form wire:submit.prevent="submit" class="space-y-6 max-w-2xl">
     <header class="flex justify-between items-center mb-6">
-        <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Feedback</h1>
+        <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Contact</h1>
     </header>
 
     <hr class="mb-8 border-gray-300 dark:border-gray-700">

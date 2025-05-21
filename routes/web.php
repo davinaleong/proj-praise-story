@@ -19,8 +19,8 @@ use App\Livewire\TermsAndConditions\Show as TermsAndConditionsShow;
 use App\Livewire\TermsAndConditions\Me as MeTermsAndConditions;
 use App\Livewire\PrivacyPolicy\Show as PrivacyPolicyShow;
 use App\Livewire\PrivacyPolicy\Me as MePrivacyPolicy;
-use App\Livewire\Feedback\Show as FeedbackShow;
-use App\Livewire\Feedback\Me as MeFeedback;
+use App\Livewire\Contact\Show as ContactShow;
+use App\Livewire\Contact\Me as MeContact;
 use App\Livewire\Temp;
 
 // Public
@@ -29,7 +29,7 @@ Route::get('/testimonies/{uuid}', PublicTestimonyShow::class)->name('testimonies
 
 Route::get('/terms-and-conditions', TermsAndConditionsShow::class)->name('terms-and-conditions.show');
 Route::get('/privacy-policy', PrivacyPolicyShow::class)->name('privacy-policy.show');
-Route::get('/feedback', FeedbackShow::class)->name('feedback.show');
+Route::get('/contact', ContactShow::class)->name('contact.show');
 
 // TODO: Remove
 Route::get('/temp', Temp::class)->name('temp');
@@ -54,7 +54,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('me/terms-and-conditions', MeTermsAndConditions::class)->name('me.terms-and-conditions');
     Route::get('me/privacy-policy', MePrivacyPolicy::class)->name('me.privacy-policy');
-    Route::get('me/feedback', MeFeedback::class)->name('me.feedback');
+    Route::get('me/contact', MeContact::class)->name('me.contact');
 
     // Settings
     Route::prefix('me')->name('me.')->group(function () {
