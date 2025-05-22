@@ -28,8 +28,8 @@ class CheckoutForm extends Component
             'metadata' => [
                 'user_id' => auth()->id(),
             ],
-            'success_url' => route('premium.testimonies.index') . '?success=true',
-            'cancel_url' => route('me.dashboard') . '?cancel=true',
+            'success_url' => route('me.login') . '?success=true',
+            'cancel_url' => route('home') . '?cancel=true',
         ]);
 
         return redirect()->away($session->url);
