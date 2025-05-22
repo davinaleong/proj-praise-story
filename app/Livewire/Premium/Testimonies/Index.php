@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\PrivateTestimonies;
+namespace App\Livewire\Premium\Testimonies;
 
 use Livewire\Component;
 use App\Models\Testimony;
@@ -11,7 +11,7 @@ class Index extends Component
 {
     public function render()
     {
-        return view('livewire.private-testimonies.index', [
+        return view('livewire.premium.testimonies.index', [
             'testimonies' => Testimony::whereIn('status', [Status::STATUS_TESTIMONY_PUBLIC, Status::STATUS_TESTIMONY_PRIVATE])->latest('published_at')->paginate(Setting::ITEMS_PER_PAGE_100)
         ]);
     }

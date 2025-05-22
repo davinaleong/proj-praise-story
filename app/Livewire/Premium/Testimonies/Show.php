@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\PrivateTestimonies;
+namespace App\Livewire\Premium\Testimonies;
 
 use Livewire\Component;
 use App\Models\Testimony;
@@ -19,7 +19,7 @@ class Show extends Component
 
     public function render()
     {
-        return view('livewire.private-testimonies.show')
+        return view('livewire.premium.testimonies.show')
             ->layout('components.layouts.app', [
                 'title' => $this->testimony->title,
             ]);

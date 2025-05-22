@@ -33,7 +33,7 @@
                     <p class="text-sm mt-2 italic">
                         <em>Written on {{ $testimony->getHumanPublishedAt() }}</em>
                     </p>
-                    <a href="{{ route('private-testimonies.show', $testimony->uuid) }}"
+                    <a href="{{ route('premium.testimonies.show', $testimony->uuid) }}"
                        class="inline-block mt-4 text-sm font-bold underline">
                         Read more &hellip;
                     </a>

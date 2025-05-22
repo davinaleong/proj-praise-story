@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Testimonies\Index as PublicTestimonyIndex;
 use App\Livewire\Testimonies\Show as PublicTestimonyShow;
-use App\Livewire\PrivateTestimonies\Index as PrivateTestimonyIndex;
-use App\Livewire\PrivateTestimonies\Show as PrivateTestimonyShow;
+// use App\Livewire\PrivateTestimonies\Index as PrivateTestimonyIndex;
+// use App\Livewire\PrivateTestimonies\Show as PrivateTestimonyShow;
 use App\Livewire\Me\PublishedTestimonies\Index as MyPublishedTestimonyIndex;
 use App\Livewire\Me\Testimonies\Index as MeTestimonyIndex;
 use App\Livewire\Me\Testimonies\Create as MeTestimonyCreate;
@@ -22,6 +22,8 @@ use App\Livewire\PrivacyPolicy\Show as PrivacyPolicyShow;
 use App\Livewire\PrivacyPolicy\Me as MePrivacyPolicy;
 // use App\Livewire\Premium\Checkout;
 use App\Livewire\Premium\CheckoutForm;
+use App\Livewire\Premium\Testimonies\Index as PremiumTestimonyIndex;
+use App\Livewire\Premium\Testimonies\Show as PremiumTestimonyShow;
 use App\Livewire\Contact;
 use App\Livewire\Temp;
 
@@ -45,10 +47,10 @@ Route::get('/temp', Temp::class)->name('temp');
 // Authenticated Routes
 Route::middleware('auth')->group(function () {
 
-    // Private Testimonies (view-only, all authors)
-    Route::prefix('private-testimonies')->name('private-testimonies.')->group(function () {
-        Route::get('/', PrivateTestimonyIndex::class)->name('index');
-        Route::get('/{uuid}', PrivateTestimonyShow::class)->name('show');
+    // Premium Testimonies (view-only, all authors)
+    Route::prefix('premium/testimonies')->name('premium.testimonies.')->group(function () {
+        Route::get('/', PremiumTestimonyIndex::class)->name('index');
+        Route::get('/{uuid}', PremiumTestimonyShow::class)->name('show');
     });
 
     // /me routes
