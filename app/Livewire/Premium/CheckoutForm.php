@@ -29,7 +29,7 @@ class CheckoutForm extends Component
                 'user_id' => auth()->id(),
             ],
             'success_url' => route('premium.testimonies.index') . '?success=true',
-            'cancel_url' => route('home') . '?cancel=true',
+            'cancel_url' => route('me.dashboard') . '?cancel=true',
         ]);
 
         return redirect()->away($session->url);
