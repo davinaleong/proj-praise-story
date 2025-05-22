@@ -20,7 +20,6 @@ use App\Livewire\TermsAndConditions\Show as TermsAndConditionsShow;
 use App\Livewire\TermsAndConditions\Me as MeTermsAndConditions;
 use App\Livewire\PrivacyPolicy\Show as PrivacyPolicyShow;
 use App\Livewire\PrivacyPolicy\Me as MePrivacyPolicy;
-// use App\Livewire\Premium\Checkout;
 use App\Livewire\Premium\CheckoutForm;
 use App\Livewire\Premium\Testimonies\Index as PremiumTestimonyIndex;
 use App\Livewire\Premium\Testimonies\Show as PremiumTestimonyShow;
@@ -34,7 +33,6 @@ Route::get('/testimonies/{uuid}', PublicTestimonyShow::class)->name('testimonies
 // Route::get('/premium', Checkout::class)->name('premium.checkout');
 
 Route::get('/premium/checkout', CheckoutForm::class)->name('premium.checkout');
-
 
 Route::get('/contact', Contact::class)->name('contact');
 
