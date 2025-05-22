@@ -17,7 +17,7 @@ class Create extends Component
 
     public function mount()
     {
-        $this->statuses = Status::getSelectOptions();
+        $this->statuses = Status::getTestimonySelectOptions();
         $this->from = request()->query('from', 'testimonies');
     }
 

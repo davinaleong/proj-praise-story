@@ -28,7 +28,7 @@ class Edit extends Component
             'content' => $this->testimony->content,
             'status' => $this->testimony->status,
             'published_at' => $this->testimony->published_at->format('Y-m-d'),
-            'statuses' => Status::getSelectOptions(),
+            'statuses' => Status::getTestimonySelectOptions(),
         ]);
     }
 
