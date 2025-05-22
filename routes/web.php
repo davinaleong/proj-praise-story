@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StripeWebhookController;
 use App\Livewire\Testimonies\Index as PublicTestimonyIndex;
 use App\Livewire\Testimonies\Show as PublicTestimonyShow;
 // use App\Livewire\PrivateTestimonies\Index as PrivateTestimonyIndex;
@@ -39,6 +40,8 @@ Route::get('/contact', Contact::class)->name('contact');
 
 Route::get('/terms-and-conditions', TermsAndConditionsShow::class)->name('terms-and-conditions.show');
 Route::get('/privacy-policy', PrivacyPolicyShow::class)->name('privacy-policy.show');
+
+Route::post('/stripe/webhook', StripeWebhookController::class);
 
 // Temporary / Test Route
 Route::get('/temp', Temp::class)->name('temp');

@@ -25,7 +25,10 @@ class CheckoutForm extends Component
                 'quantity' => 1,
             ]],
             'mode' => 'payment',
-            'success_url' => route('private-testimonies.index') . '?success=true',
+            'metadata' => [
+                'user_id' => auth()->id(),
+            ],
+            'success_url' => route('premium.testimonies.index') . '?success=true',
             'cancel_url' => route('home') . '?cancel=true',
         ]);
 
