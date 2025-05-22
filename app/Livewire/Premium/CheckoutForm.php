@@ -34,6 +34,7 @@ class CheckoutForm extends Component
 
     public function render()
     {
-        return view('livewire.premium.checkout-form');
+        return view('livewire.premium.checkout-form')
+            ->layout('components.layouts.auth');
     }
 }
