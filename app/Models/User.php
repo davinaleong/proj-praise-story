@@ -63,4 +63,15 @@ class User extends Authenticatable
     {
         return $this->hasMany(Testimony::class);
     }
+
+    public function subscription()
+    {
+        return $this->hasOne(Subscription::class);
+    }
+
+    public function isPremium(): bool
+    {
+        return optional($this->subscription)->status === 'active';
+    }
+
 }

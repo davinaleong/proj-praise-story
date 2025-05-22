@@ -13,6 +13,7 @@ use App\Livewire\Me\Testimonies\Edit as MeTestimonyEdit;
 use App\Livewire\Me\Dashboard as Dashboard;
 use App\Livewire\Me\Information as Information;
 use App\Livewire\Me\FeedbackForm as FeedbackForm;
+use App\Livewire\Me\Settings\Subscription;
 use App\Livewire\Settings\Profile;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Appearance;
@@ -54,7 +55,9 @@ Route::middleware('auth')->group(function () {
     // /me routes
     Route::prefix('me')->name('me.')->group(function () {
 
-        Route::get('/', Dashboard::class)->name('dashboard');
+        // Informative
+        Route::redirect('/me', '/me/dashboard');
+        Route::get('/dashboard', Dashboard::class)->name('dashboard');
         Route::get('/information', Information::class)->name('information');
         Route::get('/feedback', FeedbackForm::class)->name('feedback');
 
@@ -63,6 +66,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/settings/profile', Profile::class)->name('settings.profile');
         Route::get('/settings/password', Password::class)->name('settings.password');
         Route::get('/settings/appearance', Appearance::class)->name('settings.appearance');
+        Route::get('/settings/subscription', Subscription::class)->name('settings.subscription');
 
         // Policy pages (user-facing)
         Route::get('/terms-and-conditions', MeTermsAndConditions::class)->name('terms-and-conditions');
