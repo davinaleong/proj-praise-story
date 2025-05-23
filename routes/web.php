@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\EnsureUserIsSubscribed;
-use App\Http\Controllers\StripeWebhookController;
 use App\Livewire\Testimonies\Index as PublicTestimonyIndex;
 use App\Livewire\Testimonies\Show as PublicTestimonyShow;
 use App\Livewire\Me\PublishedTestimonies\Index as MyPublishedTestimonyIndex;
@@ -21,9 +19,8 @@ use App\Livewire\TermsAndConditions\Show as TermsAndConditionsShow;
 use App\Livewire\TermsAndConditions\Me as MeTermsAndConditions;
 use App\Livewire\PrivacyPolicy\Show as PrivacyPolicyShow;
 use App\Livewire\PrivacyPolicy\Me as MePrivacyPolicy;
-use App\Livewire\Premium\CheckoutForm;
-use App\Livewire\Premium\Testimonies\Index as PremiumTestimonyIndex;
-use App\Livewire\Premium\Testimonies\Show as PremiumTestimonyShow;
+use App\Livewire\Private\Testimonies\Index as PrivateTestimonyIndex;
+use App\Livewire\Private\Testimonies\Show as PrivateTestimonyShow;
 use App\Livewire\Contact;
 use App\Livewire\Temp;
 
@@ -31,16 +28,10 @@ use App\Livewire\Temp;
 Route::get('/', PublicTestimonyIndex::class)->name('home');
 Route::get('/testimonies/{uuid}', PublicTestimonyShow::class)->name('testimonies.public');
 
-// Route::get('/premium', Checkout::class)->name('premium.checkout');
-
-Route::get('/premium/checkout', CheckoutForm::class)->name('premium.checkout');
-
 Route::get('/contact', Contact::class)->name('contact');
 
 Route::get('/terms-and-conditions', TermsAndConditionsShow::class)->name('terms-and-conditions.show');
 Route::get('/privacy-policy', PrivacyPolicyShow::class)->name('privacy-policy.show');
-
-Route::post('/stripe/webhook', StripeWebhookController::class);
 
 // Temporary / Test Route
 Route::get('/temp', Temp::class)->name('temp');
@@ -48,15 +39,12 @@ Route::get('/temp', Temp::class)->name('temp');
 // Authenticated Routes
 Route::middleware('auth')->group(function () {
 
-    // Premium content
-    Route::middleware(EnsureUserIsSubscribed::class)->prefix('/premium')->name('premium.')->group(function () {
+    // Private content
+    Route::prefix('/private')->name('private.')->group(function () {
         Route::prefix('/testimonies')->name('testimonies.')->group(function() {
-            Route::get('/', PremiumTestimonyIndex::class)->name('index');
-            Route::get('/{uuid}', PremiumTestimonyShow::class)->name('show');
+            Route::get('/', PrivateTestimonyIndex::class)->name('index');
+            Route::get('/{uuid}', PrivateTestimonyShow::class)->name('show');
         });
-        Route::get('/cancel', function () {
-            // Cancel subscription logic
-        })->name('premium.cancel');
     });
 
     // /me routes
