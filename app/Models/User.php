@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use App\Models\Testimony;
+use App\Helpers\Status;
 
 class User extends Authenticatable
 {
@@ -71,7 +72,7 @@ class User extends Authenticatable
 
     public function isPremium(): bool
     {
-        return optional($this->subscription)->status === 'active';
+        return optional($this->subscription)->status === Status::STATUS_SUBSCRIPTION_ACTIVE;
     }
 
 }
