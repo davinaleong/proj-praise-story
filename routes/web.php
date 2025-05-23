@@ -14,7 +14,6 @@ use App\Livewire\Me\FeedbackForm as FeedbackForm;
 use App\Livewire\Settings\Profile;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Appearance;
-use App\Livewire\Settings\Subscription;
 use App\Livewire\TermsAndConditions\Show as TermsAndConditionsShow;
 use App\Livewire\TermsAndConditions\Me as MeTermsAndConditions;
 use App\Livewire\PrivacyPolicy\Show as PrivacyPolicyShow;
@@ -61,7 +60,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/settings/profile', Profile::class)->name('settings.profile');
         Route::get('/settings/password', Password::class)->name('settings.password');
         Route::get('/settings/appearance', Appearance::class)->name('settings.appearance');
-        Route::get('/settings/subscription', Subscription::class)->name('settings.subscription');
 
         // Policy pages (user-facing)
         Route::get('/terms-and-conditions', MeTermsAndConditions::class)->name('terms-and-conditions');

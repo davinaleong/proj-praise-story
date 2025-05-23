@@ -4,6 +4,7 @@ namespace App\Livewire\Private\Testimonies;
 
 use Livewire\Component;
 use App\Models\Testimony;
+use App\Helpers\Status;
 
 class Show extends Component
 {
@@ -13,7 +14,7 @@ class Show extends Component
     {
         $this->testimony = Testimony::with('user')
             ->where('uuid', $uuid)
-            ->whereIn('status', ['public', 'private'])
+            ->whereIn('status', [Status::STATUS_TESTIMONY_PUBLIC, Status::STATUS_TESTIMONY_PUBLIC])
             ->firstOrFail();
     }
 

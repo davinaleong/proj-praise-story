@@ -9,20 +9,20 @@
 
         <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach($testimonies as $testimony)
-                @if ($loop->index === 3)
+                @if ($loop->index === 6)
                     <!-- Premium CTA Card -->
                     <div class="rounded-lg border border-black dark:border-white bg-black text-white dark:bg-white dark:text-black p-6 shadow-lg text-center col-span-1 sm:col-span-2 lg:col-span-3">
                         <h2 class="text-xl font-bold mb-2">
-                            Go Premium. Share Privately.
+                            Share Privately. Just Create an Account.
                         </h2>
                         <p class="text-sm mb-4">
                             Everyone can share public praise stories for free. <br class="hidden sm:inline" />
-                            Upgrade to premium to keep selected testimonies private — just for you or your inner circle.
+                            Create an account to keep selected testimonies private — just for you or your inner circle.
                         </p>
 
-                        <a href="{{ route('premium.checkout') }}"
+                        <a href="{{ route('me.register') }}"
                         class="inline-block bg-white text-black dark:bg-black dark:text-white font-semibold text-sm px-5 py-2 rounded-md transition hover:opacity-90">
-                            Learn More & Upgrade
+                            Create an Account
                         </a>
                     </div>
                 @endif

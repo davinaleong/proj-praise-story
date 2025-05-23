@@ -8,7 +8,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use App\Models\Testimony;
-use App\Helpers\Status;
 
 class User extends Authenticatable
 {
@@ -63,16 +62,6 @@ class User extends Authenticatable
     public function testimonies()
     {
         return $this->hasMany(Testimony::class);
-    }
-
-    public function subscription()
-    {
-        return $this->hasOne(Subscription::class);
-    }
-
-    public function isPremium(): bool
-    {
-        return optional($this->subscription)->status === Status::STATUS_SUBSCRIPTION_ACTIVE;
     }
 
 }

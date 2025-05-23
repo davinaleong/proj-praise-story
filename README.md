@@ -14,7 +14,7 @@ A lightweight web app for creating and managing Christian testimonies. Built wit
 
 -   ✍️ Create, edit, and manage testimonies with support for:
     -   **Public Testimonies**: Viewable by everyone.
-    -   **Private Testimonies** (Premium): Only accessible to logged-in users with a subscription.
+    -   **Private Testimonies** (Premium): Only accessible to logged-in users.
     -   **Published Testimonies**: A personal wall showing all of a user’s own testimonies (both public and private).
 -   🔒 Authentication system with registration and login
 -   📊 Personalized dashboard with counters and a listing of all authored testimonies
