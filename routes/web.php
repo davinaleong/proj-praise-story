@@ -54,6 +54,9 @@ Route::middleware('auth')->group(function () {
             Route::get('/', PremiumTestimonyIndex::class)->name('index');
             Route::get('/{uuid}', PremiumTestimonyShow::class)->name('show');
         });
+        Route::get('/cancel', function () {
+            // Cancel subscription logic
+        })->name('premium.cancel');
     });
 
     // /me routes

@@ -3,6 +3,7 @@
         <flux:navlist>
             <flux:navlist.item :href="route('me.settings.profile')" wire:navigate>{{ __('Profile') }}</flux:navlist.item>
             <flux:navlist.item :href="route('me.settings.password')" wire:navigate>{{ __('Password') }}</flux:navlist.item>
+            <flux:navlist.item :href="route('me.settings.subscription')" wire:navigate>{{ __('Subscription') }}</flux:navlist.item>
             <flux:navlist.item :href="route('me.settings.appearance')" wire:navigate>{{ __('Appearance') }}</flux:navlist.item>
         </flux:navlist>
     </div>
