@@ -14,12 +14,8 @@
             <flux:navlist variant="outline">
                 <flux:navlist.group :heading="__('Pages')" class="grid">
                     <flux:navlist.item icon="home" :href="route('home')" :current="request()->routeIs('home')" wire:navigate>{{ __('Home') }}</flux:navlist.item>
-                    @auth
-                        @if (auth()->user()->isPremium())
-                            <flux:navlist.item icon="gem" :href="route('premium.testimonies.index')" :current="request()->routeIs('premium.testimonies.index')" wire:navigate>{{ __('Premium Testimonies') }}</flux:navlist.item>
-                        @endif
-                    @endauth
                     <flux:navlist.item icon="dashboard" :href="route('me.dashboard')" :current="request()->routeIs('me.dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
+                    <flux:navlist.item icon="gem" :href="route('private.testimonies.index')" :current="request()->routeIs('private.testimonies.index')" wire:navigate>{{ __('Private Testimonies') }}</flux:navlist.item>
                     <flux:navlist.item icon="book-open-text" :href="route('me.published.index')" :current="request()->routeIs('me.published.index')" wire:navigate>{{ __('My Wall') }}</flux:navlist.item>
                     <flux:navlist.item icon="scroll-text" :href="route('me.testimonies.index')" :current="request()->routeIs('me.testimonies.index')" wire:navigate>{{ __('My Testimonies') }}</flux:navlist.item>
                 </flux:navlist.group>

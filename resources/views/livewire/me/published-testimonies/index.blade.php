@@ -13,15 +13,25 @@
     <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         @foreach($testimonies as $testimony)
             <!-- Testimony Card -->
-            <div class="rounded-lg border border-gray-200 dark:border-gray-700 p-6 shadow-sm bg-white dark:bg-zinc-800">
-                <h2 class="text-lg font-semibold text-gray-900 dark:text-white">
+            @php
+                $isPrivate = $testimony->status === \App\Helpers\Status::STATUS_TESTIMONY_PRIVATE;
+            @endphp
+
+            <div class="
+                rounded-lg border p-6 shadow-sm
+                {{ $isPrivate
+                    ? 'border-black dark:border-white bg-black text-white dark:bg-white dark:text-black'
+                    : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-zinc-800 text-gray-900 dark:text-white'
+                }}
+            ">
+                <h2 class="text-lg font-semibold">
                     {{ $testimony->title }}
                 </h2>
-                <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 italic">
-                    <em>Written by {{ optional($testimony->user)->name ?? 'Anonymous' }} on {{ $testimony->getHumanPublishedAt() }}</em>
+                <p class="text-sm mt-2 italic">
+                    <em>Written on {{ $testimony->getHumanPublishedAt() }}</em>
                 </p>
-                <a href="{{ route('me.testimonies.show', ['uuid' => $testimony->uuid, 'from' => 'public']) }}"
-                   class="inline-block mt-4 text-sm font-bold text-black dark:text-white hover:underline">
+                <a href="{{ route('private.testimonies.show', $testimony->uuid) }}"
+                    class="inline-block mt-4 text-sm font-bold underline">
                     Read more &hellip;
                 </a>
             </div>

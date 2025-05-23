@@ -10,14 +10,14 @@
         <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach($testimonies as $testimony)
                 @if ($loop->index === 6)
-                    <!-- Premium CTA Card -->
+                    <!-- Private CTA Card -->
                     <div class="rounded-lg border border-black dark:border-white bg-black text-white dark:bg-white dark:text-black p-6 shadow-lg text-center col-span-1 sm:col-span-2 lg:col-span-3">
                         <h2 class="text-xl font-bold mb-2">
-                            Share Privately. Just Create an Account.
+                            Want to Share or View Private Testimonies?
                         </h2>
                         <p class="text-sm mb-4">
-                            Everyone can share public praise stories for free. <br class="hidden sm:inline" />
-                            Create an account to keep selected testimonies private — just for you or your inner circle.
+                            Public praise stories are open to all. <br class="hidden sm:inline" />
+                            Create an account to share your own stories or access private ones shared within your trusted circle.
                         </p>
 
                         <a href="{{ route('me.register') }}"

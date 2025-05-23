@@ -2,7 +2,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <header class="flex justify-between items-center mb-6">
             <h1 class="text-3xl font-bold text-gray-900 dark:text-white">
-                Premium Praise Stories
+                Private Praise Stories
             </h1>
 
             <div class="flex items-center gap-3">
@@ -33,7 +33,7 @@
                     <p class="text-sm mt-2 italic">
                         <em>Written on {{ $testimony->getHumanPublishedAt() }}</em>
                     </p>
-                    <a href="{{ route('premium.testimonies.show', $testimony->uuid) }}"
+                    <a href="{{ route('private.testimonies.show', $testimony->uuid) }}"
                        class="inline-block mt-4 text-sm font-bold underline">
                         Read more &hellip;
                     </a>
