@@ -16,7 +16,7 @@
             <div>
                 <h3 class="text-xl font-medium">Private</h3>
                 <ul class="list-disc list-inside ml-4">
-                    <li>Only visible to logged-in users with a subscription</li>
+                    <li>Only visible to logged-in users</li>
                     <li>Still includes your public testimonies</li>
                     <li>Useful for sharing deeper stories with a trusted community</li>
                 </ul>
@@ -27,7 +27,7 @@
                 <ul class="list-disc list-inside ml-4">
                     <li>Only you can see this — it's your personal wall</li>
                     <li>Shows all your public, private, and published testimonies</li>
-                    <li>Login required, but no subscription needed</li>
+                    <li>Login required</li>
                 </ul>
             </div>
 
