@@ -1,11 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\EnsureUserIsSubscribed;
 use App\Http\Controllers\StripeWebhookController;
 use App\Livewire\Testimonies\Index as PublicTestimonyIndex;
 use App\Livewire\Testimonies\Show as PublicTestimonyShow;
-// use App\Livewire\PrivateTestimonies\Index as PrivateTestimonyIndex;
-// use App\Livewire\PrivateTestimonies\Show as PrivateTestimonyShow;
 use App\Livewire\Me\PublishedTestimonies\Index as MyPublishedTestimonyIndex;
 use App\Livewire\Me\Testimonies\Index as MeTestimonyIndex;
 use App\Livewire\Me\Testimonies\Create as MeTestimonyCreate;
@@ -49,10 +48,12 @@ Route::get('/temp', Temp::class)->name('temp');
 // Authenticated Routes
 Route::middleware('auth')->group(function () {
 
-    // Premium Testimonies (view-only, all authors)
-    Route::prefix('premium/testimonies')->name('premium.testimonies.')->group(function () {
-        Route::get('/', PremiumTestimonyIndex::class)->name('index');
-        Route::get('/{uuid}', PremiumTestimonyShow::class)->name('show');
+    // Premium content
+    Route::middleware(EnsureUserIsSubscribed::class)->prefix('/premium')->name('premium.')->group(function () {
+        Route::prefix('/testimonies')->name('testimonies.')->group(function() {
+            Route::get('/', PremiumTestimonyIndex::class)->name('index');
+            Route::get('/{uuid}', PremiumTestimonyShow::class)->name('show');
+        });
     });
 
     // /me routes
