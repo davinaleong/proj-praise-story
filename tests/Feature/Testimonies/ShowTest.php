@@ -32,16 +32,15 @@ class ShowTest extends TestCase
             ->assertSee('Healing Miracle');
     }
 
-    public function test_component_returns_404_for_unpublished_testimony(): void
+    public function test_unpublished_testimony_returns_404_response(): void
     {
         $testimony = Testimony::factory()->create([
-            'title' => 'Hidden One',
             'status' => Status::STATUS_TESTIMONY_DRAFT,
         ]);
 
-        $this->expectException(NotFoundHttpException::class);
+        $response = $this->get(route('testimonies.public', $testimony->uuid));
 
-        Livewire::test(Show::class, ['uuid' => $testimony->uuid]);
+        $response->assertNotFound(); // same as assertStatus(404)
     }
 
 }
