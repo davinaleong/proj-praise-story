@@ -1,9 +1,12 @@
 <?php
 
-namespace Tests\Unit\Helpers;
+namespace Tests\Feature\Helpers;
 
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
+use App\Models\User;
 use App\Helpers\Status;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @group unit
@@ -12,19 +15,7 @@ use App\Helpers\Status;
  */
 class StatusTest extends TestCase
 {
-    public function test_get_select_options_returns_valid_key_value_pairs(): void
-    {
-        $options = Status::getSelectOptions();
-
-        $expected = [
-            Status::STATUS_TESTIMONY_DRAFT => 'Draft',
-            Status::STATUS_TESTIMONY_PUBLISHED => 'Published',
-            Status::STATUS_TESTIMONY_PRIVATE => 'Private',
-            Status::STATUS_TESTIMONY_PUBLIC => 'Public',
-        ];
-
-        $this->assertSame($expected, $options);
-    }
+    use RefreshDatabase;
 
     public function test_get_human_name_returns_correct_label(): void
     {
@@ -32,5 +23,29 @@ class StatusTest extends TestCase
         $this->assertEquals('Published', Status::getHumanName(Status::STATUS_TESTIMONY_PUBLISHED));
         $this->assertEquals('Private', Status::getHumanName(Status::STATUS_TESTIMONY_PRIVATE));
         $this->assertEquals('Public', Status::getHumanName(Status::STATUS_TESTIMONY_PUBLIC));
+        $this->assertEquals('Active', Status::getHumanName(Status::STATUS_SUBSCRIPTION_ACTIVE));
+    }
+
+    public function test_get_testimony_select_options(): void
+    {
+        $options = Status::getTestimonySelectOptions();
+
+        $this->assertSame([
+            Status::STATUS_TESTIMONY_DRAFT => 'Draft',
+            Status::STATUS_TESTIMONY_PUBLISHED => 'Published',
+            Status::STATUS_TESTIMONY_PRIVATE => 'Private',
+            Status::STATUS_TESTIMONY_PUBLIC => 'Public',
+        ], $options);
+    }
+
+    public function test_get_subscription_select_options(): void
+    {
+        $options = Status::getSubscriptionSelectOptions();
+
+        $this->assertSame([
+            Status::STATUS_SUBSCRIPTION_INACTIVE => 'Inactive',
+            Status::STATUS_SUBSCRIPTION_ACTIVE => 'Active',
+            Status::STATUS_SUBSCRIPTION_CANCELED => 'Canceled',
+        ], $options);
     }
 }
