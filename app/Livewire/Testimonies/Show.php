@@ -4,17 +4,17 @@ namespace App\Livewire\Testimonies;
 
 use Livewire\Component;
 use App\Models\Testimony;
+use App\Helpers\Status;
 
 class Show extends Component
 {
     public Testimony $testimony;
 
-    public function mount(string $uuid): void
+    public function mount(string $uuid)
     {
-        $this->testimony = Testimony::with('user')
-            ->where('uuid', $uuid)
-            ->where('status', 'public')
-            ->firstOrFail();
+        $this->testimony = Testimony::where('uuid', $uuid)
+            ->where('status', Status::STATUS_TESTIMONY_PUBLIC)
+            ->firstOr(fn() => abort(404));
     }
 
     public function render()

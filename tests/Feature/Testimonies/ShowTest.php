@@ -7,6 +7,7 @@ use App\Models\Testimony;
 use App\Helpers\Status;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Tests\TestCase;
 
 /**
@@ -31,14 +32,14 @@ class ShowTest extends TestCase
             ->assertSee('Healing Miracle');
     }
 
-    public function test_component_fails_to_render_unpublished_testimony(): void
+    public function test_component_returns_404_for_unpublished_testimony(): void
     {
         $testimony = Testimony::factory()->create([
             'title' => 'Hidden One',
             'status' => Status::STATUS_TESTIMONY_DRAFT,
         ]);
 
-        $this->expectException(\Illuminate\Database\Eloquent\ModelNotFoundException::class);
+        $this->expectException(NotFoundHttpException::class);
 
         Livewire::test(Show::class, ['uuid' => $testimony->uuid]);
     }
