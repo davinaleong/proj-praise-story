@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ $title ?? 'Praise Story' }}</title>
+    <title>{{ $title ?? 'Praise Story' }}{{ config('app.debug', false) ? ' - (Beta)' : '' }}</title>
     @vite('resources/css/app.css')
     @livewireStyles
 </head>
