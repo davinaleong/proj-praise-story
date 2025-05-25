@@ -33,6 +33,8 @@ This document outlines the purpose of each PHPUnit test group in the application
 | `private`               |                                                                                                                                                                                |
 | `information`           |                                                                                                                                                                                |
 | `dashboard`             |                                                                                                                                                                                |
+| `testimony-crud`        |                                                                                                                                                                                |
+| `published-testimony`   |                                                                                                                                                                                |
 
 ---
 
