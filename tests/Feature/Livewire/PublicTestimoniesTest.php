@@ -9,7 +9,7 @@ use Tests\TestCase;
 
 /**
  * @group livewire
- * @group testimonies
+ * @group testimony
  * @group public
  */
 class PublicTestimoniesTest extends TestCase

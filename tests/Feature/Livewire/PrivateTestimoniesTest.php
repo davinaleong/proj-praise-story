@@ -11,7 +11,7 @@ use Tests\TestCase;
 
 /**
  * @group livewire
- * @group testimonies
+ * @group testimony
  * @group private
  */
 class PrivateTestimoniesTest extends TestCase
