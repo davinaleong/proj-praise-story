@@ -77,14 +77,6 @@ class FeedbackFormTest extends TestCase
     {
         $user = User::factory()->create();
 
-        // Livewire::actingAs($user)
-        //     ->test(\App\Livewire\Me\FeedbackForm::class)
-        //     ->set('rating', 4)
-        //     ->set('message', 'I love this app!')
-        //     ->call('submit');
-
-        // dd(session('success'));
-
         Livewire::actingAs($user)
             ->test(\App\Livewire\Me\FeedbackForm::class)
             ->set('rating', 4)
