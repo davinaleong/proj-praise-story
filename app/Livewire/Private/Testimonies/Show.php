@@ -14,7 +14,7 @@ class Show extends Component
     {
         $this->testimony = Testimony::with('user')
             ->where('uuid', $uuid)
-            ->whereIn('status', [Status::STATUS_TESTIMONY_PUBLIC, Status::STATUS_TESTIMONY_PUBLIC])
+            ->whereIn('status', [Status::STATUS_TESTIMONY_PUBLIC, Status::STATUS_TESTIMONY_PRIVATE])
             ->firstOrFail();
     }
 

@@ -11,7 +11,7 @@
 
         {{-- Back Link --}}
         <div class="mb-6">
-            <a href="{{ route('private-testimonies.index') }}"
+            <a href="{{ route('private.testimonies.index') }}"
                class="text-sm underline hover:opacity-80
                {{ $isPrivate ? 'text-white dark:text-black' : 'text-gray-600 dark:text-gray-400' }}">
                 &larr; Back to Premium Praise Stories
