@@ -30,6 +30,8 @@ This document outlines the purpose of each PHPUnit test group in the application
 | `feedback`              |                                                                                                                                                                                |
 | `testimony`             |                                                                                                                                                                                |
 | `public`                |                                                                                                                                                                                |
+| `private`               |                                                                                                                                                                                |
+| `information`           |                                                                                                                                                                                |
 
 ---
 
