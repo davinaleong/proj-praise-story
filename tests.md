@@ -24,6 +24,12 @@ This document outlines the purpose of each PHPUnit test group in the application
 | `status`                | Tests related to content status logic such as draft, private, and public states.                                                                                               |
 | `trait`                 | Unit tests for reusable model traits, ensuring correct behavior when applied to Eloquent models.                                                                               |
 | `unit`                  | Unit tests for isolated classes, methods, or logic without framework dependencies.                                                                                             |
+| `terms-and-conditions`  |                                                                                                                                                                                |
+| `livewire`              |                                                                                                                                                                                |
+| `contact`               |                                                                                                                                                                                |
+| `feedback`              |                                                                                                                                                                                |
+| `testimony`             |                                                                                                                                                                                |
+| `public`                |                                                                                                                                                                                |
 
 ---
 
