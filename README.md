@@ -1,5 +1,7 @@
 # Testimony Creator
 
+[![Laravel Forge Site Deployment Status](https://img.shields.io/endpoint?url=https%3A%2F%2Fforge.laravel.com%2Fsite-badges%2F369ec21c-2860-46e0-a628-5ded897a238a%3Flabel%3D1&style=plastic)](https://forge.laravel.com/servers/922188/sites/2728199)
+
 A lightweight web app for creating and managing Christian testimonies. Built with **Laravel**, **Livewire**, **MySQL**, and **Tailwind CSS**.
 
 ## 🔧 Tech Stack
