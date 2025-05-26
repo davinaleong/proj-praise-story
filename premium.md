@@ -9,3 +9,8 @@
     @endif
 @endauth
 ```
+
+## Features
+
+-   Private testimonies
+-   Bonus content from the creator
