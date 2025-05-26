@@ -2,6 +2,6 @@
     <flux:main>
         {{ $slot }}
 
-        @include('partials.footer-me')
+        @include('partials.footer-admin')
     </flux:main>
 </x-layouts.admin.sidebar>
