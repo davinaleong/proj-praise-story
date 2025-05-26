@@ -46,9 +46,6 @@ class PrivateTestimoniesTest extends TestCase
         $response->assertRedirect('/me/login');
     }
 
-    /**
-     * @group failed
-     */
     public function test_authenticated_user_can_view_private_testimony_details()
     {
         $user = User::factory()->create();

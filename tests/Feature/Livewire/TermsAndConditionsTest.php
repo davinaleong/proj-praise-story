@@ -44,9 +44,6 @@ class TermsAndConditionsTest extends TestCase
                  ->assertSee('Terms and Conditions');
     }
 
-    /**
-     * @group failed
-     */
     public function test_show_page_view_contains_footer_and_back_link()
     {
         $response = $this->get('/terms-and-conditions'); // adjust if route differs

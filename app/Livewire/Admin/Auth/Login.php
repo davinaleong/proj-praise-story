@@ -25,7 +25,7 @@ class Login extends Component
 
         if (Auth::guard('admin')->attempt($credentials, $this->remember)) {
             session()->regenerate();
-            return redirect()->route('admin.protected.test');
+            return redirect()->route('admin.dashboard');
         }
 
         $this->addError('email', 'Invalid login credentials.');
