@@ -5,7 +5,7 @@
     />
 
     <!-- Session Status -->
-    <x-auth-session-status class="text-center" :status="session('status')" />
+    <x-auth-session-status class="text-center" :status="session('success')" />
 
     <form wire:submit.prevent="submit" class="flex flex-col gap-6">
         <!-- Honeypot Field -->
@@ -33,7 +33,7 @@
 
         <!-- Submit Button -->
         <div class="flex items-center justify-end gap-4">
-            <flux:button variant="primary" type="submit" class="w-full" wire:navigate>
+            <flux:button variant="primary" type="submit" class="w-full">
                 {{ __('Send Message') }}
             </flux:button>
         </div>
