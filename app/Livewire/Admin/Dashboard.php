@@ -8,11 +8,7 @@ class Dashboard extends Component
 {
     public function render()
     {
-        return view('livewire.admin.dashboard', [
-            'testimonyCount' => 0,
-            'contactCount' => 0,
-            'feedbackCount' => 0,
-        ])
+        return view('livewire.admin.dashboard')
             ->layout('components.layouts.admin', ['title' => 'Dashboard (Admin)']);
     }
 }
