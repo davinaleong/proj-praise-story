@@ -4,6 +4,20 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Admin Route Prefix
+    |--------------------------------------------------------------------------
+    |
+    | This value determines the URL prefix for all admin panel routes. You can
+    | change it in your ".env" file to obscure the admin area (e.g. from "/admin"
+    | to "/dashboard-superzone"). This helps enhance security through obscurity
+    | while keeping route organization clean and flexible.
+    |
+    */
+
+    'prefix' => env('ADMIN_PREFIX', '/admin'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Admin Display Name
     |--------------------------------------------------------------------------
     |
