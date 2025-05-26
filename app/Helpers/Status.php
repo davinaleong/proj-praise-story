@@ -4,6 +4,19 @@ namespace App\Helpers;
 
 class Status
 {
+    // active, suspended, banned, pending
+    const STATUS_USER_ACTIVE = 'active';
+    const STATUS_USER_SUSPENDED = 'suspended';
+    const STATUS_USER_BANNED = 'banned';
+    const STATUS_USER_PENDING = 'pending';
+
+    const STATUSES_USER = [
+        self::STATUS_USER_ACTIVE,
+        self::STATUS_USER_SUSPENDED,
+        self::STATUS_USER_BANNED,
+        self::STATUS_USER_PENDING,
+    ];
+
     const STATUS_TESTIMONY_DRAFT = 'draft';
     const STATUS_TESTIMONY_PUBLISHED = 'published';
     const STATUS_TESTIMONY_PRIVATE = 'private';
@@ -29,6 +42,10 @@ class Status
     public static function getHumanName(string $status): string
     {
         return match($status) {
+            self::STATUS_USER_ACTIVE => 'Active',
+            self::STATUS_USER_SUSPENDED => 'Suspended',
+            self::STATUS_USER_BANNED => 'Banned',
+            self::STATUS_USER_PENDING => 'Pending',
             self::STATUS_TESTIMONY_DRAFT => 'Draft',
             self::STATUS_TESTIMONY_PUBLISHED => 'Published',
             self::STATUS_TESTIMONY_PRIVATE => 'Private',
@@ -36,7 +53,29 @@ class Status
             self::STATUS_SUBSCRIPTION_ACTIVE => 'Active',
             self::STATUS_SUBSCRIPTION_INACTIVE => 'Inactive',
             self::STATUS_SUBSCRIPTION_CANCELED => 'Canceled',
+            default => 'Unknown'
         };
+    }
+
+    public static function getUserHumanName(string $status): string
+    {
+        return match($status) {
+            self::STATUS_USER_ACTIVE => 'Active',
+            self::STATUS_USER_SUSPENDED => 'Suspended',
+            self::STATUS_USER_BANNED => 'Banned',
+            self::STATUS_USER_PENDING => 'Pending',
+            default => 'Unknown'
+        };
+    }
+
+    public static function getUserSelectOptions(): array
+    {
+        return [
+            self::STATUS_USER_ACTIVE => self::getHumanName(self::STATUS_USER_ACTIVE),
+            self::STATUS_USER_SUSPENDED => self::getHumanName(self::STATUS_USER_SUSPENDED),
+            self::STATUS_USER_BANNED => self::getHumanName(self::STATUS_USER_BANNED),
+            self::STATUS_USER_PENDING => self::getHumanName(self::STATUS_USER_PENDING),
+        ];
     }
 
     public static function getTestimonyHumanName(string $status): string
