@@ -1,18 +1,15 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\Unit\Models;
 
-use Carbon\Carbon;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Testimony;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Mockery;
-use App\Helpers\DateFormatter;
-use App\Helpers\Status;
 
 /**
  * @group unit
+ * @group model
  * @group testimony
  */
 class TestimonyTest extends TestCase

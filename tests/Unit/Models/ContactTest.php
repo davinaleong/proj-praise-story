@@ -8,6 +8,7 @@ use Tests\TestCase;
 
 /**
  * @group unit
+ * @group model
  * @group contact
  */
 class ContactTest extends TestCase

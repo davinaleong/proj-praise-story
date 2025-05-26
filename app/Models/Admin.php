@@ -16,4 +16,18 @@ class Admin extends Authenticatable
     protected $fillable = ['name', 'email', 'password'];
 
     protected $hidden = ['password', 'remember_token'];
+
+    /**
+     * Get the admin's initials (e.g., "Davina Leong" → "DL").
+     */
+    public function getInitialsAttribute(): string
+    {
+        $words = explode(' ', $this->name);
+        $initials = collect($words)
+            ->filter()
+            ->map(fn($word) => strtoupper(mb_substr($word, 0, 1)))
+            ->implode('');
+
+        return $initials;
+    }
 }

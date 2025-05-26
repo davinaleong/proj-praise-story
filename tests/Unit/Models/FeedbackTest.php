@@ -9,6 +9,7 @@ use Tests\TestCase;
 
 /**
  * @group unit
+ * @group model
  * @group feedback
  */
 class FeedbackTest extends TestCase
