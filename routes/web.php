@@ -21,7 +21,6 @@ use App\Livewire\PrivacyPolicy\Me as MePrivacyPolicy;
 use App\Livewire\Private\Testimonies\Index as PrivateTestimonyIndex;
 use App\Livewire\Private\Testimonies\Show as PrivateTestimonyShow;
 use App\Livewire\Contact;
-use App\Livewire\Temp;
 
 // Public Routes
 Route::get('/', PublicTestimonyIndex::class)->name('home');
@@ -31,9 +30,6 @@ Route::get('/contact', Contact::class)->name('contact');
 
 Route::get('/terms-and-conditions', TermsAndConditionsShow::class)->name('terms-and-conditions.show');
 Route::get('/privacy-policy', PrivacyPolicyShow::class)->name('privacy-policy.show');
-
-// Temporary / Test Route
-Route::get('/temp', Temp::class)->name('temp');
 
 // Authenticated Routes
 Route::middleware('auth')->group(function () {
@@ -79,3 +75,4 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+require __DIR__.'/debug.php';
