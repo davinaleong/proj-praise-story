@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Auth\LogoutController;
 use App\Livewire\Admin\Auth\Login;
 use App\Livewire\Admin\Dashboard;
+use App\Livewire\Admin\User\Index as UserIndex;
 
 $prefix = config('admin.prefix', '/admin');
 
@@ -20,6 +21,12 @@ Route::prefix($prefix)->name('admin.')->group(function () use ($prefix) {
         Route::get('/dashboard', Dashboard::class)->name('dashboard');
 
         Route::post('/logout', LogoutController::class)->name('logout');
+
+        Route::prefix('/user')->name('users.')->group(function () {
+            Route::get('/', UserIndex::class)->name('index');
+        });
+
+        Route::get('/users', UserIndex::class)->name('admin.users.index');
 
         Route::redirect('/settings', '/settings/profile');
         Route::get('/settings/profile', action: function () {

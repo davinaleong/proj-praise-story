@@ -21,10 +21,10 @@
                 <flux:navlist.item icon="dashboard" :href="route('admin.dashboard')" :current="request()->routeIs('admin.dashboard')" wire:navigate>
                     {{ __('Dashboard') }}
                 </flux:navlist.item>
-                <flux:navlist.item icon="chat" :href="route('admin.dashboard')" :current="request()->routeIs('admin.dashboard')" wire:navigate>
-                    {{ __('Dashboard') }}
+                <flux:navlist.item icon="chat" :href="route('admin.users.index')" :current="request()->routeIs('admin.user.index')" wire:navigate>
+                    {{ __('Users') }}
                 </flux:navlist.item>
-                <flux:navlist.item icon="flag" :href="route('admin.dashboard')" :current="request()->routeIs('admin.dashboard')" wire:navigate>
+                {{-- <flux:navlist.item icon="flag" :href="route('admin.dashboard')" :current="request()->routeIs('admin.dashboard')" wire:navigate>
                     {{ __('Dashboard') }}
                 </flux:navlist.item>
                 <flux:navlist.item icon="star" :href="route('admin.dashboard')" :current="request()->routeIs('admin.dashboard')" wire:navigate>
@@ -32,7 +32,7 @@
                 </flux:navlist.item>
                 <flux:navlist.item icon="user" :href="route('admin.dashboard')" :current="request()->routeIs('admin.dashboard')" wire:navigate>
                     {{ __('Dashboard') }}
-                </flux:navlist.item>
+                </flux:navlist.item> --}}
             </flux:navlist.group>
         </flux:navlist>
 

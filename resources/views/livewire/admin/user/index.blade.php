@@ -2,8 +2,6 @@
     {{-- Page Header --}}
     <header class="flex justify-between items-center mb-6">
         <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Users</h1>
-        {{-- Optional: Button slot or create button --}}
-        @includeIf('partials.create-button')
     </header>
 
     <div class="mb-6">
@@ -40,7 +38,7 @@
                         <td class="px-6 py-4">{{ $user->created_at->format('Y-m-d') }}</td>
                         <td class="px-6 py-4 text-right">
                             {{-- Optional: action buttons --}}
-                            <a href="{{ route('admin.users.show', $user->uuid) }}"
+                            <a href="#"
                                class="inline-block text-gray-500 hover:text-black dark:hover:text-white" title="View User">
                                 @include('flux.icon.eye')
                             </a>

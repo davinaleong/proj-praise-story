@@ -23,13 +23,17 @@ class Index extends Component
     public function render()
     {
         $users = User::query()
-            ->when($this->search, fn($q) =>
-                $q->where('name', 'like', "%{$this->search}%")
-                  ->orWhere('email', 'like', "%{$this->search}%")
-            )
+            ->when($this->search, function ($q) {
+                $q->where(function ($query) {
+                    $query->where('name', 'like', "%{$this->search}%")
+                        ->orWhere('email', 'like', "%{$this->search}%");
+                });
+            })
             ->latest()
             ->paginate(Setting::ITEMS_PER_PAGE_100);
 
-        return view('livewire.admin.user.index', ['users' => $users]);
+        return view('livewire.admin.user.index', ['users' => $users])
+            ->layout('components.layouts.admin', ['title' => 'Users']);
     }
+
 }
