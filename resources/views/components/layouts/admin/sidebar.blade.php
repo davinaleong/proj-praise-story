@@ -21,6 +21,18 @@
                 <flux:navlist.item icon="dashboard" :href="route('admin.dashboard')" :current="request()->routeIs('admin.dashboard')" wire:navigate>
                     {{ __('Dashboard') }}
                 </flux:navlist.item>
+                <flux:navlist.item icon="chat" :href="route('admin.dashboard')" :current="request()->routeIs('admin.dashboard')" wire:navigate>
+                    {{ __('Dashboard') }}
+                </flux:navlist.item>
+                <flux:navlist.item icon="flag" :href="route('admin.dashboard')" :current="request()->routeIs('admin.dashboard')" wire:navigate>
+                    {{ __('Dashboard') }}
+                </flux:navlist.item>
+                <flux:navlist.item icon="star" :href="route('admin.dashboard')" :current="request()->routeIs('admin.dashboard')" wire:navigate>
+                    {{ __('Dashboard') }}
+                </flux:navlist.item>
+                <flux:navlist.item icon="user" :href="route('admin.dashboard')" :current="request()->routeIs('admin.dashboard')" wire:navigate>
+                    {{ __('Dashboard') }}
+                </flux:navlist.item>
             </flux:navlist.group>
         </flux:navlist>
 
