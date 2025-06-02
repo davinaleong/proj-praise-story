@@ -3,6 +3,7 @@
 namespace Tests\Unit\Models;
 
 use App\Models\Admin;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Str;
 use Tests\TestCase;
@@ -15,6 +16,25 @@ use Tests\TestCase;
 class AdminTest extends TestCase
 {
     use RefreshDatabase;
+
+    public function test_admin_has_uuid_on_create()
+    {
+        $admin = Admin::factory()->create();
+
+        $this->assertNotNull($admin->uuid);
+        $this->assertIsString($admin->uuid->toString());
+        $this->assertEquals(36, strlen($admin->uuid->toString()));
+    }
+
+    public function test_admin_can_be_found_by_uuid()
+    {
+        $admin = Admin::factory()->create();
+
+        $found = Admin::where('uuid', $admin->uuid)->first();
+
+        $this->assertNotNull($found);
+        $this->assertEquals($admin->id, $found->id);
+    }
 
     public function test_it_can_fill_name_email_and_password(): void
     {

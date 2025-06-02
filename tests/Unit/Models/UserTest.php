@@ -16,6 +16,25 @@ class UserTest extends TestCase
 {
     use RefreshDatabase;
 
+    public function test_user_has_uuid_on_create()
+    {
+        $user = User::factory()->create();
+
+        $this->assertNotNull($user->uuid);
+        $this->assertIsString($user->uuid->toString());
+        $this->assertEquals(36, strlen($user->uuid->toString()));
+    }
+
+    public function test_user_can_be_found_by_uuid()
+    {
+        $user = User::factory()->create();
+
+        $found = User::where('uuid', $user->uuid)->first();
+
+        $this->assertNotNull($found);
+        $this->assertEquals($user->id, $found->id);
+    }
+
     public function test_has_expected_fillable_attributes(): void
     {
         $user = new User();

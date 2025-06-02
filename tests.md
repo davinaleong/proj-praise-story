@@ -9,6 +9,7 @@ This document outlines the purpose of each PHPUnit test group in the application
 | `admin-logout`          | Tests for the admin logout route/controller, ensuring session termination and redirection.                          |
 | `auth`                  | General authentication-related tests and helpers. Alias for core auth features.                                     |
 | `authentication`        | Specific tests for login and logout flows for regular users.                                                        |
+| `user`                  | Tests specific to the `User` model and its behavior, including relationships, UUID logic, and factories.            |
 | `email-verification`    | Tests for verifying user emails after registration or profile updates.                                              |
 | `password-confirmation` | Tests that ensure password confirmation is required for sensitive user actions.                                     |
 | `password-reset`        | Tests for initiating and completing password reset flows, including email links and token validation.               |
@@ -32,6 +33,7 @@ This document outlines the purpose of each PHPUnit test group in the application
 | `date-formatter`        | Unit tests for the `DateFormatter` helper, covering date formatting consistency and error handling.                 |
 | `helper`                | Tests for custom helper classes (e.g., formatters, utility functions).                                              |
 | `has-uuid`              | Tests for the `HasUuid` trait to ensure automatic UUID assignment and correct behavior.                             |
+| `uuid`                  | Tests validating models using UUIDs for routing, lookup, and querying.                                              |
 | `trait`                 | Unit tests for shared model traits and their effects when applied to Eloquent models.                               |
 | `livewire`              | Tests for Livewire component rendering, mount behavior, lifecycle hooks, and interaction logic.                     |
 | `model`                 | General model-related tests that don’t fit under a specific domain model tag (e.g., admin or testimony).            |
