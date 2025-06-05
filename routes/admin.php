@@ -6,9 +6,9 @@ use App\Livewire\Admin\Auth\Login;
 use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\User\Index as UserIndex;
 
-$prefix = config('admin.prefix', '/admin');
+$prefix = config('admins.prefix', '/admins');
 
-Route::prefix($prefix)->name('admin.')->group(function () use ($prefix) {
+Route::prefix($prefix)->name('admins.')->group(function () use ($prefix) {
     Route::redirect('/', $prefix . '/login')->name('home');
 
     Route::get('/login', Login::class)->name('login');

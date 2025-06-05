@@ -12,12 +12,12 @@
     <flux:header container class="border-b border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
         <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
 
-        <a href="{{ route('admin.dashboard') }}" class="ms-2 me-5 flex items-center space-x-2 rtl:space-x-reverse lg:ms-0" wire:navigate>
+        <a href="{{ route('admins.dashboard') }}" class="ms-2 me-5 flex items-center space-x-2 rtl:space-x-reverse lg:ms-0" wire:navigate>
             <x-app-logo />
         </a>
 
         <flux:navbar class="-mb-px max-lg:hidden">
-            <flux:navbar.item icon="layout-grid" :href="route('admin.dashboard')" :current="request()->routeIs('admin.dashboard')" wire:navigate>
+            <flux:navbar.item icon="layout-grid" :href="route('admin.dashboard')" :current="request()->routeIs('admins.dashboard')" wire:navigate>
                 {{ __('Dashboard') }}
             </flux:navbar.item>
         </flux:navbar>
@@ -59,14 +59,14 @@
                 <flux:menu.separator />
 
                 <flux:menu.radio.group>
-                    <flux:menu.item :href="route('admin.settings.profile')" icon="cog" wire:navigate>
+                    <flux:menu.item :href="route('admins.settings.profile')" icon="cog" wire:navigate>
                         {{ __('Settings') }}
                     </flux:menu.item>
                 </flux:menu.radio.group>
 
                 <flux:menu.separator />
 
-                <form method="POST" action="{{ route('admin.logout') }}" class="w-full">
+                <form method="POST" action="{{ route('admins.logout') }}" class="w-full">
                     @csrf
                     <flux:menu.item as="button" type="submit" icon="arrow-right-start-on-rectangle" class="w-full">
                         {{ __('Log Out') }}

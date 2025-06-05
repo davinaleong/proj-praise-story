@@ -1,7 +1,7 @@
-<x-layouts.admin.sidebar :title="$title ?? null">
+<x-layouts.admins.header.sidebar :title="$title ?? null">
     <flux:main>
         {{ $slot }}
 
         @include('partials.footer-admin')
     </flux:main>
-</x-layouts.admin.sidebar>
+</x-layouts.admins.header.sidebar>

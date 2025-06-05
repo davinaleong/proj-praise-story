@@ -32,8 +32,8 @@ class Index extends Component
             ->latest()
             ->paginate(Setting::ITEMS_PER_PAGE_100);
 
-        return view('livewire.admin.user.index', ['users' => $users])
-            ->layout('components.layouts.admin', ['title' => 'Users']);
+        return view('livewire.admins.users.index', ['users' => $users])
+            ->layout('components.layouts.admins', ['title' => 'Users']);
     }
 
 }
