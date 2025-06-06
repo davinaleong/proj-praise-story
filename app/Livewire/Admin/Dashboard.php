@@ -9,6 +9,6 @@ class Dashboard extends Component
     public function render()
     {
         return view('livewire.admins.dashboard')
-            ->layout('components.layouts.admins', ['title' => 'Dashboard']);
+            ->layout('components.layouts.admin', ['title' => 'Dashboard']);
     }
 }

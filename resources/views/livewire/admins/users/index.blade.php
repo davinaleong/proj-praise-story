@@ -38,7 +38,7 @@
                         <td class="px-6 py-4">{{ $user->created_at->format('Y-m-d') }}</td>
                         <td class="px-6 py-4 text-right">
                             {{-- Optional: action buttons --}}
-                            <a href="#"
+                            <a href="{{ route('admins.users.show', ['uuid' => $user->uuid]) }}"
                                class="inline-block text-gray-500 hover:text-black dark:hover:text-white" title="View User">
                                 @include('flux.icon.eye')
                             </a>

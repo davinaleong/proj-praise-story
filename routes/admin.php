@@ -5,8 +5,9 @@ use App\Http\Controllers\Admin\Auth\LogoutController;
 use App\Livewire\Admin\Auth\Login;
 use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\User\Index as UserIndex;
+use App\Livewire\Admin\User\Show as UserShow;
 
-$prefix = config('admins.prefix', '/admins');
+$prefix = config('admin.prefix', '/admins');
 
 Route::prefix($prefix)->name('admins.')->group(function () use ($prefix) {
     Route::redirect('/', $prefix . '/login')->name('home');
@@ -22,11 +23,10 @@ Route::prefix($prefix)->name('admins.')->group(function () use ($prefix) {
 
         Route::post('/logout', LogoutController::class)->name('logout');
 
-        Route::prefix('/user')->name('users.')->group(function () {
+        Route::prefix('/users')->name('users.')->group(function () {
             Route::get('/', UserIndex::class)->name('index');
+            Route::get('/{uuid}', UserShow::class)->name('show');
         });
-
-        Route::get('/users', UserIndex::class)->name('admin.users.index');
 
         Route::redirect('/settings', '/settings/profile');
         Route::get('/settings/profile', action: function () {
