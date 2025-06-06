@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Livewire\Admin\User;
+namespace App\Livewire\Admin\User\Testimony;
 
 use Livewire\Component;
-use Livewire\WithPagination;
 use App\Models\Testimony;
 use App\Models\User;
 use App\Helpers\Setting;
 
-class Testimonies extends Component
+class Index extends Component
 {
     public User $user;
 

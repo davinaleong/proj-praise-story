@@ -8,7 +8,9 @@ use App\Livewire\Admin\User\Index as UserIndex;
 use App\Livewire\Admin\User\Show as UserShow;
 use App\Livewire\Admin\User\SendResetLink as UserSendResetLink;
 use App\Livewire\Admin\User\SendEmailVerification as UserSendEmailVerification;
-use App\Livewire\Admin\User\Testimonies as UserTestimonies;
+// use App\Livewire\Admin\User\Testimonies as UserTestimonies;
+use App\Livewire\Admin\User\Testimony\Index as UserTestimonyIndex;
+use App\Livewire\Admin\User\Testimony\Show as UserTestimonyShow;
 
 $prefix = config('admin.prefix', '/admins');
 
@@ -27,11 +29,15 @@ Route::prefix($prefix)->name('admins.')->group(function () use ($prefix) {
         Route::post('/logout', LogoutController::class)->name('logout');
 
         Route::prefix('/users')->name('users.')->group(function () {
-            Route::get('/', UserIndex::class)->name('index');
+            Route::get('/', action: UserIndex::class)->name('index');
             Route::get('/{uuid}', UserShow::class)->name('show');
             Route::get('/{uuid}/send-reset-link', UserSendResetLink::class)->name('send-reset-link');
             Route::get('/{uuid}/send-verification-link', UserSendEmailVerification::class)->name('send-verification-link');
-            Route::get('/{uuid}/testimonies', UserTestimonies::class)->name('testimonies');
+
+            Route::prefix('{uuid}/testimonies')->name('testimonies.')->group(function () {
+                Route::get('/', UserTestimonyIndex::class)->name('index');
+                Route::get('/{testimony_uuid}', UserTestimonyShow::class)->name('show');
+            });
         });
 
         Route::redirect('/settings', '/settings/profile');
