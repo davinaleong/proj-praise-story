@@ -14,11 +14,9 @@
                     </flux:button>
                 </div>
 
-                @if ($statusMessage)
-                    <x-action-message class="me-3" on="reset-link-sent">
-                        {{ $statusMessage }}
-                    </x-action-message>
-                @endif
+                <x-action-message class="me-3" on="reset-link-sent">
+                    {{ $statusMessage }}
+                </x-action-message>
             </div>
         </div>
     </x-admins.users.layout>

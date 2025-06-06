@@ -25,10 +25,18 @@ class SendResetLink extends Component
 
         $status = Password::sendResetLink(['email' => $this->user->email]);
 
-        $this->statusMessage = $status === Password::RESET_LINK_SENT
-            ? __('A reset link has been sent to :email', ['email' => $this->user->email])
-            : __('Failed to send reset link.');
+        if ($status === Password::RESET_LINK_SENT) {
+            $this->statusMessage = __('A password reset link has been sent to :email.', [
+                'email' => $this->user->email,
+            ]);
+
+            $this->dispatch('reset-link-sent');
+        } else {
+            $this->addError('statusMessage', __('Failed to send reset link. Please try again later.'));
+        }
+
     }
+
 
     public function render()
     {
