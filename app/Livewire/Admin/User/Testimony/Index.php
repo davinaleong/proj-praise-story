@@ -28,7 +28,7 @@ class Index extends Component
 
         // return view('livewire.admins.users.testimonies');
 
-        return view('livewire.admins.users.testimonies', [
+        return view('livewire.admins.users.testimonies.index', [
                 'title' => 'Users - Testimonies',
                 'user' => $this->user,
                 'heading' => 'Users - Testimonies',
