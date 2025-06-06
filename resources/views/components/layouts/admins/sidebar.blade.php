@@ -18,19 +18,19 @@
 
         <flux:navlist variant="outline">
             <flux:navlist.group :heading="__('Pages')" class="grid">
-                <flux:navlist.item icon="dashboard" :href="route('admins.dashboard')" :current="request()->routeIs('admin.dashboard')" wire:navigate>
+                <flux:navlist.item icon="dashboard" :href="route('admins.dashboard')" :current="request()->routeIs('admins.dashboard')" wire:navigate>
                     {{ __('Dashboard') }}
                 </flux:navlist.item>
-                <flux:navlist.item icon="chat" :href="route('admins.users.index')" :current="request()->routeIs('admin.user.index')" wire:navigate>
+                <flux:navlist.item icon="chat" :href="route('admins.users.index')" :current="request()->routeIs('admins.user.index')" wire:navigate>
                     {{ __('Users') }}
                 </flux:navlist.item>
-                {{-- <flux:navlist.item icon="flag" :href="route('admin.dashboard')" :current="request()->routeIs('admin.dashboard')" wire:navigate>
+                {{-- <flux:navlist.item icon="flag" :href="route('admins.dashboard')" :current="request()->routeIs('admins.dashboard')" wire:navigate>
                     {{ __('Dashboard') }}
                 </flux:navlist.item>
-                <flux:navlist.item icon="star" :href="route('admin.dashboard')" :current="request()->routeIs('admin.dashboard')" wire:navigate>
+                <flux:navlist.item icon="star" :href="route('admins.dashboard')" :current="request()->routeIs('admins.dashboard')" wire:navigate>
                     {{ __('Dashboard') }}
                 </flux:navlist.item>
-                <flux:navlist.item icon="user" :href="route('admin.dashboard')" :current="request()->routeIs('admin.dashboard')" wire:navigate>
+                <flux:navlist.item icon="user" :href="route('admins.dashboard')" :current="request()->routeIs('admins.dashboard')" wire:navigate>
                     {{ __('Dashboard') }}
                 </flux:navlist.item> --}}
             </flux:navlist.group>

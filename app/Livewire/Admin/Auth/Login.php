@@ -25,7 +25,7 @@ class Login extends Component
 
         if (Auth::guard('admin')->attempt($credentials, $this->remember)) {
             session()->regenerate();
-            return redirect()->route('admin.dashboard');
+            return redirect()->route('admins.dashboard');
         }
 
         $this->addError('email', 'Invalid login credentials.');
@@ -33,7 +33,7 @@ class Login extends Component
 
     public function render()
     {
-        return view('livewire.admin.auth.login')
+        return view('livewire.admins.auth.login')
             ->layout('components.layouts.auth');
     }
 }

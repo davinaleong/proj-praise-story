@@ -17,7 +17,7 @@
         </a>
 
         <flux:navbar class="-mb-px max-lg:hidden">
-            <flux:navbar.item icon="layout-grid" :href="route('admin.dashboard')" :current="request()->routeIs('admins.dashboard')" wire:navigate>
+            <flux:navbar.item icon="layout-grid" :href="route('admins.dashboard')" :current="request()->routeIs('admins.dashboard')" wire:navigate>
                 {{ __('Dashboard') }}
             </flux:navbar.item>
         </flux:navbar>

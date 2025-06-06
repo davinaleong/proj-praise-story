@@ -30,7 +30,7 @@ class AdminLoginTest extends TestCase
             ->set('email', 'admin@example.com')
             ->set('password', 'secret123')
             ->call('login')
-            ->assertRedirect(route('admin.dashboard'));
+            ->assertRedirect(route('admins.dashboard'));
 
         $this->assertAuthenticatedAs($admin, 'admin');
     }
