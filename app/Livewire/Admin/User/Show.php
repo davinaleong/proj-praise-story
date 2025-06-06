@@ -20,11 +20,11 @@ class Show extends Component
     public function render()
     {
         return view('livewire.admins.users.show', [
-                'title' => 'User Profile',
+                'title' => 'Users - View Profile',
                 'user' => $this->user,
-                'heading' => 'User Profile',
+                'heading' => 'Users - View Profile',
                 'subheading' => 'This is a read-only view of user details.',
             ])
-            ->layout('components.layouts.admin', ['title' => 'Users']);
+            ->layout('components.layouts.admin', ['title' => 'Users - View Profile']);
     }
 }
