@@ -9,6 +9,7 @@ Here is what the admin panel is for:
 -   Moderate testimonies
     -   System will notify users if their testimony has been moderated by admin
     -   Admin cannot modify content. Just send warnings to user to modify otherwise it'll be removed by admin.
+    -   Use AI to moderate content
 -   **Bonus** content from admin
     -   Verse Group
     -   Verse

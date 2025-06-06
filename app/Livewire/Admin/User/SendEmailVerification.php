@@ -3,9 +3,6 @@
 namespace App\Livewire\Admin\User;
 
 use App\Models\User;
-use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Facades\Notification;
-use Illuminate\Auth\Notifications\VerifyEmail;
 use Livewire\Component;
 
 class SendEmailVerification extends Component
