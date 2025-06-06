@@ -121,4 +121,19 @@ return [
 
     'password_timeout' => env('AUTH_PASSWORD_TIMEOUT', 10800),
 
+     /*
+    |--------------------------------------------------------------------------
+    | Email Verification Link Expiration
+    |--------------------------------------------------------------------------
+    |
+    | This value controls how many minutes the email verification link remains
+    | valid. You can reference it in your AuthServiceProvider or override it
+    | elsewhere.
+    |
+    */
+
+    'verification' => [
+        'expire' => 60, // Link valid for 60 minutes
+    ],
+
 ];

@@ -7,6 +7,7 @@ use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\User\Index as UserIndex;
 use App\Livewire\Admin\User\Show as UserShow;
 use App\Livewire\Admin\User\SendResetLink as UserSendResetLink;
+use App\Livewire\Admin\User\SendEmailVerification as UserSendEmailVerification;
 
 $prefix = config('admin.prefix', '/admins');
 
@@ -28,6 +29,7 @@ Route::prefix($prefix)->name('admins.')->group(function () use ($prefix) {
             Route::get('/', UserIndex::class)->name('index');
             Route::get('/{uuid}', UserShow::class)->name('show');
             Route::get('/{uuid}/send-reset-link', UserSendResetLink::class)->name('send-reset-link');
+            Route::get('/{uuid}/send-verification-link', UserSendEmailVerification::class)->name('send-verification-link');
         });
 
         Route::redirect('/settings', '/settings/profile');
