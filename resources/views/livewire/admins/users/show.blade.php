@@ -27,14 +27,14 @@
             <div>
                 <label class="block font-semibold mb-1">Email Verified At</label>
                 <div class="rounded border border-gray-300 dark:border-gray-700 px-3 py-2 bg-gray-100 dark:bg-zinc-800">
-                    {{ $user->email_verified_at?->format('Y-m-d H:i') ?? 'Not Verified' }}
+                    {{ $user->email_verified_at?->format('d-m-Y H:i') ?? 'Not Verified' }}
                 </div>
             </div>
 
             <div>
                 <label class="block font-semibold mb-1">Registered On</label>
                 <div class="rounded border border-gray-300 dark:border-gray-700 px-3 py-2 bg-gray-100 dark:bg-zinc-800">
-                    {{ $user->created_at?->format('Y-m-d H:i') ?? '—' }}
+                    {{ $user->created_at?->format('d-m-Y H:i') ?? '—' }}
                 </div>
             </div>
         </div>
