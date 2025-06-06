@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Admin\User\Testimony;
+namespace App\Livewire\Admins\Users\Testimonies;
 
 use Livewire\Component;
 use App\Models\Testimony;

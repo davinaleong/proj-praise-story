@@ -1,16 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\Auth\LogoutController;
-use App\Livewire\Admin\Auth\Login;
-use App\Livewire\Admin\Dashboard;
-use App\Livewire\Admin\User\Index as UserIndex;
-use App\Livewire\Admin\User\Show as UserShow;
-use App\Livewire\Admin\User\SendResetLink as UserSendResetLink;
-use App\Livewire\Admin\User\SendEmailVerification as UserSendEmailVerification;
-// use App\Livewire\Admin\User\Testimonies as UserTestimonies;
-use App\Livewire\Admin\User\Testimony\Index as UserTestimonyIndex;
-use App\Livewire\Admin\User\Testimony\Show as UserTestimonyShow;
+use App\Http\Controllers\Admins\Auth\LogoutController;
+use App\Livewire\Admins\Auth\Login;
+use App\Livewire\Admins\Dashboard;
+use App\Livewire\Admins\Users\Index as UsersIndex;
+use App\Livewire\Admins\Users\Show as UsersShow;
+use App\Livewire\Admins\Users\SendResetLink as UsersSendResetLink;
+use App\Livewire\Admins\Users\SendEmailVerification as UsersSendEmailVerification;
+use App\Livewire\Admins\Users\Testimonies\Index as UsersTestimoniesIndex;
+use App\Livewire\Admins\Users\Testimonies\Show as UsersTestimoniesShow;
 
 $prefix = config('admin.prefix', '/admins');
 
@@ -29,14 +28,14 @@ Route::prefix($prefix)->name('admins.')->group(function () use ($prefix) {
         Route::post('/logout', LogoutController::class)->name('logout');
 
         Route::prefix('/users')->name('users.')->group(function () {
-            Route::get('/', action: UserIndex::class)->name('index');
-            Route::get('/{uuid}', UserShow::class)->name('show');
-            Route::get('/{uuid}/send-reset-link', UserSendResetLink::class)->name('send-reset-link');
-            Route::get('/{uuid}/send-verification-link', UserSendEmailVerification::class)->name('send-verification-link');
+            Route::get('/', action: UsersIndex::class)->name('index');
+            Route::get('/{uuid}', UsersShow::class)->name('show');
+            Route::get('/{uuid}/send-reset-link', UsersSendResetLink::class)->name('send-reset-link');
+            Route::get('/{uuid}/send-verification-link', UsersSendEmailVerification::class)->name('send-verification-link');
 
             Route::prefix('{uuid}/testimonies')->name('testimonies.')->group(function () {
-                Route::get('/', UserTestimonyIndex::class)->name('index');
-                Route::get('/{testimony_uuid}', UserTestimonyShow::class)->name('show');
+                Route::get('/', UsersTestimoniesIndex::class)->name('index');
+                Route::get('/{testimony_uuid}', UsersTestimoniesShow::class)->name('show');
             });
         });
 

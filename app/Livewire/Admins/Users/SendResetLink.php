@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Admin\User;
+namespace App\Livewire\Admins\Users;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\Password;
