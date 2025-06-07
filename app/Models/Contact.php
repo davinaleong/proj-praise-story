@@ -10,8 +10,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Contact extends Model
 {
     use HasFactory, HasUuid, SoftDeletes;
-    public $incrementing = false;
-    protected $keyType = 'string';
 
     protected $fillable = [
         'uuid',
