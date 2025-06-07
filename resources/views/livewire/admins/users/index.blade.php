@@ -4,15 +4,6 @@
         <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Users</h1>
     </header>
 
-    <div class="mb-6">
-        <input
-            type="text"
-            wire:model.debounce.500ms="search"
-            placeholder="Search users by name or email"
-            class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-zinc-800 text-gray-800 dark:text-gray-200"
-        />
-    </div>
-
     <hr class="mb-8 border-gray-300 dark:border-gray-700">
 
     {{-- User Table --}}
