@@ -58,6 +58,13 @@
                     </tr>
                 @endforelse
             </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5">
+                        {{ $messages->links() }}
+                    </td>
+                </tr>
+            </tfoot>
         </table>
     </div>
 </div>

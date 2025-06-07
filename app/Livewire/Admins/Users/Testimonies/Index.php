@@ -24,9 +24,8 @@ class Index extends Component
         $testimonies = Testimony::where('user_id', $this->user->id)
             ->orderByDesc('published_at')
             ->orderBy('title')
+            // ->get();
             ->paginate(Setting::ITEMS_PER_PAGE_100);
-
-        // return view('livewire.admins.users.testimonies');
 
         return view('livewire.admins.users.testimonies.index', [
                 'title' => 'Users - Testimonies',

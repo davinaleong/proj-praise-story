@@ -5,13 +5,13 @@ namespace App\Livewire\Admins\Messages;
 use App\Models\Message;
 use Livewire\Component;
 use Livewire\WithPagination;
+use App\Helpers\Setting;
 
 class Index extends Component
 {
     use WithPagination;
 
     public string $search = '';
-    public int $perPage = 10;
 
     public function updatingSearch(): void
     {
@@ -28,7 +28,7 @@ class Index extends Component
                       )
             )
             ->latest('sent_at')
-            ->paginate($this->perPage);
+            ->paginate(Setting::ITEMS_PER_PAGE_100);
 
         return view('livewire.admins.messages.index', [
             'messages' => $messages,

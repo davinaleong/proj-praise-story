@@ -51,11 +51,14 @@
                         </td>
                     </tr>
                 @endforelse
+                <tfoot>
+                    <tr>
+                        <td colspan="5">
+                            {{ $users->links() }}
+                        </td>
+                    </tr>
+                </tfoot>
             </tbody>
         </table>
-    </div>
-
-    <div class="mt-6">
-        {{ $users->links() }}
     </div>
 </div>
