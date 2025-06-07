@@ -2,7 +2,10 @@
     {{-- Page Header --}}
     <header class="flex justify-between items-center mb-6">
         <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Messages</h1>
-        @include('partials.create-button') {{-- Optional --}}
+        <a href="#"
+            class="inline-flex items-center gap-2 bg-black text-white dark:bg-white dark:text-black font-semibold text-sm px-5 py-2 rounded-md transition hover:opacity-90">
+            @include('flux.icon.plus') Create Message
+        </a>
     </header>
 
     <hr class="mb-8 border-gray-300 dark:border-gray-700">
