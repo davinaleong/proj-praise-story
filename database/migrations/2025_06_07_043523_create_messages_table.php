@@ -15,16 +15,19 @@ return new class extends Migration
             $table->id();
             $table->uuid('uuid')->unique();
 
-            $table->string('subject');
-            $table->text('body');
+            $table->string('subject')->nullable();
+            $table->text('body')->nullable();
 
-            $table->morphs('context');
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->string('context_type')->nullable();
+            $table->unsignedBigInteger('context_id')->nullable();
 
-            $table->foreignId('admin_id')->nullable()->constrained('users')->nullOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
+
+            $table->foreignId('admin_id')->nullable()->constrained()->nullOnDelete();
 
             $table->timestamp('sent_at')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
