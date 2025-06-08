@@ -11,6 +11,7 @@ use App\Livewire\Admins\Users\SendEmailVerification as UsersSendEmailVerificatio
 use App\Livewire\Admins\Users\Testimonies\Index as UsersTestimoniesIndex;
 use App\Livewire\Admins\Users\Testimonies\Show as UsersTestimoniesShow;
 use App\Livewire\Admins\Messages\Index as MessagesIndex;
+use App\Livewire\Admins\Messages\Create as MessagesCreate;
 
 $prefix = config('admin.prefix', '/admins');
 
@@ -42,6 +43,7 @@ Route::prefix($prefix)->name('admins.')->group(function () use ($prefix) {
 
         Route::prefix('/messages')->name('messages.')->group(function () {
             Route::get('/', action: MessagesIndex::class)->name('index');
+            Route::get('/create', action: MessagesCreate::class)->name('create');
         });
 
         Route::redirect('/settings', '/settings/profile');
