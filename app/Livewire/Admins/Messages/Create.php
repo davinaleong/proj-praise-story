@@ -4,10 +4,11 @@ namespace App\Livewire\Admins\Messages;
 
 use App\Models\Message;
 use App\Models\User;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\AdminsMessagesMail;
 
 class Create extends Component
 {
@@ -28,7 +29,7 @@ class Create extends Component
         ];
     }
 
-    public function createMessage(): RedirectResponse
+    public function createMessage()
     {
         $this->validate();
 
@@ -44,6 +45,10 @@ class Create extends Component
         ]);
 
         session()->flash('status', 'Message created.');
+
+        Mail::to($message->user->email)->send(new AdminsMessagesMail($message));
+
+        $message->update(['sent_at' => now()]);
 
         // return redirect()->route('admins.messages.show', $message->uuid);
         return redirect()->route('admins.messages.index');
