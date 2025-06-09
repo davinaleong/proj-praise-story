@@ -43,7 +43,7 @@
                         </td>
                         <td class="px-6 py-4 text-right">
                             {{-- Optional action link --}}
-                            <a href="#"
+                            <a href="{{ route('admins.messages.show', ['uuid' => $message->uuid]) }}"
                                class="inline-block text-gray-500 hover:text-black dark:hover:text-white"
                                title="View Message">
                                 @include('flux.icon.eye')
