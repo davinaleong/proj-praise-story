@@ -30,18 +30,12 @@
                 <flux:navlist.item icon="chat" :href="route('admins.contact-messages.index')" :current="request()->routeIs('admins.contact-messages.index')" wire:navigate>
                     {{ __('Contact Messages') }}
                 </flux:navlist.item>
+                <flux:navlist.item icon="star" :href="route('admins.feedback-messages.index')" :current="request()->routeIs('admins.feedback-messages.index')" wire:navigate>
+                    {{ __('Feedback Messages') }}
+                </flux:navlist.item>
                 <flux:navlist.item icon="mail" :href="route('admins.messages.index')" :current="request()->routeIs('admins.messages.index')" wire:navigate>
                     {{ __('Messages') }}
                 </flux:navlist.item>
-                {{-- <flux:navlist.item icon="flag" :href="route('admins.dashboard')" :current="request()->routeIs('admins.dashboard')" wire:navigate>
-                    {{ __('Dashboard') }}
-                </flux:navlist.item>
-                <flux:navlist.item icon="star" :href="route('admins.dashboard')" :current="request()->routeIs('admins.dashboard')" wire:navigate>
-                    {{ __('Dashboard') }}
-                </flux:navlist.item>
-                <flux:navlist.item icon="user" :href="route('admins.dashboard')" :current="request()->routeIs('admins.dashboard')" wire:navigate>
-                    {{ __('Dashboard') }}
-                </flux:navlist.item> --}}
             </flux:navlist.group>
         </flux:navlist>
 
