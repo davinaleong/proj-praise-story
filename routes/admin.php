@@ -13,6 +13,8 @@ use App\Livewire\Admins\Users\Testimonies\Show as UsersTestimoniesShow;
 use App\Livewire\Admins\Messages\Index as MessagesIndex;
 use App\Livewire\Admins\Messages\Create as MessagesCreate;
 use App\Livewire\Admins\Messages\Show as MessagesShow;
+use App\Livewire\Admins\Testimonies\Index as TestimoniesIndex;
+use App\Livewire\Admins\Testimonies\Show as TestimoniesShow;
 
 $prefix = config('admin.prefix', '/admins');
 
@@ -40,6 +42,11 @@ Route::prefix($prefix)->name('admins.')->group(function () use ($prefix) {
                 Route::get('/', UsersTestimoniesIndex::class)->name('index');
                 Route::get('/{testimony_uuid}', UsersTestimoniesShow::class)->name('show');
             });
+        });
+
+        Route::prefix('testimonies')->name('testimonies.')->group(function () {
+            Route::get('/', action: TestimoniesIndex::class)->name('index');
+            Route::get('/{uuid}', action: TestimoniesShow::class)->name('show');
         });
 
         Route::prefix('messages')->name('messages.')->group(function () {

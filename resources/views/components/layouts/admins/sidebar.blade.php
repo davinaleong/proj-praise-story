@@ -24,6 +24,9 @@
                 <flux:navlist.item icon="chat" :href="route('admins.users.index')" :current="request()->routeIs('admins.user.index')" wire:navigate>
                     {{ __('Users') }}
                 </flux:navlist.item>
+                <flux:navlist.item icon="book-open-text" :href="route('admins.testimonies.index')" :current="request()->routeIs('admins.messages.index')" wire:navigate>
+                    {{ __('Testimonies') }}
+                </flux:navlist.item>
                 <flux:navlist.item icon="mail" :href="route('admins.messages.index')" :current="request()->routeIs('admins.messages.index')" wire:navigate>
                     {{ __('Messages') }}
                 </flux:navlist.item>
