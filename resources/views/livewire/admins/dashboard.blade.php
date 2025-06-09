@@ -30,7 +30,7 @@
                 <h2 class="text-lg font-semibold">{{ __('Manage Contact Messages') }}</h2>
             </a>
 
-            <a href="#"
+            <a href="{{ route('admins.feedback-messages.index') }}"
             class="flex flex-col items-center justify-center rounded-xl border border-neutral-200 bg-white text-center shadow hover:bg-neutral-50
                     dark:border-neutral-700 dark:bg-neutral-800 dark:hover:bg-neutral-700">
                 <h2 class="text-lg font-semibold">{{ __('Manage Feedback Messages') }}</h2>

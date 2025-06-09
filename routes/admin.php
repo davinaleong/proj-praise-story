@@ -17,6 +17,8 @@ use App\Livewire\Admins\Testimonies\Index as TestimoniesIndex;
 use App\Livewire\Admins\Testimonies\Show as TestimoniesShow;
 use App\Livewire\Admins\ContactMessages\Index as ContactMessagesIndex;
 use App\Livewire\Admins\ContactMessages\Show as ContactMessagesShow;
+use App\Livewire\Admins\FeedbackMessages\Index as FeedbackMessagesIndex;
+use App\Livewire\Admins\FeedbackMessages\Show as FeedbackMessagesShow;
 
 $prefix = config('admin.prefix', '/admins');
 
@@ -54,6 +56,11 @@ Route::prefix($prefix)->name('admins.')->group(function () use ($prefix) {
         Route::prefix('contact-messages')->name('contact-messages.')->group(function () {
             Route::get('/', action: ContactMessagesIndex::class)->name('index');
             Route::get('/{uuid}', action: ContactMessagesShow::class)->name('show');
+        });
+
+        Route::prefix('feedback-messages')->name('feedback-messages.')->group(function () {
+            Route::get('/', action: FeedbackMessagesIndex::class)->name('index');
+            Route::get('/{uuid}', action: FeedbackMessagesShow::class)->name('show');
         });
 
         Route::prefix('messages')->name('messages.')->group(function () {
