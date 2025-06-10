@@ -9,9 +9,11 @@ use Livewire\Livewire;
 use Tests\TestCase;
 
 /**
+ * @group feature
+ * @group livewire
  * @group admin
- * @group user
- * @group user-index
+ * @group admin-user
+ * @group admin-user-index
  */
 class IndexTest extends TestCase
 {

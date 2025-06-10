@@ -9,6 +9,7 @@ use Tests\TestCase;
 
 /**
  * @group feature
+ * @group livewire
  * @group admin
  * @group admin-dashboard
  */
