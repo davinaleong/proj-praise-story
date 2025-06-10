@@ -28,10 +28,6 @@ Route::prefix($prefix)->name('admins.')->group(function () use ($prefix) {
     Route::get('/login', Login::class)->name('login');
 
     Route::middleware('auth:admin')->group(function () {
-        Route::get('/protected-test', function () {
-            return 'You are authenticated as an admin.';
-        })->name('protected.test');
-
         Route::get('/dashboard', Dashboard::class)->name('dashboard');
 
         Route::post('/logout', LogoutController::class)->name('logout');
