@@ -15,7 +15,7 @@
                     <th class="px-6 py-4">Author</th>
                     <th class="px-6 py-4">Status</th>
                     <th class="px-6 py-4">Published At</th>
-                    <th class="px-6 py-4 text-right">&nbsp;</th>
+                    <th class="px-6 py-4 text-right flex gap-2">&nbsp;</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-200 dark:divide-zinc-700">
@@ -33,7 +33,7 @@
                         <td class="px-6 py-4">
                             {{ optional($testimony->published_at)->format('Y-m-d') ?? '—' }}
                         </td>
-                        <td class="px-6 py-4 text-right">
+                        <td class="px-6 py-4 flex justify-items-end gap-2">
                             <a href="{{ route('admins.testimonies.show', $testimony->uuid) }}"
                                class="inline-block text-gray-500 hover:text-black dark:hover:text-white" title="View Testimony">
                                 @include('flux.icon.eye')

@@ -19,7 +19,7 @@
                     <th class="px-6 py-4">Recipient</th>
                     <th class="px-6 py-4">Context</th>
                     <th class="px-6 py-4">Sent At</th>
-                    <th class="px-6 py-4 text-right">&nbsp;</th>
+                    <th class="px-6 py-4 text-right flex gap-2">&nbsp;</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-200 dark:divide-zinc-700">
@@ -41,7 +41,7 @@
                         <td class="px-6 py-4">
                             {{ optional($message->sent_at)->format('Y-m-d H:i') ?? '—' }}
                         </td>
-                        <td class="px-6 py-4 text-right">
+                        <td class="px-6 py-4 flex justify-items-end gap-2">
                             {{-- Optional action link --}}
                             <a href="{{ route('admins.messages.show', ['uuid' => $message->uuid]) }}"
                                class="inline-block text-gray-500 hover:text-black dark:hover:text-white"

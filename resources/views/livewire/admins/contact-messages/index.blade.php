@@ -29,7 +29,7 @@
                         <td class="px-6 py-4">
                             {{ $contact->created_at->format('Y-m-d H:i') }}
                         </td>
-                        <td class="px-6 py-4 text-right">
+                        <td class="px-6 py-4 flex justify-items-end gap-2">
                             <a href="{{ route('admins.contact-messages.show', ['uuid' => $contact->uuid ]) }}"
                                class="inline-block text-gray-500 hover:text-black dark:hover:text-white" title="View Message">
                                 @include('flux.icon.eye')
