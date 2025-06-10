@@ -9,25 +9,31 @@ use App\Rules\NoProfanity;
 
 class Create extends Component
 {
-    public $title = '';
-    public $content = '';
-    public $status = 'draft';
-    public $published_at = '';
+    public $title;
+    public $content;
+    public $status;
+    public $published_at;
     public array $statuses = [];
     public string $from = 'testimonies'; // default
 
     public function mount()
     {
+        $this->status = Status::STATUS_TESTIMONY_DRAFT;
         $this->statuses = Status::getTestimonySelectOptions();
         $this->from = request()->query('from', 'testimonies');
     }
 
-    protected $rules = [
-        'title' => ['required', 'string', 'max:255', new NoProfanity],
-        'content' => ['required', 'string', new NoProfanity],
-        'status' => ['required', 'string', 'in:public,private,published,draft'],
-        'published_at' => ['required', 'date'],
-    ];
+    protected function rules(): array
+    {
+        $statuses = implode(',', Status::STATUSES_TESTIMONY);
+
+        return [
+            'title' => ['required', 'string', 'max:255', new NoProfanity],
+            'content' => ['required', 'string', new NoProfanity],
+            'status' => ['required', 'string', "in:$statuses"],
+            'published_at' => ['required', 'date'],
+        ];
+    }
 
     public function submit()
     {

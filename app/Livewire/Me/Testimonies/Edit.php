@@ -27,18 +27,23 @@ class Edit extends Component
         $this->fill([
             'title' => $this->testimony->title,
             'content' => $this->testimony->content,
-            'status' => $this->testimony->status,
+            'status' => $this->testimony ?  $this->testimony->status : Status::STATUS_TESTIMONY_DRAFT,
             'published_at' => $this->testimony->published_at->format('Y-m-d'),
             'statuses' => Status::getTestimonySelectOptions(),
         ]);
     }
 
-    protected $rules = [
-        'title' => ['required', 'string', 'max:255', new NoProfanity],
-        'content' => ['required', 'string', new NoProfanity],
-        'status' => ['required', 'string', 'in:public,private,published,draft'],
-        'published_at' => ['required', 'date'],
-    ];
+    protected function rules(): array
+    {
+        $statuses = implode(',', Status::STATUSES_TESTIMONY);
+
+        return [
+            'title' => ['required', 'string', 'max:255', new NoProfanity],
+            'content' => ['required', 'string', new NoProfanity],
+            'status' => ['required', 'string', "in:$statuses"],
+            'published_at' => ['required', 'date'],
+        ];
+    }
 
     public function update()
     {
