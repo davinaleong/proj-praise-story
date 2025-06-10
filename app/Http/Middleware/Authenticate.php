@@ -9,7 +9,9 @@ class Authenticate extends Middleware
     protected function redirectTo($request): ?string
     {
         if (! $request->expectsJson()) {
-            if ($request->is('admin') || $request->is('admin/*')) {
+            $prefix = ltrim(config('admin.prefix', 'admins'), '/');
+
+            if ($request->is($prefix) || $request->is("$prefix/*")) {
                 return route('admins.login');
             }
 

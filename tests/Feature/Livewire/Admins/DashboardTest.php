@@ -19,7 +19,7 @@ class DashboardTest extends TestCase
     public function test_dashboard_requires_authentication()
     {
         $response = $this->get(route('admins.dashboard'));
-        $response->assertRedirect(route('admins.login'));
+        $response->assertRedirect(route('me.login'));
     }
 
     public function test_authenticated_admin_can_see_dashboard_component()
