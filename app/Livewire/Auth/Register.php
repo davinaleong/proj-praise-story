@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
+use App\Rules\NoProfanity;
 
 #[Layout('components.layouts.auth')]
 class Register extends Component
@@ -27,9 +28,9 @@ class Register extends Component
     public function register(): void
     {
         $validated = $this->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
+            'name' => ['required', 'string', 'max:255', new NoProfanity],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class, new NoProfanity],
+            'password' => ['required', 'string', 'confirmed', Rules\Password::defaults(), new NoProfanity],
         ]);
 
         $validated['password'] = Hash::make($validated['password']);

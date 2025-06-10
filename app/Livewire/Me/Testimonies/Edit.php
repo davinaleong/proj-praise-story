@@ -5,6 +5,7 @@ namespace App\Livewire\Me\Testimonies;
 use Livewire\Component;
 use App\Models\Testimony;
 use App\Helpers\Status;
+use App\Rules\NoProfanity;
 use Illuminate\Support\Facades\Auth;
 
 class Edit extends Component
@@ -32,15 +33,12 @@ class Edit extends Component
         ]);
     }
 
-    protected function rules(): array
-    {
-        return [
-            'title' => 'required|string|max:255',
-            'content' => 'required|string',
-            'status' => 'required|string',
-            'published_at' => 'required|date',
-        ];
-    }
+    protected $rules = [
+        'title' => ['required', 'string', 'max:255', new NoProfanity],
+        'content' => ['required', 'string', new NoProfanity],
+        'status' => ['required', 'string', 'in:public,private,published,draft'],
+        'published_at' => ['required', 'date'],
+    ];
 
     public function update()
     {

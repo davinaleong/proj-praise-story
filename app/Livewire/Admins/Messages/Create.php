@@ -9,23 +9,24 @@ use Livewire\Component;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\AdminsMessagesMail;
+use App\Rules\NoProfanity;
 
 class Create extends Component
 {
     public string $subject = '';
     public string $body = '';
-    public ?string $userId = null;
-    public ?string $contextType = null;
-    public ?string $contextId = null;
+    public ?string $user_uuid = null;
+    public ?string $context_type = null;
+    public ?string $context_uuid = null;
 
     public function rules(): array
     {
         return [
-            'subject' => ['required', 'string', 'max:255'],
-            'body' => ['required', 'string'],
-            'userId' => ['required', Rule::exists('users', 'id')],
-            'contextType' => ['nullable', 'string'],
-            'contextId' => ['nullable', 'integer'],
+            'subject' => ['required', 'string', 'max:255', new NoProfanity],
+            'body' => ['required', 'string', new NoProfanity],
+            'user_uuid' => ['nullable', 'exists:users,uuid', new NoProfanity],
+            'context_type' => ['nullable', 'string', new NoProfanity],
+            'context_uuid' => ['nullable', 'integer', new NoProfanity],
         ];
     }
 
@@ -33,14 +34,17 @@ class Create extends Component
     {
         $this->validate();
 
+        $user = User::where('uuid', $this->user_uuid)
+            ->firstOrFail();
+
         $message = Message::create([
             'uuid' => (string) Str::uuid(),
             'subject' => $this->subject,
             'body' => $this->body,
-            'user_id' => $this->userId,
+            'user_id' => $user ?? $user->id,
             'admin_id' => auth()->guard('admin')->id(), // assumes separate guard
-            'context_type' => $this->contextType,
-            'context_id' => $this->contextId,
+            'context_type' => $this->context_type,
+            'context_uuid' => $this->context_uud,
             'sent_at' => null,
         ]);
 
@@ -50,8 +54,7 @@ class Create extends Component
 
         $message->update(['sent_at' => now()]);
 
-        // return redirect()->route('admins.messages.show', $message->uuid);
-        return redirect()->route('admins.messages.index');
+        return redirect()->route('admins.messages.show', $message->uuid);
     }
 
     public function render()

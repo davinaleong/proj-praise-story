@@ -5,6 +5,7 @@ namespace App\Livewire\Me\Testimonies;
 use Livewire\Component;
 use App\Models\Testimony;
 use App\Helpers\Status;
+use App\Rules\NoProfanity;
 
 class Create extends Component
 {
@@ -22,10 +23,10 @@ class Create extends Component
     }
 
     protected $rules = [
-        'title' => 'required|string|max:255',
-        'content' => 'required|string',
-        'status' => 'required|string|in:public,private,published,draft',
-        'published_at' => 'required|date',
+        'title' => ['required', 'string', 'max:255', new NoProfanity],
+        'content' => ['required', 'string', new NoProfanity],
+        'status' => ['required', 'string', 'in:public,private,published,draft'],
+        'published_at' => ['required', 'date'],
     ];
 
     public function submit()

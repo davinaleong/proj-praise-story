@@ -5,6 +5,7 @@ namespace App\Livewire\Auth;
 use Illuminate\Support\Facades\Password;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
+use App\Rules\NoProfanity;
 
 #[Layout('components.layouts.auth')]
 class ForgotPassword extends Component
@@ -17,7 +18,7 @@ class ForgotPassword extends Component
     public function sendPasswordResetLink(): void
     {
         $this->validate([
-            'email' => ['required', 'string', 'email'],
+            'email' => ['required', 'string', 'email',  new NoProfanity],
         ]);
 
         Password::sendResetLink($this->only('email'));

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
+use App\Rules\NoProfanity;
 
 #[Layout('components.layouts.auth')]
 class ConfirmPassword extends Component
@@ -18,7 +19,7 @@ class ConfirmPassword extends Component
     public function confirmPassword(): void
     {
         $this->validate([
-            'password' => ['required', 'string'],
+            'password' => ['required', 'string', new NoProfanity],
         ]);
 
         if (! Auth::guard('web')->validate([

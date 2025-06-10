@@ -27,29 +27,29 @@
 
         <div>
             <label class="block text-sm font-medium mb-1">Recipient</label>
-            <select wire:model.defer="userId"
+            <select wire:model.defer="user_uuid"
                     class="w-full rounded border border-gray-300 dark:border-zinc-600 p-2" required>
                 <option value="">-- Select User --</option>
                 @foreach($users as $user)
-                    <option value="{{ $user->id }}">{{ $user->name }} ({{ $user->email }})</option>
+                    <option value="{{ $user->uuid }}">{{ $user->name }} ({{ $user->email }})</option>
                 @endforeach
             </select>
-            @error('userId') <p class="text-sm text-red-600 mt-1">{{ $message }}</p> @enderror
+            @error('user_uuid') <p class="text-sm text-red-600 mt-1">{{ $message }}</p> @enderror
         </div>
 
         <div>
             <label class="block text-sm font-medium mb-1">Context Type (optional)</label>
-            <input wire:model.defer="contextType" type="text"
+            <input wire:model.defer="context_type" type="text"
                    class="w-full rounded border border-gray-300 dark:border-zinc-600 p-2"
                    placeholder="e.g., App\Models\Testimony" />
-            @error('contextType') <p class="text-sm text-red-600 mt-1">{{ $message }}</p> @enderror
+            @error('context_type') <p class="text-sm text-red-600 mt-1">{{ $message }}</p> @enderror
         </div>
 
         <div>
             <label class="block text-sm font-medium mb-1">Context ID (optional)</label>
-            <input wire:model.defer="contextId" type="number"
+            <input wire:model.defer="context_uuid" type="number"
                    class="w-full rounded border border-gray-300 dark:border-zinc-600 p-2" />
-            @error('contextId') <p class="text-sm text-red-600 mt-1">{{ $message }}</p> @enderror
+            @error('context_uuid') <p class="text-sm text-red-600 mt-1">{{ $message }}</p> @enderror
         </div>
 
         <div class="flex justify-end">
