@@ -27,10 +27,10 @@ class AdminLogoutTest extends TestCase
 
         $response = $this
             ->actingAs($admin, 'admin')
-            ->post(route('admin.logout'));
+            ->post(route('admins.logout'));
 
         // Assert: redirected to admin login
-        $response->assertRedirect(route('admin.login'));
+        $response->assertRedirect(route('admins.login'));
 
         // Assert: admin is no longer authenticated
         $this->assertGuest('admin');
@@ -39,7 +39,7 @@ class AdminLogoutTest extends TestCase
     public function test_guest_cannot_access_logout(): void
     {
         // Try logging out without being logged in
-        $response = $this->post(route('admin.logout'));
+        $response = $this->post(route('admins.logout'));
 
         // Should redirect to admin login
         $response->assertRedirect(route('me.login'));
