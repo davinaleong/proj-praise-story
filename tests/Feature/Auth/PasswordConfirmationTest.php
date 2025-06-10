@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use Tests\TestCase;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * @group feature
@@ -28,7 +29,9 @@ class PasswordConfirmationTest extends TestCase
 
     public function test_password_can_be_confirmed(): void
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create([
+            'password' => Hash::make('password')
+        ]);
 
         $this->actingAs($user);
 

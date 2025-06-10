@@ -55,7 +55,7 @@ class NoProfanity implements Rule
         'ash0les',
         'asholes',
         'ass monkey',
-        'ass',
+        // 'ass',
         'ass-fucker',
         'ass-hat',
         'ass-pirate',
