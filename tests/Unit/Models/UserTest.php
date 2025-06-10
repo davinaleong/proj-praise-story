@@ -38,7 +38,7 @@ class UserTest extends TestCase
     public function test_has_expected_fillable_attributes(): void
     {
         $user = new User();
-        $this->assertEquals(['name', 'email', 'password'], $user->getFillable());
+        $this->assertEquals(['uuid', 'name', 'email', 'password'], $user->getFillable());
     }
 
     public function test_hides_sensitive_attributes(): void
