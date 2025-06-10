@@ -32,7 +32,7 @@ Route::get('/terms-and-conditions', TermsAndConditionsShow::class)->name('terms-
 Route::get('/privacy-policy', PrivacyPolicyShow::class)->name('privacy-policy.show');
 
 // Authenticated Routes
-Route::middleware('auth')->group(function () {
+Route::middleware('auth:web')->group(function () {
 
     // Private content
     Route::prefix('/private')->name('private.')->group(function () {
