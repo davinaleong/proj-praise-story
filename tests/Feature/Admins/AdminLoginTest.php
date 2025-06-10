@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\Feature\Admin;
+namespace Tests\Feature\Admins;
 
-use App\Livewire\Admin\Auth\Login;
+use App\Livewire\Admins\Auth\Login;
 use App\Models\Admin;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;

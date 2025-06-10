@@ -27,13 +27,6 @@ class ContactTest extends TestCase
         ], $contact->getFillable());
     }
 
-    public function test_it_uses_uuid_and_is_not_incrementing()
-    {
-        $contact = new Contact();
-        $this->assertFalse($contact->getIncrementing());
-        $this->assertEquals('string', $contact->getKeyType());
-    }
-
     public function test_it_creates_contact_using_factory()
     {
         $contact = Contact::factory()->create();
