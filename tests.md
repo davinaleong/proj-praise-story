@@ -47,6 +47,8 @@ This document outlines the purpose of each PHPUnit test group in the application
 | `admin-user`                    |                                                                                                                       |
 | `admin-user-reset-password`     |                                                                                                                       |
 | `admin-user-email-verification` |                                                                                                                       |
+| `admin-user-testimony`          |                                                                                                                       |
+| `admin-user-testimony-index`    |                                                                                                                       |
 
 ---
 
