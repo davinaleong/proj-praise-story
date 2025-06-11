@@ -49,8 +49,9 @@ This document outlines the purpose of each PHPUnit test group in the application
 | `admin-user-email-verification` |                                                                                                                       |
 | `admin-user-testimony`          |                                                                                                                       |
 | `admin-user-testimony-index`    |                                                                                                                       |
-| `admin-user-testimony`          |                                                                                                                       |
-| `admin-user-testimony-index`    |                                                                                                                       |
+| `admin-testimony`               |                                                                                                                       |
+| `admin-testimony-index`         |                                                                                                                       |
+| `admin-testimony-show`          |                                                                                                                       |
 
 ---
 
