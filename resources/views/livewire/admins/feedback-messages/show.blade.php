@@ -23,7 +23,7 @@
 
         <div>
             <h2 class="font-semibold">Submitted At</h2>
-            <p class="mt-1">{{ $feedback->created_at->format('Y-m-d H:i') }}</p>
+            <p class="mt-1">{{ $feedback->created_at->format('d-m-Y H:i') }}</p>
         </div>
     </section>
 
