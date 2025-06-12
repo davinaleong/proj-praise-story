@@ -2,7 +2,7 @@
 
     <header class="flex justify-between items-center mb-6">
         <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Contact Message</h1>
-        <a href="{{ route('admins.contacts.index') }}"
+        <a href="{{ route('admins.contact-messages.index') }}"
            class="text-sm text-gray-600 dark:text-gray-300 hover:underline">
             Back to List
         </a>

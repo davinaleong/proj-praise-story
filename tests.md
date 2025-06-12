@@ -2,59 +2,103 @@
 
 This document outlines the purpose of each PHPUnit test group in the application to help contributors understand and maintain the test suite effectively.
 
-| Name                            | Description                                                                                                           |
-| ------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `admin`                         | Tests related to the admin domain, including routes, authorization, and access control.                               |
-| `admin-login`                   | Tests for the admin login Livewire component, including credential validation and redirection.                        |
-| `admin-logout`                  | Tests for the admin logout route/controller, ensuring session termination and redirection.                            |
-| `auth`                          | General authentication-related tests and helpers. Alias for core auth features.                                       |
-| `authentication`                | Specific tests for login and logout flows for regular users.                                                          |
-| `contact`                       | Tests for the contact form UI, validation, and submission behavior.                                                   |
-| `dashboard`                     | Tests for the user dashboard interface, widgets, and visibility of statistics after login.                            |
-| `date-formatter`                | Unit tests for the `DateFormatter` helper, covering date formatting consistency and error handling.                   |
-| `email-verification`            | Tests for verifying user emails after registration or profile updates.                                                |
-| `feedback`                      | Tests for the feedback form, including spam protection (honeypot), validation, and data persistence.                  |
-| `feature`                       | High-level feature tests that simulate full user interactions, often covering multiple components in a single flow.   |
-| `has-uuid`                      | Tests for the `HasUuid` trait to ensure automatic UUID assignment and correct behavior.                               |
-| `helper`                        | Tests for custom helper classes (e.g., formatters, utility functions).                                                |
-| `index`                         | Feature tests for listing public testimonies and enforcing access control on testimony detail views.                  |
-| `information`                   | Tests for the Information page component showing testimony types and markdown formatting help.                        |
-| `livewire`                      | Tests for Livewire component rendering, mount behavior, lifecycle hooks, and interaction logic.                       |
-| `me`                            | Tests for authenticated user views: listing testimonies, managing CRUD operations, and editing profile/settings.      |
-| `message`                       | Tests for the `Message` model, covering UUID handling, relationships (user, admin, context), and soft deletion logic. |
-| `model`                         | General model-related tests that don’t fit under a specific domain model tag (e.g., admin or testimony).              |
-| `password-confirmation`         | Tests that ensure password confirmation is required for sensitive user actions.                                       |
-| `password-reset`                | Tests for initiating and completing password reset flows, including email links and token validation.                 |
-| `password-update`               | Tests for updating the authenticated user’s password (e.g., from settings or profile page).                           |
-| `private`                       | Tests for viewing private testimonies, ensuring proper access control for authenticated users.                        |
-| `profile`                       | Tests for viewing and updating user profile details, such as name and email.                                          |
-| `public`                        | Tests for displaying public testimonies and restricting access to unpublished content.                                |
-| `published-testimony`           | Tests for displaying published testimonies (public/private) in a card layout for the user.                            |
-| `registration`                  | Tests for the user registration process, edge cases, and success/failure states.                                      |
-| `setting`                       | Tests for user preferences and global/system configuration options.                                                   |
-| `status`                        | Tests related to status management (draft, published, private), including transitions and enforcement.                |
-| `terms-and-conditions`          | Tests for rendering the Terms and Conditions page for both guests and authenticated users.                            |
-| `testimony`                     | Model-level tests for the `Testimony` model, including relationships, UUID logic, and factory defaults.               |
-| `testimony-crud`                | Feature tests for creating, viewing, editing, and deleting testimonies using Livewire components.                     |
-| `trait`                         | Unit tests for shared model traits and their effects when applied to Eloquent models.                                 |
-| `unit`                          | Pure unit tests targeting isolated logic, utility classes, or internal calculations without Laravel dependencies.     |
-| `user`                          | Tests specific to the `User` model and its behavior, including relationships, UUID logic, and factories.              |
-| `uuid`                          | Tests validating models using UUIDs for routing, lookup, and querying.                                                |
-| `livewire`                      |                                                                                                                       |
-| `admin-dashboard`               |                                                                                                                       |
-| `admin-user-index`              |                                                                                                                       |
-| `admin-user-show`               |                                                                                                                       |
-| `admin-user`                    |                                                                                                                       |
-| `admin-user-reset-password`     |                                                                                                                       |
-| `admin-user-email-verification` |                                                                                                                       |
-| `admin-user-testimony`          |                                                                                                                       |
-| `admin-user-testimony-index`    |                                                                                                                       |
-| `admin-testimony`               |                                                                                                                       |
-| `admin-testimony-index`         |                                                                                                                       |
-| `admin-message`                 |                                                                                                                       |
-| `admin-message-create`          |                                                                                                                       |
-| `admin-message-index`           |                                                                                                                       |
-| `admin-message-show`            |                                                                                                                       |
+### ✅ **Authentication and Authorization**
+
+| Name                    | Description                                                                                  |
+| ----------------------- | -------------------------------------------------------------------------------------------- |
+| `auth`                  | Core authentication-related tests and helpers, covering middleware and guards.               |
+| `authentication`        | Tests for regular user login/logout flows, including session handling and credential checks. |
+| `registration`          | Tests for the user registration process and validation flow.                                 |
+| `password-reset`        | Tests for initiating and completing the password reset process using email tokens.           |
+| `password-confirmation` | Tests ensuring sensitive actions require password confirmation from authenticated users.     |
+| `password-update`       | Tests for changing passwords from profile or settings pages.                                 |
+| `email-verification`    | Tests for verifying user email addresses post-registration or update.                        |
+
+---
+
+### ✅ **Admin Domain**
+
+| Name                            | Description                                                                             |
+| ------------------------------- | --------------------------------------------------------------------------------------- |
+| `admin`                         | Parent tag for all admin-related routes, policies, and domain-specific test coverage.   |
+| `admin-login`                   | Tests for admin login Livewire component, including validation and redirection.         |
+| `admin-logout`                  | Tests for logout route/controller to ensure session and guard cleanup.                  |
+| `admin-dashboard`               | Tests for the admin dashboard's summary widgets and data visibility.                    |
+| `admin-user`                    | High-level group for tests managing users in the admin panel.                           |
+| `admin-user-index`              | Tests for the user listing component in admin, including filters and pagination.        |
+| `admin-user-show`               | Tests for viewing a single user's profile in the admin panel.                           |
+| `admin-user-reset-password`     | Tests for sending password reset links to users from admin interface.                   |
+| `admin-user-email-verification` | Tests for sending email verification requests to users from the admin panel.            |
+| `admin-user-testimony`          | Tests related to managing a user’s testimonies in the admin panel.                      |
+| `admin-user-testimony-index`    | Tests for listing all testimonies submitted by a user in the admin panel.               |
+| `admin-testimony`               | General tests for testimony resources in admin.                                         |
+| `admin-testimony-index`         | Tests for the testimony index view in the admin, filtering by status or visibility.     |
+| `admin-message`                 | Tests for admin messages sent to users, including relationships and content validation. |
+| `admin-message-index`           | Tests for the message listing component for admins.                                     |
+| `admin-message-create`          | Tests for composing and submitting a message to a user from the admin interface.        |
+| `admin-contact-index`           | Tests for listing contact form messages in the admin dashboard.                         |
+| `admin-contact-show`            | Tests for viewing a specific contact message and responding if needed.                  |
+| `admin-feedback-index`          | Tests for listing user feedback submissions in the admin view.                          |
+| `admin-feedback-show`           | Tests for showing detailed feedback submitted by a user.                                |
+
+---
+
+### ✅ **User Domain**
+
+| Name        | Description                                                                                |
+| ----------- | ------------------------------------------------------------------------------------------ |
+| `me`        | Tests for the authenticated user panel (me/), including testimony management and settings. |
+| `profile`   | Tests for updating and displaying user profile details.                                    |
+| `setting`   | Tests for personal preferences and configurable settings like notifications or visibility. |
+| `dashboard` | Tests for the user dashboard widgets, summaries, and data visibility after login.          |
+
+---
+
+### ✅ **Testimony & Message System**
+
+| Name                  | Description                                                                                    |
+| --------------------- | ---------------------------------------------------------------------------------------------- |
+| `testimony`           | Unit tests for the `Testimony` model and its logic, including relationships and UUID behavior. |
+| `testimony-crud`      | Full flow tests for creating, editing, updating, and deleting testimonies.                     |
+| `published-testimony` | Tests for displaying testimonies in cards (both public and private) with correct formatting.   |
+| `public`              | Tests for viewing publicly available testimonies and ensuring private content is restricted.   |
+| `private`             | Tests for accessing private testimonies, enforcing proper user authentication and ownership.   |
+| `index`               | Tests for the general listing of testimonies and individual view enforcement.                  |
+| `message`             | Model-level tests for the `Message` class, covering context types and notification logic.      |
+
+---
+
+### ✅ **Static Pages & Forms**
+
+| Name                   | Description                                                                                 |
+| ---------------------- | ------------------------------------------------------------------------------------------- |
+| `contact`              | Tests for public-facing contact form: UI validation, form logic, and delivery checks.       |
+| `feedback`             | Tests for feedback submission, spam prevention via honeypot, and backend persistence.       |
+| `terms-and-conditions` | Tests for rendering and accessibility of terms and conditions page for both guest and user. |
+| `information`          | Tests for the info/help pages, including markdown rendering and dynamic instructions.       |
+
+---
+
+### ✅ **Utilities, Traits, and Helpers**
+
+| Name             | Description                                                                                    |
+| ---------------- | ---------------------------------------------------------------------------------------------- |
+| `date-formatter` | Unit tests for date formatting utilities, handling edge cases, locale, and display formatting. |
+| `helper`         | General tests for custom-built utility functions used throughout the application.              |
+| `has-uuid`       | Tests for the `HasUuid` trait, validating automatic UUID generation and lookup behavior.       |
+| `trait`          | Unit tests for shared traits applied to Eloquent models, verifying expected behavior.          |
+| `uuid`           | Tests for routing, querying, and resolving models by UUID across the application.              |
+
+---
+
+### ✅ **Testing Method Types**
+
+| Name       | Description                                                                                         |
+| ---------- | --------------------------------------------------------------------------------------------------- |
+| `feature`  | High-level tests simulating complete user or admin flows with HTTP, session, and view assertions.   |
+| `unit`     | Purely isolated logic tests without Laravel dependencies (e.g., services, helpers, transformers).   |
+| `model`    | Tests for Eloquent models not tied to a specific domain like user/testimony (e.g., pivot behavior). |
+| `livewire` | Tests focused on Livewire components: rendering, lifecycle, and UI interaction logic.               |
 
 ---
 
