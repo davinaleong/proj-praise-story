@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('context_type')->nullable();
             $table->unsignedBigInteger('context_id')->nullable();
 
-            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained('users')->cascadeOnDelete();
 
             $table->foreignId('admin_id')->nullable()->constrained()->nullOnDelete();
 

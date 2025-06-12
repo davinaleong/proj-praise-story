@@ -37,14 +37,28 @@ class Create extends Component
         $user = User::where('uuid', $this->user_uuid)
             ->firstOrFail();
 
+        $context_id = null;
+
+        if ($this->context_type && $this->context_uuid) {
+            $contextClass = $this->context_type;
+
+            if (class_exists($contextClass)) {
+                $contextModel = $contextClass::where('uuid', $this->context_uuid)->first();
+
+                if ($contextModel) {
+                    $context_id = $contextModel->id;
+                }
+            }
+        }
+
         $message = Message::create([
             'uuid' => (string) Str::uuid(),
             'subject' => $this->subject,
             'body' => $this->body,
-            'user_id' => $user ?? $user->id,
-            'admin_id' => auth()->guard('admin')->id(), // assumes separate guard
+            'user_id' => $user->id,
+            'admin_id' => auth()->guard('admin')->id(),
             'context_type' => $this->context_type,
-            'context_uuid' => $this->context_uud,
+            'context_id' => $context_id,
             'sent_at' => null,
         ]);
 
