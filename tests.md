@@ -53,6 +53,7 @@ This document outlines the purpose of each PHPUnit test group in the application
 | `admin-testimony-index`         |                                                                                                                       |
 | `admin-message`                 |                                                                                                                       |
 | `admin-message-create`          |                                                                                                                       |
+| `admin-message-index`           |                                                                                                                       |
 
 ---
 
