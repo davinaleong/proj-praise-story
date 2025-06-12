@@ -19,6 +19,9 @@ use App\Livewire\Admins\ContactMessages\Index as ContactMessagesIndex;
 use App\Livewire\Admins\ContactMessages\Show as ContactMessagesShow;
 use App\Livewire\Admins\FeedbackMessages\Index as FeedbackMessagesIndex;
 use App\Livewire\Admins\FeedbackMessages\Show as FeedbackMessagesShow;
+use App\Livewire\Admins\Settings\Profile as SettingsProfile;
+use App\Livewire\Admins\Settings\Password as SettingsPassword;
+use App\Livewire\Admins\Settings\Appearance as SettingsAppearance;
 
 $prefix = config('admin.prefix', '/admins');
 
@@ -66,15 +69,11 @@ Route::prefix($prefix)->name('admins.')->group(function () use ($prefix) {
         });
 
         Route::redirect('/settings', '/settings/profile');
-        Route::get('/settings/profile', action: function () {
-            return 'TODO: Profile';
-        })->name('settings.profile');
-        Route::get('/settings/password', function () {
-            return 'TODO: Password';
-        })->name('settings.password');
-        Route::get('/settings/appearance', function () {
-            return 'TODO: Appearance';
-        })->name('settings.appearance');
+        Route::prefix('settings')->name('settings.')->group(function () {
+            Route::get('/profile', action: SettingsProfile::class)->name('profile');
+            // Route::get('/password', action: SettingsPassword::class)->name('create');
+            // Route::get('/appeearance', action: SettingsAppearance::class)->name('show');
+        });
     });
 });
 
