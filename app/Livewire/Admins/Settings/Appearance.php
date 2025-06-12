@@ -8,7 +8,7 @@ class Appearance extends Component
 {
     public function render()
     {
-        return view('livewire.settings.appearance')
+        return view('livewire.admins.settings.appearance')
             ->layout('components.layouts.admin', ['title' => 'Appearance Settings']);
     }
 }

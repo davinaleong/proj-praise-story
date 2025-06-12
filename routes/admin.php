@@ -71,8 +71,8 @@ Route::prefix($prefix)->name('admins.')->group(function () use ($prefix) {
         Route::redirect('/settings', '/settings/profile');
         Route::prefix('settings')->name('settings.')->group(function () {
             Route::get('/profile', action: SettingsProfile::class)->name('profile');
-            // Route::get('/password', action: SettingsPassword::class)->name('create');
-            // Route::get('/appeearance', action: SettingsAppearance::class)->name('show');
+            Route::get('/password', action: SettingsPassword::class)->name('password');
+            Route::get('/appearance', action: SettingsAppearance::class)->name('appearance');
         });
     });
 });

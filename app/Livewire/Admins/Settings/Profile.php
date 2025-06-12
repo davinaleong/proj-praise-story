@@ -55,23 +55,6 @@ class Profile extends Component
         $this->dispatch('profile-updated', name: $admin->name);
     }
 
-    /**
-     * Send an email verification notification to the current admin.
-     */
-    public function resendVerificationNotification(): void
-    {
-        $admin = Auth::guard('admin')->user();
-
-        if ($admin->hasVerifiedEmail()) {
-            $this->redirectIntended(default: route('admins.dashboard', absolute: false));
-            return;
-        }
-
-        $admin->sendEmailVerificationNotification();
-
-        Session::flash('status', 'verification-link-sent');
-    }
-
     public function render()
     {
         return view('livewire.admins.settings.profile')
