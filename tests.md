@@ -40,6 +40,9 @@ This document outlines the purpose of each PHPUnit test group in the application
 | `admin-contact-show`            | Tests for viewing a specific contact message and responding if needed.                  |
 | `admin-feedback-index`          | Tests for listing user feedback submissions in the admin view.                          |
 | `admin-feedback-show`           | Tests for showing detailed feedback submitted by a user.                                |
+| `special-content`               | Parent tag for tests covering special content features available to admins.             |
+| `special-content-group`         | Tests for managing content groups for special content modules (e.g., sorting, titles).  |
+| `special-content-item`          | Tests for individual content items within a group, including type, media, and linking.  |
 
 ---
 
@@ -99,6 +102,16 @@ This document outlines the purpose of each PHPUnit test group in the application
 | `unit`     | Purely isolated logic tests without Laravel dependencies (e.g., services, helpers, transformers).   |
 | `model`    | Tests for Eloquent models not tied to a specific domain like user/testimony (e.g., pivot behavior). |
 | `livewire` | Tests focused on Livewire components: rendering, lifecycle, and UI interaction logic.               |
+
+---
+
+### **New**
+
+| Name                    | Description |
+| ----------------------- | ----------- |
+| `special-content`       |             |
+| `special-content-group` |             |
+| `special-content-item`  |             |
 
 ---
 
