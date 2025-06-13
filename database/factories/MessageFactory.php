@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Message>
+ */
 class MessageFactory extends Factory
 {
     protected $model = Message::class;
