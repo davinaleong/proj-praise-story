@@ -38,6 +38,7 @@ class Status
         self::STATUS_SUBSCRIPTION_ACTIVE,
         self::STATUS_SUBSCRIPTION_CANCELED,
     ];
+
     const STATUS_SPECIAL_CONTENT_GROUP_DRAFT = 'draft';
     const STATUS_SPECIAL_CONTENT_GROUP_PUBLISHED = 'published';
     const STATUS_SPECIAL_CONTENT_GROUP_PRIVATE = 'private';
