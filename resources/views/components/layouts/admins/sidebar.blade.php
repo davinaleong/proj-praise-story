@@ -36,6 +36,9 @@
                 <flux:navlist.item icon="mail" :href="route('admins.messages.index')" :current="request()->routeIs('admins.messages.index')" wire:navigate>
                     {{ __('Messages') }}
                 </flux:navlist.item>
+                <flux:navlist.item icon="gem" :href="route('admins.special-contents.index')" :current="request()->routeIs('admins.special-contents.index')" wire:navigate>
+                    {{ __('Special Contents') }}
+                </flux:navlist.item>
             </flux:navlist.group>
         </flux:navlist>
 
