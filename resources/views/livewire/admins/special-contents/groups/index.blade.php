@@ -2,9 +2,10 @@
     <header class="flex justify-between items-center mb-6">
         <h1 class="text-3xl font-bold text-gray-900 dark:text-white">All Special Content Groups</h1>
 
-        {{-- Optional: Add search if needed --}}
-        {{-- <input type="text" wire:model.debounce.300ms="search"
-               placeholder="Search..." class="rounded border px-4 py-2 text-sm" /> --}}
+        <a href="{{ route('admins.special-contents.groups.create') }}"
+            class="inline-flex items-center gap-2 bg-black text-white dark:bg-white dark:text-black font-semibold text-sm px-5 py-2 rounded-md transition hover:opacity-90">
+            @include('flux.icon.plus') Create Special Content
+        </a>
     </header>
 
     <hr class="mb-8 border-gray-300 dark:border-gray-700">

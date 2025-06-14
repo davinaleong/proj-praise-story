@@ -24,9 +24,9 @@ use App\Livewire\Admins\Settings\Password as SettingsPassword;
 use App\Livewire\Admins\Settings\Appearance as SettingsAppearance;
 use App\Livewire\Admins\SpecialContents\Index as ScIndex;
 use App\Livewire\Admins\SpecialContents\Groups\Index as ScGroupsIndex;
-// use App\Livewire\Admins\SpecialContentGroups\Create as SpecialContentGroupsCreate;
-// use App\Livewire\Admins\SpecialContentGroups\Show as SpecialContentGroupsShow;
-// use App\Livewire\Admins\SpecialContentGroups\Edit as SpecialContentGroupsEdit;
+use App\Livewire\Admins\SpecialContents\Groups\Create as ScGroupsCreate;
+// use App\Livewire\Admins\SpecialContentGroups\Show as ScGroupsShow;
+// use App\Livewire\Admins\SpecialContentGroups\Edit as ScGroupsEdit;
 
 $prefix = config('admin.prefix', '/admins');
 
@@ -77,7 +77,7 @@ Route::prefix($prefix)->name('admins.')->group(function () use ($prefix) {
 
         Route::prefix('/special-contents/groups')->name('special-contents.groups.')->group(function () {
             Route::get('/', action: ScGroupsIndex::class)->name('index');
-            // Route::get('/create', action: SpecialContentGroupsCreate::class)->name('create');
+            Route::get('/create', action: ScGroupsCreate::class)->name('create');
             // Route::get('/{uuid}', action: SpecialContentGroupsShow::class)->name('show');
             // Route::get('/{uuid}/edit', action: SpecialContentGroupsEdit::class)->name('edit');
         });
