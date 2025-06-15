@@ -25,8 +25,8 @@ use App\Livewire\Admins\Settings\Appearance as SettingsAppearance;
 use App\Livewire\Admins\SpecialContents\Index as ScIndex;
 use App\Livewire\Admins\SpecialContents\Groups\Index as ScGroupsIndex;
 use App\Livewire\Admins\SpecialContents\Groups\Create as ScGroupsCreate;
-// use App\Livewire\Admins\SpecialContentGroups\Show as ScGroupsShow;
-// use App\Livewire\Admins\SpecialContentGroups\Edit as ScGroupsEdit;
+use App\Livewire\Admins\SpecialContents\Groups\Show as ScGroupsShow;
+use App\Livewire\Admins\SpecialContents\Groups\Edit as ScGroupsEdit;
 
 $prefix = config('admin.prefix', '/admins');
 
@@ -41,7 +41,7 @@ Route::prefix($prefix)->name('admins.')->group(function () use ($prefix) {
         Route::post('/logout', LogoutController::class)->name('logout');
 
         Route::prefix('/users')->name('users.')->group(function () {
-            Route::get('/', action: UsersIndex::class)->name('index');
+            Route::get('/', UsersIndex::class)->name('index');
             Route::get('/{uuid}', UsersShow::class)->name('show');
             Route::get('/{uuid}/send-reset-link', UsersSendResetLink::class)->name('send-reset-link');
             Route::get('/{uuid}/send-verification-link', UsersSendEmailVerification::class)->name('send-verification-link');
@@ -53,40 +53,40 @@ Route::prefix($prefix)->name('admins.')->group(function () use ($prefix) {
         });
 
         Route::prefix('testimonies')->name('testimonies.')->group(function () {
-            Route::get('/', action: TestimoniesIndex::class)->name('index');
-            Route::get('/{uuid}', action: TestimoniesShow::class)->name('show');
+            Route::get('/', TestimoniesIndex::class)->name('index');
+            Route::get('/{uuid}', TestimoniesShow::class)->name('show');
         });
 
         Route::prefix('contact-messages')->name('contact-messages.')->group(function () {
-            Route::get('/', action: ContactMessagesIndex::class)->name('index');
-            Route::get('/{uuid}', action: ContactMessagesShow::class)->name('show');
+            Route::get('/', ContactMessagesIndex::class)->name('index');
+            Route::get('/{uuid}', ContactMessagesShow::class)->name('show');
         });
 
         Route::prefix('feedback-messages')->name('feedback-messages.')->group(function () {
-            Route::get('/', action: FeedbackMessagesIndex::class)->name('index');
-            Route::get('/{uuid}', action: FeedbackMessagesShow::class)->name('show');
+            Route::get('/', FeedbackMessagesIndex::class)->name('index');
+            Route::get('/{uuid}', FeedbackMessagesShow::class)->name('show');
         });
 
         Route::prefix('messages')->name('messages.')->group(function () {
-            Route::get('/', action: MessagesIndex::class)->name('index');
-            Route::get('/create', action: MessagesCreate::class)->name('create');
-            Route::get('/{uuid}', action: MessagesShow::class)->name('show');
+            Route::get('/', MessagesIndex::class)->name('index');
+            Route::get('/create', MessagesCreate::class)->name('create');
+            Route::get('/{uuid}', MessagesShow::class)->name('show');
         });
 
-        Route::get('/special-contents', action: ScIndex::class)->name('special-contents.index');
+        Route::get('/special-contents', ScIndex::class)->name('special-contents.index');
 
-        Route::prefix('/special-contents/groups')->name('special-contents.groups.')->group(function () {
-            Route::get('/', action: ScGroupsIndex::class)->name('index');
-            Route::get('/create', action: ScGroupsCreate::class)->name('create');
-            // Route::get('/{uuid}', action: SpecialContentGroupsShow::class)->name('show');
-            // Route::get('/{uuid}/edit', action: SpecialContentGroupsEdit::class)->name('edit');
+        Route::prefix('special-contents/groups')->name('special-contents.groups.')->group(function () {
+            Route::get('/', ScGroupsIndex::class)->name('index');
+            Route::get('/create', ScGroupsCreate::class)->name('create');
+            Route::get('/{uuid}', ScGroupsShow::class)->name('show');
+            Route::get('/{uuid}/edit', ScGroupsEdit::class)->name('edit');
         });
 
         Route::redirect('/settings', '/settings/profile');
         Route::prefix('settings')->name('settings.')->group(function () {
-            Route::get('/profile', action: SettingsProfile::class)->name('profile');
-            Route::get('/password', action: SettingsPassword::class)->name('password');
-            Route::get('/appearance', action: SettingsAppearance::class)->name('appearance');
+            Route::get('/profile', SettingsProfile::class)->name('profile');
+            Route::get('/password', SettingsPassword::class)->name('password');
+            Route::get('/appearance', SettingsAppearance::class)->name('appearance');
         });
     });
 });

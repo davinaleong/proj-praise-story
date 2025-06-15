@@ -41,7 +41,7 @@
                             {{ $group->created_at->format('d-m-Y') }}
                         </td>
                         <td class="px-6 py-4 flex justify-items-end gap-2">
-                            <a href="#"
+                            <a href="{{ route('admins.special-contents.groups.show', ['uuid' => $group->uuid]) }}"
                                class="inline-block text-gray-500 hover:text-black dark:hover:text-white" title="View Group">
                                 @include('flux.icon.eye')
                             </a>
