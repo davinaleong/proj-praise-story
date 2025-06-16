@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->text('description')->nullable();
             $table->enum('status', Status::STATUSES_SPECIAL_CONTENT_GROUP)->default(Status::STATUS_SPECIAL_CONTENT_GROUP_DRAFT);
             $table->unsignedInteger('sort_order')->default(0);
+            $table->timestamp('published_at')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

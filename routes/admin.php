@@ -27,6 +27,10 @@ use App\Livewire\Admins\SpecialContents\Groups\Index as ScGroupsIndex;
 use App\Livewire\Admins\SpecialContents\Groups\Create as ScGroupsCreate;
 use App\Livewire\Admins\SpecialContents\Groups\Show as ScGroupsShow;
 use App\Livewire\Admins\SpecialContents\Groups\Edit as ScGroupsEdit;
+use App\Livewire\Admins\SpecialContents\Items\Index as ScItemsIndex;
+use App\Livewire\Admins\SpecialContents\Items\Create as ScItemsCreate;
+use App\Livewire\Admins\SpecialContents\Items\Show as ScItemsShow;
+use App\Livewire\Admins\SpecialContents\Items\Edit as ScItemsEdit;
 
 $prefix = config('admin.prefix', '/admins');
 
@@ -80,6 +84,13 @@ Route::prefix($prefix)->name('admins.')->group(function () use ($prefix) {
             Route::get('/create', ScGroupsCreate::class)->name('create');
             Route::get('/{uuid}', ScGroupsShow::class)->name('show');
             Route::get('/{uuid}/edit', ScGroupsEdit::class)->name('edit');
+        });
+
+        Route::prefix('special-contents/items')->name('special-contents.items.')->group(function () {
+            Route::get('/', ScItemsIndex::class)->name('index');
+            Route::get('/create', ScItemsCreate::class)->name('create');
+            // Route::get('/{uuid}', ScItemsShow::class)->name('show');
+            // Route::get('/{uuid}/edit', ScItemsEdit::class)->name('edit');
         });
 
         Route::redirect('/settings', '/settings/profile');

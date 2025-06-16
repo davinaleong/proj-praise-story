@@ -61,7 +61,7 @@ class SpecialContentItem extends Model
     /**
      * Relationship: belongs to a content group.
      */
-    public function group(): BelongsTo
+    public function specialContentGroup(): BelongsTo
     {
         return $this->belongsTo(SpecialContentGroup::class, 'group_id');
     }

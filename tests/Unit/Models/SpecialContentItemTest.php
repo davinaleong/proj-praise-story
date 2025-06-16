@@ -34,6 +34,6 @@ class SpecialContentItemTest extends TestCase
         $group = SpecialContentGroup::factory()->create();
         $item = SpecialContentItem::factory()->create(['group_id' => $group->id]);
 
-        $this->assertTrue($item->group->is($group));
+        $this->assertTrue($item->specialContentGroup->is($group));
     }
 }
