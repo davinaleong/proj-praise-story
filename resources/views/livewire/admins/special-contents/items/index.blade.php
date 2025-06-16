@@ -33,12 +33,10 @@
                         <td class="p-2">{{ ucfirst($item->type) }}</td>
                         <td class="p-2">{{ ucfirst($item->status) }}</td>
                         <td class="p-2 text-center">{{ $item->sort_order }}</td>
-                        <td class="p-2 text-gray-500">{{ $item->created_at->format('Y-m-d') }}</td>
+                        <td class="p-2 text-gray-500">{{ $item->created_at->format('d-m-Y') }}</td>
                         <td class="p-2 space-x-2">
-                            <a href="{{ route('admins.special-content-items.show', $item) }}"
+                            <a href="#"
                                class="text-sm text-blue-600 hover:underline">View</a>
-                            <a href="{{ route('admins.special-content-items.edit', $item) }}"
-                               class="text-sm text-yellow-600 hover:underline">Edit</a>
                         </td>
                     </tr>
                 @empty

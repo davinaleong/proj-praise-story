@@ -13,7 +13,7 @@ class Index extends Component
 
     public function render()
     {
-        $items = SpecialContentItem::with('group')->paginate(Setting::ITEMS_PER_PAGE_100);
+        $items = SpecialContentItem::with('SpecialContentGroup')->paginate(Setting::ITEMS_PER_PAGE_100);
 
         return view('livewire.admins.special-contents.items.index', [
             'items' => $items,
