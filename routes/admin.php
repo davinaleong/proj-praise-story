@@ -90,7 +90,7 @@ Route::prefix($prefix)->name('admins.')->group(function () use ($prefix) {
             Route::get('/', ScItemsIndex::class)->name('index');
             Route::get('/create', ScItemsCreate::class)->name('create');
             Route::get('/{uuid}', ScItemsShow::class)->name('show');
-            // Route::get('/{uuid}/edit', ScItemsEdit::class)->name('edit');
+            Route::get('/{uuid}/edit', ScItemsEdit::class)->name('edit');
         });
 
         Route::redirect('/settings', '/settings/profile');

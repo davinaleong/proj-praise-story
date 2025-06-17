@@ -5,7 +5,7 @@
             {{ $item->title ?? 'Untitled Item' }}
         </h1>
         <div class="flex items-center gap-2">
-            <a href="#"
+            <a href="{{ route('admins.special-contents.items.edit', ['uuid' => $item->uuid]) }}"
                 class="text-sm text-gray-600 dark:text-gray-300 hover:underline">
                 Edit
             </a>
