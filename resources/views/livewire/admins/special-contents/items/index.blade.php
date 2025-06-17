@@ -16,11 +16,10 @@
         <table class="w-full border border-gray-200 dark:border-gray-700 text-sm">
             <thead class="bg-gray-100 dark:bg-zinc-800 text-left">
                 <tr>
+                    <th class="p-2">Group</th>
                     <th class="p-2">Title</th>
                     <th class="p-2">Slug</th>
                     <th class="p-2">Type</th>
-                    <th class="p-2">Status</th>
-                    <th class="p-2 text-center">Sort</th>
                     <th class="p-2">Created</th>
                     <th class="p-2">Actions</th>
                 </tr>
@@ -28,11 +27,10 @@
             <tbody>
                 @forelse ($items as $item)
                     <tr class="border-t border-gray-200 dark:border-zinc-700">
+                        <td class="p-2 font-medium">{{ $item->specialContentGroup ? $item->specialContentGroup->title : '-' }}</td>
                         <td class="p-2 font-medium">{{ $item->title }}</td>
                         <td class="p-2 text-gray-500">{{ $item->slug }}</td>
-                        <td class="p-2">{{ ucfirst($item->type) }}</td>
-                        <td class="p-2">{{ ucfirst($item->status) }}</td>
-                        <td class="p-2 text-center">{{ $item->sort_order }}</td>
+                        <td class="p-2">{{ $item->type }}</td>
                         <td class="p-2 text-gray-500">{{ $item->created_at->format('d-m-Y') }}</td>
                         <td class="p-2 space-x-2">
                             <a href="#"
