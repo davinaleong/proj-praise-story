@@ -4,7 +4,7 @@
         <h1 class="text-3xl font-bold text-gray-900 dark:text-white">
             {{ $group->title }}
         </h1>
-        <flex class="flex gap-2">
+        <flex class="flex items-center gap-2">
             <a href="{{ route('admins.special-contents.groups.edit', ['uuid' => $group->uuid]) }}"
            class="text-sm text-gray-600 dark:text-gray-300 hover:underline">
                 Edit
@@ -14,6 +14,14 @@
            class="text-sm text-gray-600 dark:text-gray-300 hover:underline">
                 Back
             </a>
+            <span>|</span>
+            <form wire:submit.prevent="delete" class="inline">
+                <button type="submit"
+                        class="text-sm text-red-600 dark:text-red-400 hover:underline"
+                        onclick="return confirm('Are you sure you want to delete this group?');">
+                    Delete
+                </button>
+            </form>
         </flex>
     </header>
 

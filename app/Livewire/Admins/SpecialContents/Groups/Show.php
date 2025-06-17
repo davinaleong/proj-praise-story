@@ -15,6 +15,15 @@ class Show extends Component
             ->firstOrFail();
     }
 
+    public function delete()
+    {
+        $this->group->delete();
+
+        session()->flash('success', 'Group deleted successfully.');
+
+        return redirect()->route('admins.special-contents.groups.index');
+    }
+
     public function render()
     {
         return view('livewire.admins.special-contents.groups.show')
