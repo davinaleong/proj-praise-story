@@ -89,7 +89,7 @@ Route::prefix($prefix)->name('admins.')->group(function () use ($prefix) {
         Route::prefix('special-contents/items')->name('special-contents.items.')->group(function () {
             Route::get('/', ScItemsIndex::class)->name('index');
             Route::get('/create', ScItemsCreate::class)->name('create');
-            // Route::get('/{uuid}', ScItemsShow::class)->name('show');
+            Route::get('/{uuid}', ScItemsShow::class)->name('show');
             // Route::get('/{uuid}/edit', ScItemsEdit::class)->name('edit');
         });
 

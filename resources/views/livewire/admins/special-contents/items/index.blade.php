@@ -33,7 +33,7 @@
                         <td class="p-2">{{ $item->type }}</td>
                         <td class="p-2 text-gray-500">{{ $item->created_at->format('d-m-Y') }}</td>
                         <td class="p-2 space-x-2">
-                            <a href="#"
+                            <a href="{{ route('admins.special-contents.items.show', ['uuid' => $item->uuid]) }}"
                                class="inline-block text-gray-500 hover:text-black dark:hover:text-white" title="View Group">
                                 @include('flux.icon.eye')
                             </a>
