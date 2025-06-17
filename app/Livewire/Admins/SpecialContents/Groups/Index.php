@@ -1,35 +1,23 @@
 <?php
 
-namespace Tests\Feature\Admins\SpecialContents\Groups;
+namespace App\Livewire\Admins\SpecialContents\Groups;
 
-use App\Livewire\Admins\SpecialContents\Groups\Index;
-use App\Models\Admin;
 use App\Models\SpecialContentGroup;
-use Livewire\Livewire;
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Livewire\Component;
+use Livewire\WithPagination;
+use App\Helpers\Setting;
 
-class IndexTest extends TestCase
+class Index extends Component
 {
-    use RefreshDatabase;
+    use WithPagination;
 
-    public function test_index_component_renders_for_admin()
+    public function render()
     {
-        $admin = Admin::factory()->create();
-        $groups = SpecialContentGroup::factory()->count(3)->create();
+        $groups = SpecialContentGroup::paginate(Setting::ITEMS_PER_PAGE_100);
 
-        $this->actingAs($admin, 'admin');
-
-        Livewire::test(Index::class)
-            ->assertStatus(200)
-            ->assertViewHas('groups', function ($viewGroups) use ($groups) {
-                return $viewGroups->count() === $groups->count();
-            });
-    }
-
-    public function test_index_requires_admin_authentication()
-    {
-        $this->get(route('admins.special-contents.groups.index'))
-            ->assertRedirect(route('me.login'));
+        return view('livewire.admins.special-contents.groups.index', [
+            'groups' => $groups,
+        ])
+            ->layout('components.layouts.admin', ['title' => 'Special Content Groups']);
     }
 }
