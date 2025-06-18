@@ -13,11 +13,12 @@
                     <!-- Private CTA Card -->
                     <div class="rounded-lg border border-black dark:border-white bg-black text-white dark:bg-white dark:text-black p-6 shadow-lg text-center col-span-1 sm:col-span-2 lg:col-span-3">
                         <h2 class="text-xl font-bold mb-2">
-                            Want to Share or View Private Testimonies?
+                            Want to View or Share Private Testimonies?
                         </h2>
                         <p class="text-sm mb-4">
-                            Public praise stories are open to all. <br class="hidden sm:inline" />
-                            Create an account to share your own stories or access private ones shared within your trusted circle.
+                            Public praise stories are open to everyone. <br class="hidden sm:inline" />
+                            By creating an account, you can access testimonies meant for registered users — not hidden from strangers, but shared in a more intentional space. <br class="hidden sm:inline" />
+                            You'll also gain access to special content by the creators of Praise Story.
                         </p>
 
                         <a href="{{ route('me.register') }}"
@@ -26,6 +27,7 @@
                         </a>
                     </div>
                 @endif
+
 
                 <!-- Testimony Card -->
                 <div class="rounded-lg border border-gray-200 dark:border-gray-700 p-6 shadow-sm bg-white dark:bg-zinc-800">
