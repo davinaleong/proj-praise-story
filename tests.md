@@ -107,9 +107,10 @@ This document outlines the purpose of each PHPUnit test group in the application
 
 ### **New**
 
-| Name                          | Description |
-| ----------------------------- | ----------- |
-| `special-content-group-index` |             |
+| Name                           | Description |
+| ------------------------------ | ----------- |
+| `special-content-group-index`  |             |
+| `special-content-group-create` |             |
 
 ---
 
