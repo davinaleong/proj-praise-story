@@ -20,7 +20,6 @@ class IndexTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
     public function test_component_renders_with_paginated_items_and_group_titles()
     {
         $admin = Admin::factory()->create();
@@ -44,7 +43,6 @@ class IndexTest extends TestCase
             ->assertSee('Test Group');
     }
 
-    /** @test */
     public function test_component_renders_empty_state_when_no_items_exist()
     {
         $admin = Admin::factory()->create();
