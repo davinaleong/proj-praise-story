@@ -20,7 +20,6 @@ class Create extends Component
     public ?string $link_url = '';
     public ?string $button_text = '';
     public ?string $published_at = null; // ISO format
-    public int $sort_order = 0;
 
     public function mount(?SpecialContentGroup $group = null): void
     {
@@ -41,7 +40,6 @@ class Create extends Component
             'link_url' => ['nullable', 'url'],
             'button_text' => ['nullable', 'string', 'max:255'],
             'published_at' => ['nullable', 'date'],
-            'sort_order' => ['required', 'integer', 'min:0'],
         ];
     }
 
@@ -57,7 +55,7 @@ class Create extends Component
         $this->validate();
 
         SpecialContentItem::create([
-            'uuid' => Str::uuid(),
+            'uuid' => (string) Str::uuid(),
             'slug' => $this->slug,
             'group_id' => $this->group_id,
             'title' => $this->title,
@@ -66,8 +64,9 @@ class Create extends Component
             'media_url' => $this->media_url,
             'link_url' => $this->link_url,
             'button_text' => $this->button_text,
-            'published_at' => $this->published_at,
-            'sort_order' => $this->sort_order,
+            'published_at' => $this->published_at
+                ? now()->parse($this->published_at)->toDateTimeString()
+                : null,
         ]);
 
         session()->flash('success', 'Special content item created successfully.');

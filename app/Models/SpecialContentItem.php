@@ -23,6 +23,7 @@ class SpecialContentItem extends Model
      */
     protected $fillable = [
         'uuid',
+        'slug',
         'group_id',
         'title',
         'type',
@@ -30,8 +31,6 @@ class SpecialContentItem extends Model
         'media_url',
         'link_url',
         'button_text',
-        'status',
-        'sort_order',
         'starts_at',
         'ends_at',
     ];
