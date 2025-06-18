@@ -8,6 +8,13 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 
+/**
+ * @group feature
+ * @group admin
+ * @group special-content
+ * @group special-content-group
+ * @group special-content-group-edit
+ */
 class Edit extends Component
 {
     public SpecialContentGroup $group;
