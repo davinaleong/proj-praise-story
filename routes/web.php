@@ -21,7 +21,8 @@ use App\Livewire\PrivacyPolicy\Me as MePrivacyPolicy;
 use App\Livewire\Private\Testimonies\Index as PrivateTestimonyIndex;
 use App\Livewire\Private\Testimonies\Show as PrivateTestimonyShow;
 use App\Livewire\Contact;
-use App\Livewire\SpecialContent\Groups as SpecialContentIndex;
+use App\Livewire\SpecialContent\Index as SpecialContentIndex;
+use App\Livewire\SpecialContent\Show as SpecialContentShow;
 
 // Public Routes
 Route::get('/', PublicTestimonyIndex::class)->name('home');
@@ -45,7 +46,7 @@ Route::middleware('auth:web')->group(function () {
 
     Route::prefix('/special-content')->name('special-content.')->group(function() {
         Route::get('/', SpecialContentIndex::class)->name('index');
-        Route::get('/{uuid}', SpecialContentShow::class)->name('show');
+        // Route::get('/{uuid}', SpecialContentShow::class)->name('show');
     });
 
     // /me routes

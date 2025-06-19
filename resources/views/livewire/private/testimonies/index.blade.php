@@ -7,7 +7,7 @@
 
             <div class="flex items-center gap-3">
                 @include('partials.dashboard-button')
-
+                @include('partials.special-content-button')
                 @include('partials.logout-button')
             </div>
         </header>
