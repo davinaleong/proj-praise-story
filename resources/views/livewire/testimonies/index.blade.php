@@ -2,7 +2,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <header class="flex justify-between items-center mb-6">
             <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Praise Stories</h1>
-            @include('partials.login-button')
+            @include('partials.public-nav')
         </header>
 
         <hr class="mb-8 border-gray-300 dark:border-gray-700">

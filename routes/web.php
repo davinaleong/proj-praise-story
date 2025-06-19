@@ -18,6 +18,8 @@ use App\Livewire\TermsAndConditions\Show as TermsAndConditionsShow;
 use App\Livewire\TermsAndConditions\Me as MeTermsAndConditions;
 use App\Livewire\PrivacyPolicy\Show as PrivacyPolicyShow;
 use App\Livewire\PrivacyPolicy\Me as MePrivacyPolicy;
+use App\Livewire\FrequentlyAskedQuestions\Show as FrequentlyAskedQuestionsShow;
+use App\Livewire\FrequentlyAskedQuestions\Me as MeFrequentlyAskedQuestions;
 use App\Livewire\Private\Testimonies\Index as PrivateTestimonyIndex;
 use App\Livewire\Private\Testimonies\Show as PrivateTestimonyShow;
 use App\Livewire\Contact;
@@ -30,6 +32,7 @@ Route::get('/testimonies/{uuid}', PublicTestimonyShow::class)->name('testimonies
 
 Route::get('/contact', Contact::class)->name('contact');
 
+Route::get('/frequently-asked-questions', FrequentlyAskedQuestionsShow::class)->name('frequently-asked-questions.show');
 Route::get('/terms-and-conditions', TermsAndConditionsShow::class)->name('terms-and-conditions.show');
 Route::get('/privacy-policy', PrivacyPolicyShow::class)->name('privacy-policy.show');
 
@@ -65,6 +68,7 @@ Route::middleware('auth:web')->group(function () {
         Route::get('/settings/appearance', Appearance::class)->name('settings.appearance');
 
         // Policy pages (user-facing)
+        Route::get('/frequently-asked-questions', MeFrequentlyAskedQuestions::class)->name('frequently-asked-questions');
         Route::get('/terms-and-conditions', MeTermsAndConditions::class)->name('terms-and-conditions');
         Route::get('/privacy-policy', MePrivacyPolicy::class)->name('privacy-policy');
 

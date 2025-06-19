@@ -26,6 +26,7 @@
             <flux:navlist variant="outline">
                 <flux:navlist.group :heading="__('Misc')" class="grid">
                     <flux:navlist.item icon="lightbulb" :href="route('me.information')" :current="request()->routeIs('me.information')" wire:navigate>{{ __('Information') }}</flux:navlist.item>
+                    <flux:navlist.item icon="circle-question-mark" :href="route('me.frequently-asked-questions')" :current="request()->routeIs('me.frequently-asked-questions')" wire:navigate>{{ __('FAQ') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 
