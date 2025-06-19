@@ -46,7 +46,7 @@ Route::middleware('auth:web')->group(function () {
 
     Route::prefix('/special-content')->name('special-content.')->group(function() {
         Route::get('/', SpecialContentIndex::class)->name('index');
-        // Route::get('/{uuid}', SpecialContentShow::class)->name('show');
+        Route::get('/{uuid}', SpecialContentShow::class)->name('show');
     });
 
     // /me routes

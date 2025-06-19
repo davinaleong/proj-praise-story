@@ -19,7 +19,7 @@
                     <p class="text-sm mt-2 text-gray-600 dark:text-gray-400">
                         {{ Str::limit($group->description, 100) }}
                     </p>
-                    <a href="#"
+                    <a href="{{ route('special-content.show', ['uuid' => $group->uuid]) }}"
                        class="inline-block mt-4 text-sm font-bold underline">
                         View content &hellip;
                     </a>
