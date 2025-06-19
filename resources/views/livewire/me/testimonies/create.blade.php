@@ -17,7 +17,11 @@
         </div>
 
         <div>
-            <label class="block text-sm font-medium mb-1">Content</label>
+            <div class="inline-flex justify-between items-center gap-2 w-full">
+                <label class="block text-sm font-medium mb-1">Content</label>
+
+                <a href="{{ route('me.information') }}" class="text-sm text-gray-900 hover:underline dark:text-gray-100">Formatting Help</a>
+            </div>
             <textarea wire:model="content" rows="6" required class="w-full rounded border border-gray-300 dark:border-zinc-600 p-2"></textarea>
         </div>
 

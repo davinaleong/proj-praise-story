@@ -5,11 +5,7 @@
                 Private Praise Stories
             </h1>
 
-            <div class="flex items-center gap-3">
-                @include('partials.dashboard-button')
-                @include('partials.special-content-button')
-                @include('partials.logout-button')
-            </div>
+            @include('partials.private-nav')
         </header>
 
         <hr class="mb-8 border-gray-300 dark:border-gray-700">
