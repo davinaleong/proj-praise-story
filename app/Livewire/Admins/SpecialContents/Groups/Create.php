@@ -36,7 +36,7 @@ class Create extends Component
     {
         $this->validate();
 
-        SpecialContentGroup::create([
+        $group = SpecialContentGroup::create([
             'uuid' => Str::uuid(),
             'slug' => $this->slug,
             'title' => $this->title,
@@ -47,7 +47,7 @@ class Create extends Component
 
         session()->flash('success', 'Special Content Group created successfully.');
 
-        return redirect()->route('admins.special-contents.groups.create');
+        return redirect()->route('admins.special-contents.groups.show', ['uuid' => $group->uuid]);
     }
 
     public function render()

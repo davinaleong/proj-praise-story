@@ -68,14 +68,18 @@ class CreateTest extends TestCase
             'sort_order' => 1,
         ];
 
-        Livewire::test(Create::class)
-            ->set('title', $data['title']) // will auto-set the slug too
+        $response = Livewire::test(Create::class)
+            ->set('title', $data['title']) // triggers slug update
             ->set('description', $data['description'])
             ->set('status', $data['status'])
             ->set('sort_order', $data['sort_order'])
             ->call('save')
-            ->assertRedirect(route('admins.special-contents.groups.create'));
+            ->assertSessionHas('success', 'Special Content Group created successfully.');
 
+        $group = SpecialContentGroup::where('title', $data['title'])->first();
+        $this->assertNotNull($group);
+
+        // Check database entry
         $this->assertDatabaseHas('special_content_groups', [
             'title' => $data['title'],
             'slug' => Str::slug($data['title']),
@@ -83,5 +87,9 @@ class CreateTest extends TestCase
             'status' => $data['status'],
             'sort_order' => $data['sort_order'],
         ]);
+
+        // ✅ Assert redirect here
+        $response->assertRedirect(route('admins.special-contents.groups.show', ['uuid' => $group->uuid]));
     }
+
 }

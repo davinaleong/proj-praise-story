@@ -21,13 +21,6 @@ class Create extends Component
     public ?string $button_text = '';
     public ?string $published_at = null; // ISO format
 
-    public function mount(?SpecialContentGroup $group = null): void
-    {
-        if ($group) {
-            $this->group_id = $group->id;
-        }
-    }
-
     protected function rules(): array
     {
         return [
@@ -54,7 +47,7 @@ class Create extends Component
     {
         $this->validate();
 
-        SpecialContentItem::create([
+        $item = SpecialContentItem::create([
             'uuid' => (string) Str::uuid(),
             'slug' => $this->slug,
             'group_id' => $this->group_id,
@@ -71,7 +64,7 @@ class Create extends Component
 
         session()->flash('success', 'Special content item created successfully.');
 
-        redirect()->route('admins.special-contents.items.index');
+        redirect()->route('admins.special-contents.items.show', ['uuid' => $item->uuid]);
     }
 
     public function render()
@@ -79,6 +72,7 @@ class Create extends Component
         return view('livewire.admins.special-contents.items.create', [
             'groups' => SpecialContentGroup::orderBy('title')->get(),
             'types' => Type::cases(),
-        ]);
+        ])
+            ->layout('components.layouts.admin', ['title' => 'Special Content Groups']);
     }
 }

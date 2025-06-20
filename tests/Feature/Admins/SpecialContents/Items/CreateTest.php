@@ -10,6 +10,7 @@ use Livewire\Livewire;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Str;
 use App\Enums\Type;
+use App\Livewire\Admins\SpecialContents\Items\Create;
 
 /**
  * @group feature
@@ -21,17 +22,6 @@ use App\Enums\Type;
 class CreateTest extends TestCase
 {
     use RefreshDatabase;
-
-    public function test_component_mounts_with_group_if_provided()
-    {
-        $admin = Admin::factory()->create();
-        $group = SpecialContentGroup::factory()->create();
-
-        $this->actingAs($admin, 'admin');
-
-        Livewire::test('admins.special-contents.items.create', ['group' => $group])
-            ->assertSet('group_id', $group->id);
-    }
 
     public function test_validation_fails_if_required_fields_are_missing()
     {
@@ -51,23 +41,30 @@ class CreateTest extends TestCase
 
         $this->actingAs($admin, 'admin');
 
-        Livewire::test('admins.special-contents.items.create')
+        $slug = 'new-item-slug';
+
+        $component = Livewire::test(Create::class)
             ->set('group_id', $group->id)
-            ->set('slug', 'new-item-slug')
+            ->set('slug', $slug)
             ->set('title', 'New Item Title')
-            ->set('type', Type::Text->value) // assuming TEXT exists in enum
+            ->set('type', Type::Text->value)
             ->set('content', 'Sample content')
             ->set('media_url', 'https://example.com/media.jpg')
             ->set('link_url', 'https://example.com')
             ->set('button_text', 'Click Me')
-            ->set('published_at', now()->format('Y-m-d\TH:i')) // ISO format with 'datetime-local' input
+            ->set('published_at', now()->format('Y-m-d\TH:i')) // datetime-local
             ->call('save')
-            ->assertRedirect(route('admins.special-contents.items.index'));
+            ->assertSessionHas('success', 'Special content item created successfully.');
 
         $this->assertDatabaseHas('special_content_items', [
-            'slug' => 'new-item-slug',
+            'slug' => $slug,
             'title' => 'New Item Title',
             'group_id' => $group->id,
         ]);
+
+        $item = SpecialContentItem::where('slug', $slug)->firstOrFail();
+
+        $component->assertRedirect(route('admins.special-contents.items.show', ['uuid' => $item->uuid]));
     }
+
 }
