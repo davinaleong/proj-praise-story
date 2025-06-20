@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\SpecialContent;
 
+use App\Helpers\Status;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\SpecialContentGroup;
@@ -39,7 +40,9 @@ class IndexTest extends TestCase
         $user = User::factory()->create();
         $this->actingAs($user);
 
-        SpecialContentGroup::factory()->count(Setting::ITEMS_PER_PAGE_100 + 3)->create();
+        SpecialContentGroup::factory()->count(Setting::ITEMS_PER_PAGE_100 + 3)->create([
+            'status' => Status::STATUS_SPECIAL_CONTENT_GROUP_PUBLIC,
+        ]);
 
         Livewire::actingAs($user)
             ->test(Index::class)
