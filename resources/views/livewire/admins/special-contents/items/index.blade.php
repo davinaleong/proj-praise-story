@@ -1,4 +1,4 @@
-<div class="space-y-6">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
     <header class="flex justify-between items-center mb-6">
         <h1 class="text-3xl font-bold text-gray-900 dark:text-white">
@@ -12,9 +12,9 @@
 
     <hr class="mb-6 border-gray-300 dark:border-gray-700">
 
-    <div class="overflow-x-auto">
-        <table class="w-full border border-gray-200 dark:border-gray-700 text-sm">
-            <thead class="bg-gray-100 dark:bg-zinc-800 text-left">
+    <div class="overflow-x-auto rounded-t-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-zinc-900">
+        <table class="min-w-full divide-y divide-gray-200 dark:divide-zinc-700 text-sm text-left text-gray-700 dark:text-gray-300">
+            <thead class="bg-gray-100 dark:bg-zinc-800 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase">
                 <tr>
                     <th class="p-2">Group</th>
                     <th class="p-2">Title</th>
@@ -24,9 +24,9 @@
                     <th class="p-2">Actions</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="divide-y divide-gray-200 dark:divide-zinc-700">
                 @forelse ($items as $item)
-                    <tr class="border-t border-gray-200 dark:border-zinc-700">
+                    <tr class="hover:bg-gray-50 dark:hover:bg-zinc-800">
                         <td class="p-2 font-medium">{{ $item->specialContentGroup ? $item->specialContentGroup->title : '-' }}</td>
                         <td class="p-2 font-medium">{{ $item->title }}</td>
                         <td class="p-2 text-gray-500">{{ $item->slug }}</td>
