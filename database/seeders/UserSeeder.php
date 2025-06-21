@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::factory()->count(10)->create([
-            'password' => Hash::make('password@01'),
+            'password' => config('user.password'),
         ]);
     }
 }

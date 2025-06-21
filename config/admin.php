@@ -53,6 +53,6 @@ return [
     |
     */
 
-    'password' => env('ADMIN_PASSWORD', 'password@admin01'),
+    'password' => env('ADMIN_PASSWORD', 'password'),
 
 ];
