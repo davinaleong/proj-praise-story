@@ -52,18 +52,25 @@ cd testimony-creator
 # Install backend dependencies
 composer install
 
-# Copy .env and set DB credentials
+# Copy .env and set your environment variables
 cp .env.example .env
 php artisan key:generate
 
-# Configure your MySQL database in .env
-# Then run:
+# Configure your MySQL credentials in the .env file
+# Then run the migrations and seed the default data
 php artisan migrate
+php artisan db:seed
+
+# (Optional) Seed admin user for admin panel access
+php artisan db:seed --class=AdminSeeder
+
+# Make sure to update the admin panel configurations in your .env file
+# e.g., ADMIN_EMAIL, ADMIN_PASSWORD, etc.
 
 # Install frontend dependencies
 npm install && npm run dev
 
-# Serve the app
+# Serve the app locally
 php artisan serve
 ```
 
