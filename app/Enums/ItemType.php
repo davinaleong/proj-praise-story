@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum Type: string
+enum ItemType: string
 {
     case Text = 'text';
     case Link = 'link';

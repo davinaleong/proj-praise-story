@@ -8,7 +8,7 @@ use App\Models\Admin;
 use App\Models\SpecialContentGroup;
 use App\Models\SpecialContentItem;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Enums\Type;
+use App\Enums\ItemType;
 
 /**
  * @group feature
@@ -52,7 +52,7 @@ class EditTest extends TestCase
         Livewire::test('admins.special-contents.items.edit', ['uuid' => $item->uuid])
             ->set('group_id', $group->id)
             ->set('title', 'Updated Title')
-            ->set('type', Type::Text->value)
+            ->set('type', ItemType::Text->value)
             ->set('content', 'Updated content')
             ->set('media_url', 'https://example.com/media.jpg')
             ->set('link_url', 'https://example.com/link')
@@ -64,7 +64,7 @@ class EditTest extends TestCase
         $this->assertDatabaseHas('special_content_items', [
             'id' => $item->id,
             'title' => 'Updated Title',
-            'type' => Type::Text->value,
+            'type' => ItemType::Text->value,
         ]);
     }
 

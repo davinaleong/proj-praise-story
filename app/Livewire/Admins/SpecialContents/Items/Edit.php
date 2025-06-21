@@ -4,7 +4,7 @@ namespace App\Livewire\Admins\SpecialContents\Items;
 
 use App\Models\SpecialContentItem;
 use App\Models\SpecialContentGroup;
-use App\Enums\Type;
+use App\Enums\ItemType;
 use Livewire\Component;
 
 class Edit extends Component
@@ -42,7 +42,7 @@ class Edit extends Component
         $this->validate([
             'group_id' => 'required|exists:special_content_groups,id',
             'title' => 'nullable|string|max:255',
-            'type' => 'nullable|in:' . implode(',', array_column(Type::cases(), 'value')),
+            'type' => 'nullable|in:' . implode(',', array_column(ItemType::cases(), 'value')),
             'content' => 'nullable|string',
             'media_url' => 'nullable|url',
             'link_url' => 'nullable|url',
@@ -69,7 +69,7 @@ class Edit extends Component
     public function render()
     {
         return view('livewire.admins.special-contents.items.edit', [
-            'types' => Type::cases(),
+            'types' => ItemType::cases(),
         ])->layout('components.layouts.admin', ['title' => 'Edit Special Content Item']);
     }
 }

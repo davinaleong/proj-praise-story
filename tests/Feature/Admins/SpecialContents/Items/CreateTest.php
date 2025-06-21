@@ -9,7 +9,7 @@ use App\Models\SpecialContentItem;
 use Livewire\Livewire;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Str;
-use App\Enums\Type;
+use App\Enums\ItemType;
 use App\Livewire\Admins\SpecialContents\Items\Create;
 
 /**
@@ -47,7 +47,7 @@ class CreateTest extends TestCase
             ->set('group_id', $group->id)
             ->set('slug', $slug)
             ->set('title', 'New Item Title')
-            ->set('type', Type::Text->value)
+            ->set('type', ItemType::Text->value)
             ->set('content', 'Sample content')
             ->set('media_url', 'https://example.com/media.jpg')
             ->set('link_url', 'https://example.com')

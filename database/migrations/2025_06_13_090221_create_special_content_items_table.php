@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Enums\Type;
+use App\Enums\ItemType;
 
 return new class extends Migration
 {
@@ -22,7 +22,7 @@ return new class extends Migration
                 ->cascadeOnDelete();
 
             $table->string('title')->nullable();
-            $table->enum('type', array_column(Type::cases(), 'value'))->nullable();
+            $table->enum('type', array_column(ItemType::cases(), 'value'))->nullable();
             $table->text('content')->nullable();
             $table->string('media_url')->nullable();
             $table->string('link_url')->nullable();

@@ -4,7 +4,7 @@ namespace App\Livewire\Admins\SpecialContents\Items;
 
 use App\Models\SpecialContentGroup;
 use App\Models\SpecialContentItem;
-use App\Enums\Type;
+use App\Enums\ItemType;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
@@ -27,7 +27,7 @@ class Create extends Component
             'group_id' => ['required', 'exists:special_content_groups,id'],
             'slug' => ['required', 'string', 'max:255', 'unique:special_content_items,slug'],
             'title' => ['nullable', 'string', 'max:255'],
-            'type' => ['nullable', Rule::in(array_column(Type::cases(), 'value'))],
+            'type' => ['nullable', Rule::in(array_column(ItemType::cases(), 'value'))],
             'content' => ['nullable', 'string'],
             'media_url' => ['nullable', 'url'],
             'link_url' => ['nullable', 'url'],
@@ -71,7 +71,7 @@ class Create extends Component
     {
         return view('livewire.admins.special-contents.items.create', [
             'groups' => SpecialContentGroup::orderBy('title')->get(),
-            'types' => Type::cases(),
+            'types' => ItemType::cases(),
         ])
             ->layout('components.layouts.admin', ['title' => 'Special Content Groups']);
     }

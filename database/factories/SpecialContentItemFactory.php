@@ -6,7 +6,7 @@ use App\Models\SpecialContentItem;
 use App\Models\SpecialContentGroup;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use App\Enums\Type;
+use App\Enums\ItemType;
 
 class SpecialContentItemFactory extends Factory
 {
@@ -21,7 +21,7 @@ class SpecialContentItemFactory extends Factory
             'slug' => Str::slug($title ?: Str::random(8)) . '-' . Str::random(4),
             'group_id' => SpecialContentGroup::factory(),
             'title' => $title,
-            'type' => fake()->randomElement(array_column(Type::cases(), 'value')),
+            'type' => fake()->randomElement(array_column(ItemType::cases(), 'value')),
             'content' => fake()->paragraph(),
             'media_url' => fake()->imageUrl(),
             'link_url' => fake()->url(),

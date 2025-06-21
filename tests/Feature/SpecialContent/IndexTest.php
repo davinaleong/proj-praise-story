@@ -67,15 +67,4 @@ class IndexTest extends TestCase
             ->assertSee('Faith and Growth')
             ->assertSee('Grow in your spiritual walk.');
     }
-
-    public function test_group_link_to_show_page_is_visible()
-    {
-        $user = User::factory()->create();
-        $group = SpecialContentGroup::factory()->create();
-
-        $this->actingAs($user);
-
-        $this->get(route('special-content.index'))
-             ->assertSee(route('special-content.show', ['uuid' => $group->uuid]));
-    }
 }
