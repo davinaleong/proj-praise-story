@@ -2,6 +2,10 @@
 
 This document outlines the purpose of each PHPUnit test group in the application to help contributors understand and maintain the test suite effectively.
 
+Here is the updated and logically sorted test tag list with the new entries integrated under the **Admin Domain** section, specifically grouped under their respective subdomains: `special-content-group` and `special-content-item`.
+
+---
+
 ### ✅ **Authentication and Authorization**
 
 | Name                    | Description                                                                                  |
@@ -40,9 +44,22 @@ This document outlines the purpose of each PHPUnit test group in the application
 | `admin-contact-show`            | Tests for viewing a specific contact message and responding if needed.                  |
 | `admin-feedback-index`          | Tests for listing user feedback submissions in the admin view.                          |
 | `admin-feedback-show`           | Tests for showing detailed feedback submitted by a user.                                |
-| `special-content`               | Parent tag for tests covering special content features available to admins.             |
-| `special-content-group`         | Tests for managing content groups for special content modules (e.g., sorting, titles).  |
-| `special-content-item`          | Tests for individual content items within a group, including type, media, and linking.  |
+
+#### 🗂 **Special Content**
+
+| Name                           | Description                                                                                 |
+| ------------------------------ | ------------------------------------------------------------------------------------------- |
+| `special-content`              | Parent tag for tests covering special content features available to admins.                 |
+| `special-content-group`        | Tests for managing content groups for special content modules (e.g., sorting, titles).      |
+| `special-content-group-index`  | Tests for the index view of special content groups, including pagination and sorting.       |
+| `special-content-group-create` | Tests for creating a new special content group, including validation and persistence logic. |
+| `special-content-group-show`   | Tests for displaying a single special content group and its associated items.               |
+| `special-content-group-edit`   | Tests for editing an existing special content group and verifying updates.                  |
+| `special-content-item`         | Tests for individual content items within a group, including type, media, and linking.      |
+| `special-content-item-index`   | Tests for listing special content items under a group with filtering and sorting.           |
+| `special-content-item-create`  | Tests for creating a special content item with type-specific validation.                    |
+| `special-content-item-show`    | Tests for rendering a single special content item with all associated fields.               |
+| `special-content-item-edit`    | Tests for updating a special content item, including validation and data persistence.       |
 
 ---
 
@@ -102,21 +119,6 @@ This document outlines the purpose of each PHPUnit test group in the application
 | `unit`     | Purely isolated logic tests without Laravel dependencies (e.g., services, helpers, transformers).   |
 | `model`    | Tests for Eloquent models not tied to a specific domain like user/testimony (e.g., pivot behavior). |
 | `livewire` | Tests focused on Livewire components: rendering, lifecycle, and UI interaction logic.               |
-
----
-
-### **New**
-
-| Name                           | Description |
-| ------------------------------ | ----------- |
-| `special-content-group-index`  |             |
-| `special-content-group-create` |             |
-| `special-content-group-show`   |             |
-| `special-content-group-edit`   |             |
-| `special-content-item-index`   |             |
-| `special-content-item-create`  |             |
-| `special-content-item-show`    |             |
-| `special-content-item-edit`    |             |
 
 ---
 

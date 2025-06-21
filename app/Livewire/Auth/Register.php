@@ -39,6 +39,6 @@ class Register extends Component
 
         Auth::login($user);
 
-        $this->redirect(route('me.dashboard', absolute: false), navigate: true);
+        $this->redirect(route('private.testimonies.index', absolute: false), navigate: true);
     }
 }

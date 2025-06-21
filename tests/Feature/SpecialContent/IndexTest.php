@@ -55,15 +55,16 @@ class IndexTest extends TestCase
     {
         $user = User::factory()->create();
         $group = SpecialContentGroup::factory()->create([
-            'title' => 'Faith & Growth',
+            'title' => 'Faith and Growth',
             'description' => 'Grow in your spiritual walk.',
+            'status' => Status::STATUS_SPECIAL_CONTENT_GROUP_PUBLIC,
         ]);
 
         $this->actingAs($user);
 
         Livewire::actingAs($user)
             ->test(Index::class)
-            ->assertSee('Faith & Growth')
+            ->assertSee('Faith and Growth')
             ->assertSee('Grow in your spiritual walk.');
     }
 
