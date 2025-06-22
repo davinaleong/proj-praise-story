@@ -13,6 +13,7 @@ use App\Livewire\Me\Information as Information;
 use App\Livewire\Me\FeedbackForm as FeedbackForm;
 use App\Livewire\Settings\Profile;
 use App\Livewire\Settings\Password;
+use App\Livewire\Settings\TwoFactorAuth;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\TermsAndConditions\Show as TermsAndConditionsShow;
 use App\Livewire\TermsAndConditions\Me as MeTermsAndConditions;
@@ -65,6 +66,7 @@ Route::middleware('auth:web')->group(function () {
         Route::redirect('/settings', '/me/settings/profile');
         Route::get('/settings/profile', Profile::class)->name('settings.profile');
         Route::get('/settings/password', Password::class)->name('settings.password');
+        Route::get('/settings/two-factor-auth', TwoFactorAuth::class)->name('settings.two-factor-auth');
         Route::get('/settings/appearance', Appearance::class)->name('settings.appearance');
 
         // Policy pages (user-facing)

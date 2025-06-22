@@ -11,6 +11,10 @@ use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
+use Laravel\Fortify\Actions\PrepareAuthenticatedSession;
+use Laravel\Fortify\Contracts\LoginResponse;
+use App\Models\User;
+
 
 #[Layout('components.layouts.auth')]
 class Login extends Component
@@ -26,13 +30,14 @@ class Login extends Component
     /**
      * Handle an incoming authentication request.
      */
-    public function login(): void
+    public function login(LoginResponse $loginResponse): mixed
     {
         $this->validate();
-
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
+        $user = User::where('email', $this->email)->first();
+
+        if (! $user || ! \Hash::check($this->password, $user->password)) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
@@ -43,8 +48,20 @@ class Login extends Component
         RateLimiter::clear($this->throttleKey());
         Session::regenerate();
 
-        // $this->redirectIntended(default: route('me.dashboard', absolute: false), navigate: true);
-        $this->redirectIntended(default: route('private.testimonies.index', absolute: false), navigate: true);
+        if ($user->two_factor_secret) {
+            session([
+                'login.id' => $user->id,
+                'login.remember' => $this->remember,
+            ]);
+
+            $this->redirect(route('me.two-factor-challenge'), navigate: true);
+            return null;
+        }
+
+        // Let Laravel handle the login session + redirect properly
+        Auth::login($user, $this->remember);
+
+        return $loginResponse;
     }
 
     /**
