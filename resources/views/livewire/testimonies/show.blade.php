@@ -19,12 +19,12 @@
 
                 @include('partials.like-buttons')
             </div>
-        </header>
 
-        {{-- Author & Date --}}
-        <p class="text-sm text-gray-500 dark:text-gray-400 italic mb-6">
-            Written by {{ optional($testimony->user)->name ?? 'Anonymous' }} on {{ $testimony->getHumanPublishedAt() }}
-        </p>
+            {{-- Author & Date --}}
+            <p class="text-sm text-gray-500 dark:text-gray-400 italic mb-6">
+                Written by {{ optional($testimony->user)->name ?? 'Anonymous' }} on {{ $testimony->getHumanPublishedAt() }}
+            </p>
+        </header>
 
         {{-- Content --}}
         <article class="prose dark:prose-invert max-w-none">

@@ -23,6 +23,8 @@
                         : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-zinc-800 text-gray-900 dark:text-white'
                     }}
                 ">
+                    @include('partials.likes-bar')
+
                     <h2 class="text-lg font-semibold">
                         {{ $testimony->title }}
                     </h2>
