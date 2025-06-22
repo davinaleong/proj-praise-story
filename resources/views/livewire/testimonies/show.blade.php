@@ -31,6 +31,31 @@
             {!! Str::markdown($testimony->content) !!}
         </article>
 
+        <section class="flex flex-wrap gap-4 mt-6">
+            <span class="font-medium">Share this testimony:</span>
+
+            {{-- WhatsApp --}}
+            <a href="https://wa.me/?text={{ urlencode($shareUrl) }}" target="_blank" rel="noopener"
+            class="text-green-600 hover:underline">WhatsApp</a>
+
+            {{-- Telegram --}}
+            <a href="https://t.me/share/url?url={{ urlencode($shareUrl) }}" target="_blank" rel="noopener"
+            class="text-blue-500 hover:underline">Telegram</a>
+
+            {{-- Facebook --}}
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($shareUrl) }}" target="_blank" rel="noopener"
+            class="text-blue-700 hover:underline">Facebook</a>
+
+            {{-- X / Twitter --}}
+            <a href="https://twitter.com/intent/tweet?url={{ urlencode($shareUrl) }}" target="_blank" rel="noopener"
+            class="text-gray-700 hover:underline">X</a>
+
+            {{-- Copy Link Button --}}
+            <button onclick="navigator.clipboard.writeText('{{ $shareUrl }}'); alert('Link copied!')"
+                    class="text-indigo-600 hover:underline">Copy Link</button>
+        </section>
+
+
         @include('partials.footer')
     </div>
 </x-layouts.app>
