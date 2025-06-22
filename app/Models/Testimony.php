@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\User;
+use App\Models\Like;
 use App\Traits\HasUuid;
 use App\Helpers\DateFormatter;
 use App\Helpers\Status;
@@ -30,6 +31,11 @@ class Testimony extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
     }
 
     public function getHumanStatus(): string

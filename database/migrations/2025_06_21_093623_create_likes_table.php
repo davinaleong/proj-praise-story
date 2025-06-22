@@ -20,6 +20,7 @@ return new class extends Migration
                 ->cascadeOnDelete();
 
             $table->enum('type', array_column(LikeType::cases(), 'value'));
+            $table->softDeletes();
             $table->timestamps();
         });
     }
