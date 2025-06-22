@@ -31,6 +31,8 @@
 
                 <!-- Testimony Card -->
                 <div class="rounded-lg border border-gray-200 dark:border-gray-700 p-6 shadow-sm bg-white dark:bg-zinc-800">
+                    @include('partials.likes-bar')
+
                     <h2 class="text-lg font-semibold text-gray-900 dark:text-white">
                         {{ $testimony->title }}
                     </h2>
