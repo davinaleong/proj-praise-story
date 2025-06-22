@@ -22,30 +22,33 @@ Here is the updated and logically sorted test tag list with the new entries inte
 
 ### ✅ **Admin Domain**
 
-| Name                            | Description                                                                             |
-| ------------------------------- | --------------------------------------------------------------------------------------- |
-| `admin`                         | Parent tag for all admin-related routes, policies, and domain-specific test coverage.   |
-| `admin-login`                   | Tests for admin login Livewire component, including validation and redirection.         |
-| `admin-logout`                  | Tests for logout route/controller to ensure session and guard cleanup.                  |
-| `admin-dashboard`               | Tests for the admin dashboard's summary widgets and data visibility.                    |
-| `admin-user`                    | High-level group for tests managing users in the admin panel.                           |
-| `admin-user-index`              | Tests for the user listing component in admin, including filters and pagination.        |
-| `admin-user-show`               | Tests for viewing a single user's profile in the admin panel.                           |
-| `admin-user-reset-password`     | Tests for sending password reset links to users from admin interface.                   |
-| `admin-user-email-verification` | Tests for sending email verification requests to users from the admin panel.            |
-| `admin-user-testimony`          | Tests related to managing a user’s testimonies in the admin panel.                      |
-| `admin-user-testimony-index`    | Tests for listing all testimonies submitted by a user in the admin panel.               |
-| `admin-testimony`               | General tests for testimony resources in admin.                                         |
-| `admin-testimony-index`         | Tests for the testimony index view in the admin, filtering by status or visibility.     |
-| `admin-message`                 | Tests for admin messages sent to users, including relationships and content validation. |
-| `admin-message-index`           | Tests for the message listing component for admins.                                     |
-| `admin-message-create`          | Tests for composing and submitting a message to a user from the admin interface.        |
-| `admin-contact-index`           | Tests for listing contact form messages in the admin dashboard.                         |
-| `admin-contact-show`            | Tests for viewing a specific contact message and responding if needed.                  |
-| `admin-feedback-index`          | Tests for listing user feedback submissions in the admin view.                          |
-| `admin-feedback-show`           | Tests for showing detailed feedback submitted by a user.                                |
+| Name                            | Description                                                                                    |
+| ------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `admin`                         | Parent tag for all admin-related routes, policies, and domain-specific test coverage.          |
+| `admin-login`                   | Tests for admin login Livewire component, including validation and redirection.                |
+| `admin-logout`                  | Tests for logout route/controller to ensure session and guard cleanup.                         |
+| `admin-dashboard`               | Tests for the admin dashboard's summary widgets and data visibility.                           |
+| `admin-user`                    | High-level group for tests managing users in the admin panel.                                  |
+| `admin-user-index`              | Tests for the user listing component in admin, including filters and pagination.               |
+| `admin-user-show`               | Tests for viewing a single user's profile in the admin panel.                                  |
+| `admin-user-reset-password`     | Tests for sending password reset links to users from admin interface.                          |
+| `admin-user-email-verification` | Tests for sending email verification requests to users from the admin panel.                   |
+| `admin-user-testimony`          | Tests related to managing a user’s testimonies in the admin panel.                             |
+| `admin-user-testimony-index`    | Tests for listing all testimonies submitted by a user in the admin panel.                      |
+| `admin-testimony`               | General tests for testimony resources in admin.                                                |
+| `admin-testimony-index`         | Tests for the testimony index view in the admin, filtering by status or visibility.            |
+| `admin-message`                 | Tests for admin messages sent to users, including relationships and content validation.        |
+| `admin-message-index`           | Tests for the message listing component for admins.                                            |
+| `admin-message-create`          | Tests for composing and submitting a message to a user from the admin interface.               |
+| `admin-contact-index`           | Tests for listing contact form messages in the admin dashboard.                                |
+| `admin-contact-show`            | Tests for viewing a specific contact message and responding if needed.                         |
+| `admin-feedback-index`          | Tests for listing user feedback submissions in the admin view.                                 |
+| `admin-feedback-show`           | Tests for showing detailed feedback submitted by a user.                                       |
+| `search`                        | Tests for omni-search functionality in the admin panel, spanning users, testimonies, and more. |
 
-#### 🗂 **Special Content**
+---
+
+### ✅ **Special Content**
 
 | Name                           | Description                                                                                 |
 | ------------------------------ | ------------------------------------------------------------------------------------------- |
@@ -85,6 +88,7 @@ Here is the updated and logically sorted test tag list with the new entries inte
 | `private`             | Tests for accessing private testimonies, enforcing proper user authentication and ownership.   |
 | `index`               | Tests for the general listing of testimonies and individual view enforcement.                  |
 | `message`             | Model-level tests for the `Message` class, covering context types and notification logic.      |
+| `like`                | Tests for liking a testimony, including UI toggle behavior and database updates.               |
 
 ---
 

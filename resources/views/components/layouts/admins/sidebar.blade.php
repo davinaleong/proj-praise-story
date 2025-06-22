@@ -39,6 +39,9 @@
                 <flux:navlist.item icon="gem" :href="route('admins.special-contents.index')" :current="request()->routeIs('admins.special-contents.index')" wire:navigate>
                     {{ __('Special Contents') }}
                 </flux:navlist.item>
+                <flux:navlist.item icon="search" :href="route('admins.search.index')" :current="request()->routeIs('admins.search.index')" wire:navigate>
+                    {{ __('Search') }}
+                </flux:navlist.item>
             </flux:navlist.group>
         </flux:navlist>
 

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admins\Auth\LogoutController;
 use App\Livewire\Admins\Auth\Login;
 use App\Livewire\Admins\Dashboard;
+use App\Livewire\Admins\Search\Index as SearchIndex;
 use App\Livewire\Admins\Users\Index as UsersIndex;
 use App\Livewire\Admins\Users\Show as UsersShow;
 use App\Livewire\Admins\Users\SendResetLink as UsersSendResetLink;
@@ -41,6 +42,7 @@ Route::prefix($prefix)->name('admins.')->group(function () use ($prefix) {
 
     Route::middleware('auth:admin')->group(function () {
         Route::get('/dashboard', Dashboard::class)->name('dashboard');
+        Route::get('/search', SearchIndex::class)->name('search.index');
 
         Route::post('/logout', LogoutController::class)->name('logout');
 
