@@ -19,6 +19,7 @@ class Dashboard extends Component
 
         $user = auth()->user();
         $this->testimonies = $user->testimonies()
+            ->with('likes')
             ->latest('published_at')
             ->get();
 

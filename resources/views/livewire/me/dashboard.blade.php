@@ -74,6 +74,7 @@
                 <thead class="bg-gray-100 dark:bg-zinc-800 text-xs uppercase font-medium">
                     <tr>
                         <th scope="col" class="px-6 py-3">Title</th>
+                        <th scope="col" class="px-6 py-3">Likes</th>
                         <th scope="col" class="px-6 py-3">Status</th>
                         <th scope="col" class="px-6 py-3">Published At</th>
                         <th scope="col" class="px-6 py-3">&nbsp;</th>
@@ -83,6 +84,9 @@
                     @forelse ($testimonies as $testimony)
                         <tr class="border-t border-gray-200 dark:border-zinc-700 hover:bg-gray-50 dark:hover:bg-zinc-800">
                             <td class="px-6 py-4 font-medium">{{ $testimony->title }}</td>
+                            <td>
+                                @include('partials.likes-bar')
+                            </td>
                             <td class="px-6 py-4 capitalize">{{ $testimony->status }}</td>
                             <td class="px-6 py-4">
                                 {{ optional($testimony->published_at)->format('Y-m-d') ?? '—' }}

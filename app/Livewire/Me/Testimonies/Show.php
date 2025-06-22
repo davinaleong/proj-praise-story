@@ -15,6 +15,7 @@ class Show extends Component
     public function mount(string $uuid, string $from = 'testimonies'): void
     {
         $this->testimony = Testimony::with('user')
+            ->with('likes')
             ->where('uuid', $uuid)
             ->where('user_id', Auth::id())
             ->firstOrFail();

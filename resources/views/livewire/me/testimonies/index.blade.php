@@ -16,6 +16,7 @@
             <thead class="bg-gray-100 dark:bg-zinc-800 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase">
                 <tr>
                     <th class="px-6 py-4">Title</th>
+                    <th class="px-6 py-4">Likes</th>
                     <th class="px-6 py-4">Status</th>
                     <th class="px-6 py-4">Published At</th>
                     <th class="px-6 py-4 text-right">&nbsp;</th>
@@ -26,6 +27,9 @@
                     <tr class="hover:bg-gray-50 dark:hover:bg-zinc-800">
                         <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
                             {{ $testimony->title }}
+                        </td>
+                        <td>
+                            @include('partials.likes-bar')
                         </td>
                         <td class="px-6 py-4 capitalize">
                             {{ $testimony->status }}
