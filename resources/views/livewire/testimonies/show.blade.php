@@ -4,16 +4,22 @@
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {{-- Back Link --}}
         <header class="mb-6">
+            @include('partials.likes-bar')
+
             <a href="{{ route('home') }}"
-               class="text-sm text-gray-600 dark:text-gray-400 hover:underline flex items-center">
+                class="text-sm text-gray-600 dark:text-gray-400 hover:underline flex items-center">
                 &larr; Back to Praise Stories
             </a>
-        </header>
 
-        {{-- Title --}}
-        <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-            {{ $testimony->title }}
-        </h1>
+            <div class="flex justify-between gap-4">
+                {{-- Title --}}
+                <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                    {{ $testimony->title }}
+                </h1>
+
+                @include('partials.like-buttons')
+            </div>
+        </header>
 
         {{-- Author & Date --}}
         <p class="text-sm text-gray-500 dark:text-gray-400 italic mb-6">
