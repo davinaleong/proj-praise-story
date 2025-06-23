@@ -1,4 +1,4 @@
 <a href="{{ route('frequently-asked-questions.show') }}"
-    class="text-sm text-gray-600 dark:text-gray-300 hover:underline">
+    class="underline hover:text-gray-700 dark:hover:text-gray-300">
     FAQ
 </a>
