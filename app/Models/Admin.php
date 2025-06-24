@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Traits\HasUuid;
 use Laravel\Fortify\TwoFactorAuthenticatable;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 
 class Admin extends Authenticatable
 {
@@ -50,5 +52,25 @@ class Admin extends Authenticatable
             ->implode('');
 
         return $initials;
+    }
+
+    public function hasValidRecoveryCode(string $code): bool
+    {
+        $decrypted = decrypt($this->two_factor_recovery_codes);
+        $codes = is_array($decrypted) ? $decrypted : json_decode($decrypted, true);
+
+        return in_array($code, $codes, true);
+    }
+
+    public function replaceRecoveryCode(string $code): void
+    {
+        $decrypted = decrypt($this->two_factor_recovery_codes);
+        $codes = is_array($decrypted) ? $decrypted : json_decode($decrypted, true);
+
+        $updated = Collection::make($codes)->reject(fn ($c) => $c === $code)->values()->all();
+
+        $this->forceFill([
+            'two_factor_recovery_codes' => encrypt(json_encode($updated)),
+        ])->save();
     }
 }

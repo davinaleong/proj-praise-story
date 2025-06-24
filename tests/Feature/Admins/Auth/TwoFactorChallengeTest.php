@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\Feature\Auth;
+namespace Tests\Feature\Admins\Auth;
 
-use App\Livewire\Auth\TwoFactorChallenge;
-use App\Models\User;
+use App\Livewire\Admins\Auth\TwoFactorChallenge;
+use App\Models\Admin;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use PragmaRX\Google2FA\Google2FA;
@@ -11,19 +11,25 @@ use Tests\TestCase;
 
 /**
  * @group feature
- * @group auth
- * @group two-factor
- * @group two-factor-challenge
+ * @group admins
+ * @group admin-two-factor
+ * @group admin-two-factor-challenge
  */
 class TwoFactorChallengeTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_it_redirects_if_user_session_missing()
+    protected function setUp(): void
     {
-        $response = $this->get(route('me.two-factor-challenge'));
+        parent::setUp();
+        config(['auth.defaults.guard' => 'admin']);
+    }
 
-        $response->assertRedirect(route('login'));
+    public function test_it_redirects_if_admin_session_missing()
+    {
+        $response = $this->get(route('admins.two-factor-challenge'));
+
+        $response->assertRedirect(route('admins.login'));
     }
 
     public function test_it_allows_login_with_valid_2fa_code()
@@ -32,82 +38,82 @@ class TwoFactorChallengeTest extends TestCase
         $secret = $google2fa->generateSecretKey();
         $otp = $google2fa->getCurrentOtp($secret);
 
-        $user = User::factory()->create([
+        $admin = Admin::factory()->create([
             'two_factor_secret' => encrypt($secret),
         ]);
 
         session([
-            'login.id' => $user->id,
-            'login.remember' => false,
+            'admin.2fa:id' => $admin->id,
+            'admin.2fa:remember' => false,
         ]);
 
         Livewire::test(TwoFactorChallenge::class)
             ->set('code', $otp)
             ->call('authenticate')
-            ->assertRedirect(route('private.testimonies.index'));
+            ->assertRedirect(route('admins.dashboard'));
 
-        $this->assertAuthenticatedAs($user);
+        $this->assertAuthenticatedAs($admin, 'admin');
     }
 
     public function test_it_allows_login_with_valid_recovery_code()
     {
         $codes = ['code-1', 'code-2'];
 
-        $user = User::factory()->create([
+        $admin = Admin::factory()->create([
             'two_factor_secret' => encrypt('dummy-secret'),
             'two_factor_recovery_codes' => encrypt($codes),
         ]);
 
         session([
-            'login.id' => $user->id,
-            'login.remember' => true,
+            'admin.2fa:id' => $admin->id,
+            'admin.2fa:remember' => true,
         ]);
 
         Livewire::test(TwoFactorChallenge::class)
             ->set('recovery_code', 'code-1')
             ->call('authenticate')
-            ->assertRedirect(route('private.testimonies.index'));
+            ->assertRedirect(route('admins.dashboard'));
 
-        $user->refresh();
-        $newCodes = decrypt($user->two_factor_recovery_codes);
+        $admin->refresh();
+        $newCodes = json_decode(decrypt($admin->two_factor_recovery_codes), true);
 
         $this->assertNotContains('code-1', $newCodes);
         $this->assertContains('code-2', $newCodes);
-        $this->assertAuthenticatedAs($user);
+        $this->assertAuthenticatedAs($admin, 'admin');
     }
 
     public function test_it_rejects_invalid_otp_code()
     {
         $secret = (new Google2FA())->generateSecretKey();
 
-        $user = User::factory()->create([
+        $admin = Admin::factory()->create([
             'two_factor_secret' => encrypt($secret),
         ]);
 
-        session(['login.id' => $user->id]);
+        session(['admin.2fa:id' => $admin->id]);
 
         Livewire::test(TwoFactorChallenge::class)
-            ->set('code', '123456') // wrong
+            ->set('code', '123456') // wrong code
             ->call('authenticate')
             ->assertHasErrors('code');
 
-        $this->assertGuest();
+        $this->assertGuest('admin');
     }
 
     public function test_it_rejects_invalid_recovery_code()
     {
-        $user = User::factory()->create([
-            'two_factor_secret' => encrypt('any'),
+        $admin = Admin::factory()->create([
+            'two_factor_secret' => encrypt('secret'),
             'two_factor_recovery_codes' => encrypt(['code-1']),
         ]);
 
-        session(['login.id' => $user->id]);
+        session(['admin.2fa:id' => $admin->id]);
 
         Livewire::test(TwoFactorChallenge::class)
             ->set('recovery_code', 'wrong-code')
             ->call('authenticate')
-            ->assertHasErrors('recovery_code');
+            ->assertHasErrors('code');
 
-        $this->assertGuest();
+        $this->assertGuest('admin');
     }
 }
