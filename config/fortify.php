@@ -15,7 +15,12 @@ return [
     |
     */
 
-    'guard' => 'web',
+    // 'guard' => 'web',
+
+    'guards' => [
+        'web', // Default guard
+        'admin', // Your admin guard
+    ],
 
     /*
     |--------------------------------------------------------------------------
