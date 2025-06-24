@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Livewire\User;
+namespace Tests\Feature\Settings;
 
 use App\Livewire\Settings\TwoFactorAuth;
 use App\Models\User;
@@ -10,9 +10,8 @@ use Tests\TestCase;
 
 /**
  * @group feature
- * @group livewire
- * @group user
- * @group user-2fa-auth
+ * @group setting
+ * @group two-factor-auth
  */
 class TwoFactorAuthTest extends TestCase
 {

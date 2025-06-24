@@ -42,8 +42,21 @@ class TwoFactorAuth extends Component
 
     public function loadRecoveryCodes()
     {
-        $this->recoveryCodes = json_decode(decrypt(Auth::guard('admin')->user()
-->two_factor_recovery_codes));
+//         $this->recoveryCodes = json_decode(decrypt(Auth::guard('admin')->user()
+// ->two_factor_recovery_codes));
+
+        $encrypted = Auth::guard('admin')->user()
+->two_factor_recovery_codes;
+
+        if (! $encrypted) {
+            $this->recoveryCodes = [];
+            return;
+        }
+
+        $decrypted = decrypt($encrypted);
+
+        // No need to json_decode — decrypted value is already an array
+        $this->recoveryCodes = is_array($decrypted) ? $decrypted : [];
     }
 
     public function render()
