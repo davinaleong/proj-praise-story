@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Settings;
+namespace App\Livewire\Admins\Settings;
 
 use Illuminate\Support\Facades\Auth;
 use Laravel\Fortify\Actions\EnableTwoFactorAuthentication;
@@ -47,6 +47,6 @@ class TwoFactorAuth extends Component
         return view('livewire.settings.two-factor-auth', [
             'user' => Auth::user(),
         ])
-            ->layout('components.layouts.me', ['title' => 'Profile Settings']);;
+            ->layout('components.layouts.admin', ['title' => 'Profile Settings']);;
     }
 }

@@ -22,6 +22,7 @@ use App\Livewire\Admins\FeedbackMessages\Index as FeedbackMessagesIndex;
 use App\Livewire\Admins\FeedbackMessages\Show as FeedbackMessagesShow;
 use App\Livewire\Admins\Settings\Profile as SettingsProfile;
 use App\Livewire\Admins\Settings\Password as SettingsPassword;
+use App\Livewire\Admins\Settings\TwoFactorAuth as SettingsTwoFactorAuth;
 use App\Livewire\Admins\Settings\Appearance as SettingsAppearance;
 use App\Livewire\Admins\SpecialContents\Index as ScIndex;
 use App\Livewire\Admins\SpecialContents\Groups\Index as ScGroupsIndex;
@@ -99,6 +100,7 @@ Route::prefix($prefix)->name('admins.')->group(function () use ($prefix) {
         Route::prefix('settings')->name('settings.')->group(function () {
             Route::get('/profile', SettingsProfile::class)->name('profile');
             Route::get('/password', SettingsPassword::class)->name('password');
+            Route::get('/two-factor-auth', SettingsTwoFactorAuth::class)->name('two-factor-auth');
             Route::get('/appearance', SettingsAppearance::class)->name('appearance');
         });
     });
