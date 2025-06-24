@@ -124,6 +124,12 @@ Here is the updated and logically sorted test tag list with the new entries inte
 | `model`    | Tests for Eloquent models not tied to a specific domain like user/testimony (e.g., pivot behavior). |
 | `livewire` | Tests focused on Livewire components: rendering, lifecycle, and UI interaction logic.               |
 
+### ✅ **New**
+
+| Name       | Description |
+| ---------- | ----------- |
+| `user-2fa` |             |
+
 ---
 
 ✅ Run specific groups using:
