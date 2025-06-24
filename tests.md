@@ -126,9 +126,10 @@ Here is the updated and logically sorted test tag list with the new entries inte
 
 ### ✅ **New**
 
-| Name       | Description |
-| ---------- | ----------- |
-| `user-2fa` |             |
+| Name                 | Description |
+| -------------------- | ----------- |
+| `user-2fa-auth`      |             |
+| `user-2fa-challenge` |             |
 
 ---
 

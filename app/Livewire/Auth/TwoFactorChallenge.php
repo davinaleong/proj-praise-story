@@ -58,7 +58,12 @@ class TwoFactorChallenge extends Component
         }
         // Try recovery code
         elseif ($this->recovery_code) {
-            $codes = json_decode(decrypt($user->two_factor_recovery_codes ?? '[]'), true);
+            $decrypted = decrypt($user->two_factor_recovery_codes ?? '');
+
+            // Handle both encrypted JSON and encrypted array formats
+            $codes = is_string($decrypted)
+                ? json_decode($decrypted, true)
+                : $decrypted;
 
             if (! in_array($this->recovery_code, $codes)) {
                 throw ValidationException::withMessages([

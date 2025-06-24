@@ -12,7 +12,7 @@ use Tests\TestCase;
  * @group feature
  * @group livewire
  * @group user
- * @group user-2fa
+ * @group user-2fa-auth
  */
 class TwoFactorAuthTest extends TestCase
 {
