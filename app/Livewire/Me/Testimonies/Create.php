@@ -5,7 +5,6 @@ namespace App\Livewire\Me\Testimonies;
 use Livewire\Component;
 use App\Models\Testimony;
 use App\Helpers\Status;
-use App\Rules\NoProfanity;
 
 class Create extends Component
 {
@@ -28,8 +27,8 @@ class Create extends Component
         $statuses = implode(',', Status::STATUSES_TESTIMONY);
 
         return [
-            'title' => ['required', 'string', 'max:255', new NoProfanity],
-            'content' => ['required', 'string', new NoProfanity],
+            'title' => ['required', 'string', 'max:255'],
+            'content' => ['required', 'string'],
             'status' => ['required', 'string', "in:$statuses"],
             'published_at' => ['required', 'date'],
         ];

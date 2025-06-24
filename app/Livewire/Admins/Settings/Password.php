@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password as PasswordRule;
 use Illuminate\Validation\ValidationException;
 use Livewire\Component;
-use App\Rules\NoProfanity;
 
 class Password extends Component
 {
@@ -32,8 +31,8 @@ class Password extends Component
         }
 
         $validated = $this->validate([
-            'current_password' => ['required', 'string', new NoProfanity],
-            'password' => ['required', 'string', PasswordRule::defaults(), 'confirmed', new NoProfanity],
+            'current_password' => ['required', 'string'],
+            'password' => ['required', 'string', PasswordRule::defaults(), 'confirmed'],
         ]);
 
         $admin->update([

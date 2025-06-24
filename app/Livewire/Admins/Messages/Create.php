@@ -9,7 +9,6 @@ use Livewire\Component;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\AdminsMessagesMail;
-use App\Rules\NoProfanity;
 
 class Create extends Component
 {
@@ -22,11 +21,11 @@ class Create extends Component
     public function rules(): array
     {
         return [
-            'subject' => ['required', 'string', 'max:255', new NoProfanity],
-            'body' => ['required', 'string', new NoProfanity],
-            'user_uuid' => ['nullable', 'exists:users,uuid', new NoProfanity],
-            'context_type' => ['nullable', 'string', new NoProfanity],
-            'context_uuid' => ['nullable', 'integer', new NoProfanity],
+            'subject' => ['required', 'string', 'max:255'],
+            'body' => ['required', 'string'],
+            'user_uuid' => ['nullable', 'exists:users,uuid'],
+            'context_type' => ['nullable', 'string'],
+            'context_uuid' => ['nullable', 'integer'],
         ];
     }
 

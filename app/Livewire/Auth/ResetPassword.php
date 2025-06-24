@@ -11,7 +11,6 @@ use Illuminate\Validation\Rules;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Locked;
 use Livewire\Component;
-use App\Rules\NoProfanity;
 
 #[Layout('components.layouts.auth')]
 class ResetPassword extends Component
@@ -42,8 +41,8 @@ class ResetPassword extends Component
     {
         $this->validate([
             'token' => ['required'],
-            'email' => ['required', 'string', 'email', new NoProfanity],
-            'password' => ['required', 'string', 'confirmed', Rules\Password::defaults(), new NoProfanity],
+            'email' => ['required', 'string', 'email'],
+            'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
         ]);
 
         // Here we will attempt to reset the user's password. If it is successful we

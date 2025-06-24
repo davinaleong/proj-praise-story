@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
-use App\Rules\NoProfanity;
 
 class Profile extends Component
 {
@@ -32,7 +31,7 @@ class Profile extends Component
         $user = Auth::user();
 
         $validated = $this->validate([
-            'name' => ['required', 'string', 'max:255', new NoProfanity],
+            'name' => ['required', 'string', 'max:255'],
 
             'email' => [
                 'required',
@@ -41,7 +40,6 @@ class Profile extends Component
                 'email',
                 'max:255',
                 Rule::unique(User::class)->ignore($user->id),
-                new NoProfanity,
             ],
         ]);
 

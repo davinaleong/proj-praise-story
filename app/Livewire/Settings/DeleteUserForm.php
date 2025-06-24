@@ -5,7 +5,6 @@ namespace App\Livewire\Settings;
 use App\Livewire\Actions\Logout;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
-use App\Rules\NoProfanity;
 
 class DeleteUserForm extends Component
 {
@@ -17,7 +16,7 @@ class DeleteUserForm extends Component
     public function deleteUser(Logout $logout): void
     {
         $this->validate([
-            'password' => ['required', 'string', 'current_password', new NoProfanity],
+            'password' => ['required', 'string', 'current_password'],
         ]);
 
         tap(Auth::user(), $logout(...))->delete();

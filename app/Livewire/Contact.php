@@ -6,7 +6,6 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactConfirmation;
 use App\Models\Contact as ContactModel;
-use App\Rules\NoProfanity;
 
 class Contact extends Component
 {
@@ -21,8 +20,8 @@ class Contact extends Component
         }
 
         $this->validate([
-            'email' => ['required', 'email', new NoProfanity],
-            'message' => ['required', 'min:10', new NoProfanity],
+            'email' => ['required', 'email'],
+            'message' => ['required', 'min:10'],
         ]);
 
         ContactModel::create([
