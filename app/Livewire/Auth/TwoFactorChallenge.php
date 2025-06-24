@@ -6,7 +6,6 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\ValidationException;
-use Laravel\Fortify\RecoveryCode;
 use Livewire\Component;
 use PragmaRX\Google2FA\Google2FA;
 
@@ -14,6 +13,22 @@ class TwoFactorChallenge extends Component
 {
     public string $code = '';
     public string $recovery_code = '';
+
+    public function mount()
+    {
+        $userId = session('login.id');
+
+        if (! $userId) {
+            return redirect()->route('login');
+        }
+
+        $user = User::find($userId);
+
+        if (! $user || ! $user->two_factor_secret) {
+            Session::forget(['login.id', 'login.remember']);
+            return redirect()->route('login');
+        }
+    }
 
     public function authenticate()
     {
@@ -71,6 +86,6 @@ class TwoFactorChallenge extends Component
     public function render()
     {
         return view('livewire.auth.two-factor-challenge')
-            ->layout('components.layouts.auth', ['title' => __('Two-Factor Authentication')]);
+            ->layout('components.layouts.auth', ['title' => 'Two-Factor Authentication']);
     }
 }

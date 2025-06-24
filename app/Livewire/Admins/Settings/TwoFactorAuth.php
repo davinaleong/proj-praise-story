@@ -15,21 +15,24 @@ class TwoFactorAuth extends Component
 
     public function enable()
     {
-        app(EnableTwoFactorAuthentication::class)(Auth::user());
+        app(EnableTwoFactorAuthentication::class)(Auth::guard('admin')->user()
+);
         $this->loadRecoveryCodes();
         $this->dispatch('2fa-enabled');
     }
 
     public function disable()
     {
-        app(DisableTwoFactorAuthentication::class)(Auth::user());
+        app(DisableTwoFactorAuthentication::class)(Auth::guard('admin')->user()
+);
         $this->recoveryCodes = [];
         $this->dispatch('2fa-disabled');
     }
 
     public function regenerateRecoveryCodes()
     {
-        Auth::user()->forceFill([
+        Auth::guard('admin')->user()
+->forceFill([
             'two_factor_recovery_codes' => encrypt(Collection::times(8, fn () => RecoveryCode::generate())->all()),
         ])->save();
 
@@ -39,13 +42,15 @@ class TwoFactorAuth extends Component
 
     public function loadRecoveryCodes()
     {
-        $this->recoveryCodes = json_decode(decrypt(Auth::user()->two_factor_recovery_codes));
+        $this->recoveryCodes = json_decode(decrypt(Auth::guard('admin')->user()
+->two_factor_recovery_codes));
     }
 
     public function render()
     {
         return view('livewire.settings.two-factor-auth', [
-            'user' => Auth::user(),
+            'user' => Auth::guard('admin')->user()
+,
         ])
             ->layout('components.layouts.admin', ['title' => 'Profile Settings']);;
     }

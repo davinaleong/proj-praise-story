@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admins\Auth\LogoutController;
 use App\Livewire\Admins\Auth\Login;
+use App\Livewire\Admins\Auth\TwoFactorChallenge;
 use App\Livewire\Admins\Dashboard;
 use App\Livewire\Admins\Search\Index as SearchIndex;
 use App\Livewire\Admins\Users\Index as UsersIndex;
@@ -40,6 +41,7 @@ Route::prefix($prefix)->name('admins.')->group(function () use ($prefix) {
     Route::redirect('/', $prefix . '/login')->name('home');
 
     Route::get('/login', Login::class)->name('login');
+    Route::get('/two-factor-challenge', TwoFactorChallenge::class)->name('two-factor-challenge');
 
     Route::middleware('auth:admin')->group(function () {
         Route::get('/dashboard', Dashboard::class)->name('dashboard');
