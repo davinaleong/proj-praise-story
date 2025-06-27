@@ -132,6 +132,9 @@ Here is the updated and logically sorted test tag list with the new entries inte
 | `two-factor-challenge`       |             |
 | `admin-two-factor-auth`      |             |
 | `admin-two-factor-challenge` |             |
+| `rule`                       |             |
+| `no-profanity`               |             |
+| `no-profanity-whole-phrases` |             |
 
 ---
 

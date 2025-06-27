@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\Testimony;
 use App\Helpers\Status;
 use Illuminate\Support\Facades\Auth;
+use App\Rules\NoProfanityWholePhrases;
 
 class Edit extends Component
 {
@@ -37,8 +38,8 @@ class Edit extends Component
         $statuses = implode(',', Status::STATUSES_TESTIMONY);
 
         return [
-            'title' => ['required', 'string', 'max:255'],
-            'content' => ['required', 'string'],
+            'title' => ['required', 'string', 'max:255', new NoProfanityWholePhrases()],
+            'content' => ['required', 'string', new NoProfanityWholePhrases()],
             'status' => ['required', 'string', "in:$statuses"],
             'published_at' => ['required', 'date'],
         ];
