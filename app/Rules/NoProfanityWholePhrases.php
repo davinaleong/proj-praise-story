@@ -4,7 +4,7 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
-class NoProfanity implements Rule
+class NoProfanityWholePhrases implements Rule
 {
     protected array $badWords = [
         '2 girls 1 cup',
@@ -2740,7 +2740,12 @@ class NoProfanity implements Rule
         $lower = strtolower($value);
 
         foreach ($this->badWords as $word) {
-            if (str_contains($lower, $word)) {
+            // Escape regex special characters in the word or phrase
+            $escapedWord = preg_quote($word, '/');
+
+            // Match whole word or exact phrase using \b boundaries for single words
+            // or wrapping with (^|[\s\W]) and ($|[\s\W]) for phrases and symbols
+            if (preg_match('/(^|[\s\W])' . $escapedWord . '($|[\s\W])/i', $lower)) {
                 return false;
             }
         }
