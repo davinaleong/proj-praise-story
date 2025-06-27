@@ -14,6 +14,7 @@
         <div>
             <label class="block text-sm font-medium mb-1">Title</label>
             <input wire:model="title" type="text" required class="w-full rounded border border-gray-300 dark:border-zinc-600 p-2" />
+            @error('title') <p class="text-red-600 mt-1 text-sm">{{ $message }}</p> @enderror
         </div>
 
         <div>
@@ -23,6 +24,7 @@
                 <a href="{{ route('me.information') }}" class="text-sm text-gray-900 hover:underline dark:text-gray-100">Formatting Help</a>
             </div>
             <textarea wire:model="content" rows="6" required class="w-full rounded border border-gray-300 dark:border-zinc-600 p-2"></textarea>
+            @error('content') <p class="text-red-600 mt-1 text-sm">{{ $message }}</p> @enderror
         </div>
 
         <div>
@@ -32,11 +34,13 @@
                     <option value="{{ $key }}">{{ $label }}</option>
                 @endforeach
             </select>
+            @error('status') <p class="text-red-600 mt-1 text-sm">{{ $message }}</p> @enderror
         </div>
 
         <div>
             <label class="block text-sm font-medium mb-1">Publish Date</label>
             <input wire:model="published_at" type="date" required class="w-full rounded border border-gray-300 dark:border-zinc-600 p-2" />
+            @error('published_at') <p class="text-red-600 mt-1 text-sm">{{ $message }}</p> @enderror
         </div>
 
         <div class="flex justify-end">
