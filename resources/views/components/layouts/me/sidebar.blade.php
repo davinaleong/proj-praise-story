@@ -18,6 +18,7 @@
                     <flux:navlist.item icon="gem" :href="route('private.testimonies.index')" :current="request()->routeIs('private.testimonies.index')" wire:navigate>{{ __('Private Testimonies') }}</flux:navlist.item>
                     <flux:navlist.item icon="book-open-text" :href="route('me.published.index')" :current="request()->routeIs('me.published.index')" wire:navigate>{{ __('My Wall') }}</flux:navlist.item>
                     <flux:navlist.item icon="scroll-text" :href="route('me.testimonies.index')" :current="request()->routeIs('me.testimonies.index')" wire:navigate>{{ __('My Testimonies') }}</flux:navlist.item>
+                    <flux:navlist.item icon="folder-down" :href="route('me.testimonies.export')" :current="request()->routeIs('me.testimonies.index')" wire:navigate>{{ __('Export Testimonies') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 

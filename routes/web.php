@@ -26,6 +26,7 @@ use App\Livewire\Private\Testimonies\Show as PrivateTestimonyShow;
 use App\Livewire\Contact;
 use App\Livewire\SpecialContent\Index as SpecialContentIndex;
 use App\Livewire\SpecialContent\Show as SpecialContentShow;
+use App\Http\Controllers\Me\TestimonyExportController;
 
 // Public Routes
 Route::get('/', PublicTestimonyIndex::class)->name('home');
@@ -83,6 +84,7 @@ Route::middleware('auth:web')->group(function () {
             Route::get('/create', MeTestimonyCreate::class)->name('create');
             Route::get('/{uuid}', MeTestimonyShow::class)->name('show');
             Route::get('/{uuid}/edit', MeTestimonyEdit::class)->name('edit');
+            Route::get('/export', [TestimonyExportController::class, 'export'])->name('export');
         });
     });
 });
